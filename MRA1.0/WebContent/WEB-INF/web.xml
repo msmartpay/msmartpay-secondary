@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>B2CMRAA</display-name>
+  <servlet>
+    <servlet-name>ServletAdaptor</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAdaptor</servlet-name>
+    <url-pattern>/resources/*</url-pattern>
+  </servlet-mapping>
+  <filter>
+    	<filter-name>CorsFilter</filter-name>
+    	<filter-class>com.msmart.util.CORSResponseFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    	<filter-name>CorsFilter</filter-name>
+    	<url-pattern>/resources/AEPS/hook</url-pattern>
+  </filter-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>

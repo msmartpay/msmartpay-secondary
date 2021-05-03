@@ -1,0 +1,6 @@
+<!--<%@ taglib  uri="http://java.sun.com/jstl/core" prefix="c" %>
+-->
+
+
+ <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />

@@ -1,0 +1,809 @@
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>MSmart Pay</title>
+    
+	<!-- Bootstrap CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+     <!-- CSS Custom -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- favicon Icon -->
+    <!--<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">-->
+    <!-- CSS Plugins -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<style>
+
+* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 25% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button 1*/
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* The Close Button 2*/
+.close1 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close1:hover,
+.close1:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.dropdown-toggle{
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown:hover .dropdown-toggle{
+    background-color: #3e8e41;
+}
+</style>
+<style>
+			.ontop {
+				z-index: 999;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+				position: absolute;				
+				color: #aaaaaa;
+				opacity: 1;
+				filter: alpha(opacity = 50);
+			}
+			#popup {
+				width: 300px;
+				height: 200px;
+				position: absolute;
+				color: #000000;
+				background-color: #ffffff;
+				/* To align popup window at the center of screen*/
+				top: 50%;
+				left: 50%;
+				margin-top: 200px;
+				margin-left: -150px;
+			}
+	
+	
+</style>
+<script type="text/javascript">
+			function pop(div) {
+				document.getElementById(div).style.display = 'block';
+			}
+			function hide(div) {
+				document.getElementById(div).style.display = 'none';
+				document.HomeForm.submit();
+			}
+			//To detect escape button
+			document.onkeydown = function(evt) {
+				evt = evt || window.event;
+				if (evt.keyCode == 27) {
+					hide('popDiv');
+				}
+			};
+			
+			function submitForm(){
+				$("#resultLoading").show();
+				document.ConfirmForm.submit();
+			}
+		</script>
+</head>
+
+<div style=" z-index: 10000; position:fixed; bottom: 180px; right: 10px"><a href="#register" ><img src="images/join_us1.png"style="margin-right: -60px" /></a></div>
+<div style=" z-index: 10000; position:fixed; bottom: 260px; right: 10px"><a target="_blank" href="https://play.google.com/store/apps/details?id=msmartpay.in" ><img src="images/app-icon.png" width="80px" style="margin-right: 0px" /></a></div>
+
+<header class="navbar-fixed-top">
+
+	<!-- <div id="popDiv" class="ontop">
+			<div class="tabs" id="popup">
+			Nav tabs
+			<ul class="nav nav-tabs">
+				<li class="active" style="width:100%;">
+				<a style="height: 50px;width: 100%;background-color: #593858;color:#fff;border: none;" href="#mobile" data-toggle="tab"><img src="images/info.png" height="30" width="30" />Information</a></li>
+				
+				
+			</ul>
+			Tab panes
+			
+				<div class="tab-content" style="height:200px;" >
+					
+					<div  align="center">
+						<form action="index.jsp" method="post" name="HomeForm">
+							<div class="table-color" align="center">
+							<table class="table " >
+								<tr>
+									<td align="center" >${requestScope.message }</td> 
+																						
+								</tr>
+								
+								<tr>
+									<td align="center"  >
+										<button type="button" onClick="hide('popDiv')" style="margin-top: 30px;" class="btn btn-primary btn-inline">OK</button>
+									</td> 
+																						
+								</tr>
+								</table>
+							</div>
+						</form>
+					</div>
+					
+				
+				</div>
+				
+			
+																
+			</div>
+		</div> -->
+
+	<div class="container">
+    	<div class="row">
+        	<div class="header_top">
+        		<div class="col-md-2">
+            		<div class="logo_img">
+						<a href="#home"><img style="border-radius: 10px" src="images/logo.png" alt="logoimage" height="60px" width="100"></a>
+					</div>
+				</div>
+					
+				<div class="col-md-10">
+					<div class="menu_bar">	
+						<nav role="navigation" class="navbar navbar-default">
+							<div class="navbar-header">
+                                <button id="menu_slide"  aria-controls="navbar" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                  </button>
+							   </div>
+							   
+							  <div class="collapse navbar-collapse" id="navbar">
+                            
+									<ul class="nav navbar-nav">
+										<li  class="dropdown"><a href="#about"  class="dropdown-toggle" data-toggle="dropdown"> About</a>
+									 	 <ul class="dropdown-menu"> 
+											<li><a href="#about" class="js-target-scroll">What we are</a></li>
+											<li><a href="#feature" class="js-target-scroll">feature</a></li>
+											
+										 </ul> 
+									  </li>
+									  <li><a href="#services" class="js-target-scroll">Services</a></li>
+									  <li><a href="#testimonial" class="js-target-scroll">Money Transfer</a></li>
+									  <li><a href="#team" class="js-target-scroll">Recharges</a></li>
+									  <li><a href="#contact" class="js-target-scroll">Contact</a></li>
+									  <li  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"> LOGIN</a>
+									 	 <ul class="dropdown-menu"> 
+											<li><a href="https://msmartpay.in/agent/" target="_blank" class="js-target-scroll">Agent</a></li>
+											<li><a href="https://msmartpay.in/DS/" target="_blank" class="js-target-scroll">DS</a></li>
+											<li><a href="https://msmartpay.in/MDS/" target="_blank" class="js-target-scroll">MDS</a></li>
+										 </ul> 
+									  	</li>
+									 </ul>    
+                          		</div>
+				
+						</nav>
+					</div>
+    	                          </div>
+			  
+			     </div>
+			</div>
+		</div>
+</header>
+
+<section id="home" class="top_banner_bg secondary-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="top_banner">
+				
+				</div>
+				
+				<div class="col-md-6">
+					<div class="present bottom_banner">
+						<h1> Multi Tasks.................</h1>
+						
+						<div class="section_btn">
+									<a href="#"> <button class="btn btn-default" type="submit"> <i class="" aria-hidden="true"></i> Single Solution...."Agent as Facility Centre"</button> </a>	
+									
+								    <span> <a href="#"> <button class="btn btn-default" type="submit"><i class="" aria-hidden="true"></i> www.msmartpay.in</button> </a> </span>							
+						</div>
+
+					</div>
+
+				</div>
+				
+				
+				
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section id="about" class="primary-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			
+			<div class="section_heading">
+				<h2> What We Are </h2>
+				
+				<h4 style="text-align: justify; font-size:21px;"> <b>ARPIT ENTERPRISES.</b> is committed to provide best product and services in various fields.
+				As on today life is changing and happening very fast. Everyone wants instant results & solutions. Earlier the task which required DAYS is now happening in MINUTES.
+				World has come on finger tips and every one's life is moving ahead towards DIGITAL WORLD.
+				Digitization – Paper less work is helping in saving our environment and providing information instantly.
+				In this Digital World – step forward.<br>MSmart Pay  is opening various product and services in digital form i.e. Digital Money Remittance, Mobile/DTH Recharges and Bill Payments.
+				MSMART PAY providing business opportunity to book Air tickets, Bus tickets, Hotels, Mobile/DTH Recharge, Bill payments, Insurance and Digital Money Remittance in single login.</h4>
+			</div>		
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="feature" class="fifth-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">		
+			<div class="section_heading">
+				<h2> AWESOME FEATURES </h2>				
+				<h4>www.msmartpay.in is an online portal which opens doors of solution for MULTI-TASKS. Its features and great functionality keeps record of every transaction for its registered users i.e., "Agent as FACILITY CENTRE"</h4>
+			</div>		
+				
+			<div class="col-md-12">
+				<div class="features_detail">
+					<ul>
+						<li>
+							
+								<i class="fa fa-user" aria-hidden="true"></i> 
+								<h5> Easy</h5>
+								Usage of this portal is very easy and user-friendly. Equipped with latest technology which provides solutions instantly. 
+							
+						</li>
+						
+						<li>
+							
+								<i class="fa fa-paperclip" aria-hidden="true"></i> 
+								<h5>Speedy</h5>
+								Combination of product and services with time saving, instant speedy solution helps facility centre in his business creation.
+						</li>
+						
+						<li>
+							
+								<i class="fa fa-camera" aria-hidden="true"></i> 
+								<h5> Single Login</h5>
+								Multi-task like flight, hotel, bus, holiday booking, mobile/DTH recharge, money transfer shall be possible with single login by facility centre.
+						</li>
+						
+						<li>
+							
+								<i class="fa fa-desktop" aria-hidden="true"></i> 
+								<h5> Single Balance</h5>
+								No need to maintain many balances for multi-tasks in various applications, only single balance application will work.
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+				
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section id="services" class="padding_bottom_none our_service_bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section_heading section_heading_2">
+					<h2> Our Services </h2>
+				
+					<h4> MSmart Pay is an easy, speedy, single login, single balance user-friendly portal providing solutions for tasks like......</h4>
+				</div>
+				
+				<!-- <div class="col-md-5 pull-right"> -->
+				<div class="col-md-12">
+					<div class="services_detail">
+						<ul>
+							<li>
+								<a href="#"><span><i class="fa fa-inr" aria-hidden="true"></i></span> 
+								<h5> Money Transfer </h5></a>
+								<p> Facility Centre can transfer client's money to his near and dear one's bank account with or without KYC.</p>
+							</li>
+							<!-- 
+							<li>
+								<a href="#"><span><i class="fa fa-desktop" aria-hidden="true"></i></span> 
+								<h5> Holidays </h5></a>
+								<p> Facility Centre can book holidays on best deals and special offers.</p>
+							</li> -->
+							
+							<!-- <li>
+								<a href="#"><span><i class="fa fa-plane" aria-hidden="true"></i></span> 
+								<h5> Flight, Hotel, Bus  </h5></a>
+								<p> Domestic and international flight booking is available.</p>
+							</li> -->
+                            <li>
+								<a href="#"><span><i class="fa fa-mobile" aria-hidden="true"></i></span> 
+								<h5> Mobile/DTH</h5></a>
+								<p> Multi recharge payment is possible.</p>
+							</li>
+							<li>
+								<a href="#"><span><i class="fa fa-mobile" aria-hidden="true"></i></span> 
+								<h5> Utility Payments</h5></a>
+								<p> Mobile Postpaid, Electricity, Gas, Water and Insurance bill payment is possible.</p>
+							</li>
+							
+													
+							<!-- <li>
+								<a href="#"><span><i class="fa fa-umbrella" aria-hidden="true"></i></span> 
+								<h5> Insurance  </h5></a>
+								<p> Premium payment and other related solutions available.</p>
+							</li> -->
+						</ul>
+						
+					</div>
+				</div>
+				
+				<!-- <div class="col-md-7">
+					<div class="services_img">
+						<img src="images/Awesom Feature 02.jpg" width="310px" alt="image-1">
+					</div>
+						
+					<div class="services_img_n">
+						<img src="images/Awesom Feature 01.jpg" width="315px" alt="image-1">
+					</div>
+				</div>	 -->			
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<section id="testimonial" class="testimonial_bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section_heading section_heading_2">
+					<h2> Money Transfer </h2>
+				
+					<h4> Send money to your family and friends bank account easy & quickly and No need to stand in queue, we are providing instant domestic money transfer To Any bank Any where 24x7.</h4>
+				</div>
+							
+				<div class="testimonial_slide">
+					<img src="images/money bhai 04.jpg"/>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="team" class="primary-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			
+				<div class="section_heading">
+					<h2> recharge & bill payments </h2>
+					
+					<h4> We provide you a wide range of recharge (Mobile/DTH/DataCard) services for prepaid mobile phone. Easy Multi Recharges </h4>
+				</div>		
+				
+			        <div class="col-md-3">
+					<div class="member_detail">
+						<div class="member_img">
+							<img src="images/money.jpg" alt="image">
+						</div>
+						<div class="member_name">
+							<p> Download mobile application and use for instant recharges, utility payments.</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="member_detail">
+						<div class="member_img">
+							<img src="images/03.jpg" alt="image">
+						</div>
+						<div class="member_name">
+							<p>Instant recharge for your prepaid mobile from <BR>Anywhere and Anytime. </p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="member_detail">
+						<div class="member_img">
+							<img src="images/BILL.png" alt="image">
+						</div>
+						<div class="member_name">
+							
+							<p> We accept all bill payment like Electricity, Insurance, Mobile, Water, Gas.</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="member_detail">
+						<div class="member_img">
+							<img src="images/image-girl.png" alt="image">
+						</div>
+						<div class="member_name">
+							
+							<p> We work for your Profit.<br> Please call us if you have some query for solution.</p>
+						</div>
+					</div>
+				</div>
+								
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section id="contact" class="contact_bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section_heading section_heading_2">
+					<h2> Contact Us </h2>
+				
+					<h4>Let drop a line to us & we will be in touch soon. </h4>
+				</div>
+							
+				<div class="col-md-6">
+					<div class="contact_form">
+					<form action="#" name="Query" method="post">
+					  <div class="form-group">
+						<label >Full Name : <span> *</span></label>
+						<input type="text" name="name" required="required" class="form-control" >
+					  </div>
+					  
+					  <div class="form-group">
+						<label >Email Address : <span> *</span></label>
+						<input type="email" name="email" required="required" class="form-control"  >
+					  </div>
+					  
+					   <div class="form-group">
+						<label >Phone No. : <span> *</span></label>
+						<input type="number" name="mobile" required="required" class="form-control"  >
+					  </div>
+					  
+					  <div class="form-group">
+						<label>Message <span> *</span></label>
+						<textarea name="message" required="required" class="form-textarea" rows="3"></textarea>
+					 </div>
+					  
+					    <div class="section_sub_btn">
+							<button class="btn btn-default" onclick="return submitForm()" type="submit">  Send Message</button>	
+						</div>
+					</form> 
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="contact_text">
+						<ul>
+							<li>
+								<span><i class="fa fa-home" aria-hidden="true"></i></span> 
+								<h5> MSmart Pay</h5>
+							</li>
+							
+							<li>
+								<span><i class="fa fa-envelope-o" aria-hidden="true"></i></span> 
+								<h5> care@msmartpay.in </h5>
+							</li>
+							
+							<li>
+								<span><i class="fa fa-phone" aria-hidden="true"></i></span> 
+								<h5> +91-8285283150 (Support)</h5>
+							</li>
+							
+						</ul>
+						
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section id="footer" class="footer_bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section_heading section_heading_2">
+					<!-- Keep Footer Credit Links Intact -->
+          <p style="color: #2943CF;"> 2016 &copy; Copyright. All rights Reserved. ARPIT ENTERPRISES. </p>
+          <a href="#" class="backtop"> <i class="fa fa-arrow-circle-o-up" aria-hidden="true" style="font-size: 35px;"></i> </a>
+
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</section>
+<div id="resultLoading"
+	style="width: 100%; height: 100%; position: fixed; z-index: 10000000; top: 0px; left: 0px;display:none;">
+	<div
+		style="width: 100%; text-align: center; position: absolute; left: 0px; top: 50%; font-size: 16px; z-index: 10; color: rgb(255, 255, 255);">
+		<img
+			src="images/ajax-loader.gif">
+		<div>Please wait...</div>
+	</div>
+	<div class="bg"
+		style="opacity: 0.7; width: 100%; height: 100%; position: absolute; top: 0px; background: rgb(0, 0, 0);"></div>
+</div>
+
+				
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/interface.js"></script> 
+<script type="text/javascript"> 
+	$(document).ready(function(){
+	$("#menu_slide").click(function(){
+		$("#navbar").slideToggle('normal');
+	});
+	});
+ </script>
+<!--Menu Js Right Menu-->
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#navbar > ul > li:has(ul)').addClass("has-sub");
+  $('#navbar > ul > li > a').click(function() {
+    var checkElement = $(this).next();
+    $('#navbar li').removeClass('dropdown');
+    $(this).closest('li').addClass('dropdown');	
+    if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+      $(this).closest('li').removeClass('dropdown');
+      checkElement.slideUp('normal');
+    }
+    if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+      $('#navbar ul ul:visible').slideUp('normal');
+      checkElement.slideDown('normal');
+    }
+    if (checkElement.is('ul')) {
+      return false;
+    } else {
+      return true;	
+    }		
+  });
+});
+<!--end-->
+</script>
+<script type="text/javascript">	
+$("#navbar").on("click", function(event){
+    event.stopPropagation();
+});
+$(".dropdown-menu").on("click", function(event){
+    event.stopPropagation();
+});
+$(document).on("click", function(event){
+    $(".dropdown-menu").slideUp('normal');
+});	
+
+$(".navbar-header").on("click", function(event){
+    event.stopPropagation();
+});
+$(document).on("click", function(event){
+    $("#navbar").slideUp('normal');
+});		
+</script>
+
+<script language="javascript">
+	
+	function populatecities(type)
+	{
+		var xmlhttp;
+		var state="";
+	
+		state=document.getElementById("Ostate").value; 
+	
+	   	var url = "distDetails.action?param=getDistict&state="+state;	  
+		if (window.XMLHttpRequest)
+	  	{// code for IE7+, Firefox, Chrome, Opera, Safari
+	  		xmlhttp=new XMLHttpRequest();
+	  	}
+		else
+	  	{// code for IE6, IE5
+	  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  	}
+		xmlhttp.onreadystatechange=function()
+	  	{
+	  		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    	{
+		   
+	    		document.getElementById("officeDist").innerHTML=xmlhttp.responseText;
+		 
+	    	}
+	  	}
+		xmlhttp.open("post",url,true);
+		xmlhttp.send();
+	}
+	
+	function populateds(type)
+	{
+		var xmlhttp;
+		var state="",officeDist="";
+	
+		state=document.getElementById("Ostate").value;
+		officeDist=document.getElementById("officeDist").value;
+	
+	   	var url = "distDetails.action?param=getDs&state="+state+"&officeDist="+officeDist;	  
+		if (window.XMLHttpRequest)
+	  	{// code for IE7+, Firefox, Chrome, Opera, Safari
+	  		xmlhttp=new XMLHttpRequest();
+	  	}
+		else
+	  	{// code for IE6, IE5
+	  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  	}
+		xmlhttp.onreadystatechange=function()
+	  	{
+	  		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    	{
+		   
+	    		document.getElementById("AFCList").innerHTML=xmlhttp.responseText;
+		 
+	    	}
+	  	}
+		xmlhttp.open("post",url,true);
+		xmlhttp.send();
+	}
+	</script>
+					<script>
+				// Get the modal 1
+				var modal = document.getElementById('myModal1');
+
+				// Get the button that opens the modal 1
+				var btn = document.getElementById("myBtn1");
+
+                // Get the modal 2
+			//	var modal = document.getElementById('myModal2');
+
+				// Get the button that opens the modal 2
+		//		var btn = document.getElementById("myBtn2");
+
+				// Get the <span> element that closes the modal 
+				var span = document.getElementsByClassName("close")[0];
+
+				// When the user clicks the button, open the modal 
+				btn.onclick = function() {
+					modal.style.display = "block";
+				}
+
+				// When the user clicks on <span> (x), close the modal
+				span.onclick = function() {
+					modal.style.display = "none";
+				}
+
+				// When the user clicks anywhere outside of the modal, close it
+				window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+				}
+				
+				// Get the modal 1
+			//	var modal = document.getElementById('myModal1');
+
+				// Get the button that opens the modal 1
+			//	var btn = document.getElementById("myBtn1");
+
+                // Get the modal 2
+				var modal1 = document.getElementById('myModal2');
+
+				// Get the button that opens the modal 2
+				var btn1 = document.getElementById("myBtn2");
+
+				// Get the <span> element that closes the modal 
+				var span = document.getElementsByClassName("close1")[0];
+
+				// When the user clicks the button, open the modal 
+				btn1.onclick = function() {
+					modal1.style.display = "block";
+				}
+
+				// When the user clicks on <span> (x), close the modal
+				span.onclick = function() {
+					modal1.style.display = "none";
+				}
+
+				// When the user clicks anywhere outside of the modal, close it
+				window.onclick = function(event) {
+					if (event.target == modal1) {
+						modal1.style.display = "none";
+					}
+				}
+				</script>
+</body>
+<!-- JS Plugins -->
+  </html>

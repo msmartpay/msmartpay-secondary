@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+		<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+		<constant name="struts.devMode" value="true" />
+		<constant name="struts.custom.i18n.resources" value="global" />
+		<constant name="struts.multipart.maxSize" value="8000000" />
+	
+
+		<package name="default" extends="struts-default">
+	
+		<global-results>
+    		<result name="sessionExp">/secure.jsp</result>
+    		<result name="login">/secure.jsp</result>
+    		<result name="ERROR">/secure.jsp</result>
+		</global-results>
+		
+		<action name="/" ></action>
+
+		<action name="doLoginAction" class="com.login.LoginAction">
+			<result name="agentHome">/pages/home/Home.jsp</result>
+			<result name="Home">/pages/home/Home.jsp</result>
+			<result name="invalidUser">/index.jsp</result>
+			<result name="deactiveUser">/index.jsp</result>
+			<result name="blockedUser">/index.jsp</result>
+			<result name="loginPage">/index.jsp</result>
+			<result name="passwordChange">/pages/login/changePassPage.jsp</result>
+			<result name="MailvarifyPage">/pages/login/verifyMailCodePage.jsp</result>
+			<result name="mobVerifyPage">/pages/login/verifyMobileCodePage.jsp</result>
+			<result name="error">/index.jsp</result>
+			<result name="logout">/secure.jsp</result>
+		</action>
+		
+		<action name="viewBill" class="com.utilityService.UtilityServiceAction">
+		</action>
+		
+		<action name="dmrActionPage" class="com.hemresdmr.DMRAction">
+			<result name ="Success">/pages/DMR/MoneyTransfer.jsp</result>
+			<result name ="ERROR">/index.jsp</result> 
+		</action>
+		
+		<action name="doForgotPwd" class="com.forgotpwd.ForgotPasswordAction">
+			<result name ="forgotPwdPage">/pages/password/forgotPwdPage.jsp</result>
+			<result name ="loginPage">/index.jsp</result> 
+		</action>		
+
+		<action name="domobileDthRecharge" class="com.mobDthDataCardRecharge.MobileDthRechargeAction" >
+			<result name ="ReMobile">/pages/home/Recharge.jsp</result>
+			<result name ="Result">/pages/home/ResultPage.jsp</result>
+		</action>
+		
+		<action name="Getpage" class="com.common.BackButtonAction">
+			<result name ="HomePage">/pages/home/Home.jsp</result>
+			<result name ="home">/pages/home/Home.jsp</result>
+			<result name ="Recharge">/pages/home/Recharge.jsp</result>
+			<result name ="Billpay">/pages/Utility/UtilityService.jsp</result>
+			<result name="w2w">pages/wallettowallet/WalletToWallet.jsp</result>
+			
+		</action>
+		
+		<action name="utilityService" class="com.utilityService.UtilityServiceAction">
+		    <result name ="UtilityPage">/pages/Utility/UtilityService.jsp</result>
+		    <result name ="Result">/pages/home/ResultPage.jsp</result>
+		</action>
+		
+		<action name="docontrolPanel" class="com.controlPanel.ControlPanelAction">
+			<result name ="editProfile">/pages/controlPanel/ViewEditProfilePage.jsp</result>
+			<result name ="pwdChangePage" >/pages/controlPanel/PasswordChangePage.jsp</result>
+			<result name ="agentHome" >/pages/home/Home.jsp</result>
+		</action>
+		
+		<action name="doTranStatusCheck" class="com.report.TranStatus.TransactionStatusAction">
+			<result name ="TranStatusPage">/pages/Report/TransactionStatusCheck.jsp </result>
+		</action>
+		
+		<action name="doAccountStatement" class="com.report.accountStmt.AccountStatementAction">
+			<result name ="AccounStmtPage" >/pages/Report/AccounStatementPage.jsp</result>
+			<result name ="SenderAccounStmtPage" >/pages/Report/SenderAccounStatementPage.jsp</result>
+			<result name ="RDmrAccountStatementDetails">/pages/Report/DMRAccounStatementWindow.jsp</result>
+			<result name ="AccounStmtWindow">/pages/Report/AccountStmtWindow.jsp</result>
+			<result name ="RefundWindow">/pages/Report/AccountStmtWindowForRefund.jsp</result>
+			<result name="AccounStmtWindowOps" >/pages/Report/AccountStmtWindowOps.jsp</result>
+			<result name ="smsChargeWindow" >/pages/Report/AccountStmtWindowForRefund.jsp</result>
+			<result name ="downloadReportPage" >/pages/Report/DownloadReportPage.jsp</result>
+			
+			
+		</action>
+		
+		<action name="ticket" class="com.ticket.TicketAction">
+		<result name ="AccounStmtPage" >/pages/Report/AccounStatementPage.jsp</result>
+			<result name ="ticketPage" >/pages/Ticket/Ticket.jsp</result>
+		</action>
+		
+		<action name="w2w" class="com.wallettowallet.WalletToWalletAction">
+			<result name ="success" >/pages/wallettowallet/WalletToWalletSuccess.jsp</result>
+			<result name ="getpage">/pages/wallettowallet/WalletToWallet.jsp</result>
+			<result name ="wbgetpage">/pages/wallettowallet/WalletBalanceRequest.jsp</result>
+			
+		</action>
+		
+		<action name="docontrolPanel" class="com.controlPanel.ControlPanelAction">
+			<result name ="editProfile" >/pages/controlPanel/ViewEditProfilePage.jsp</result>
+			<result name ="pwdChangePage" >/pages/controlPanel/PasswordChangePage.jsp</result>
+			<result name ="agentHome" >/secure.jsp</result>
+		</action>
+		
+		<action name="common" class="com.common.BackButtonAction">
+			<result name="GTOC">pages/common/G2C.jsp</result>
+			<result name="authdetails">pages/authdetails/authdetails.jsp</result>
+		</action>
+		
+		<action name="distDetails" class="com.listener.StateDistrictListAction"/>
+		
+		<action name="dthConnection" class="com.dthConnection.DthConnectionAction">
+			<result name ="DthConnection" >/pages/DthConnection/DthConnection.jsp</result>
+			<result name ="DthConnection" >/pages/DthConnection/DthConnection.jsp</result>
+		</action>
+		
+		<action name="travelBooking" class="com.travelbooking.TravelBookingAction" >
+			<result name="success">/pages/travelBooking/TravelBooking.jsp</result>
+		
+		</action>
+		
+		<action name="ITRServices" class="com.itr.Services.ItrServiceAction">
+			<result name ="ITRService" >/pages/ITRServices/ITRService.jsp</result>			
+		</action>
+		
+		<action name="GSTService" class="com.itr.Services.GSTServiceAction">
+			<result name ="GSTService" >/pages/ITRServices/GSTService.jsp</result>			
+		</action>
+		
+		<!-- Bus Booking		 -->
+		
+		<action name="busSearch" class="com.msmart.travel.bus.BusSearchAction" >
+			<result name="BusPage">/pages/Travel/TravelSearch.jsp</result>
+			<result name="BusSearchResult">/pages/Travel/Bus/BusSearchResult.jsp</result>
+			<result name="SeatLayout">/pages/Travel/Bus/BusSeatLayout.jsp</result>
+			<result name="blockSeats">/pages/Travel/Bus/BusSeatBlock.jsp</result>
+		</action>
+		
+		
+		<action name="busBook" class="com.msmart.travel.bus.BusBookAction" >
+			<result name="BusPage">/pages/Travel/TravelSearch.jsp</result>
+			<result name="BusBookResult">/pages/Travel/Bus/BusBookResult.jsp</result>
+			<result name="BusErrorResult">/pages/Travel/TravelErrorResult.jsp</result>
+		</action>
+		
+		<action name="busCancel" class="com.msmart.travel.bus.BusCancelAction" >
+			<result name="busCancelPage">/pages/Travel/Bus/BusCancel.jsp</result>
+			<result name="BusErrorResult">/pages/Travel/TravelErrorResult.jsp</result>
+		</action>
+		
+		<!--	Bus Booking End	 -->
+		
+		<!--DMR SSZ-->
+		<action name="dmr" class="com.msmart.dmr.MoneyTransferAction"
+			>
+			<result name="home">/pages/MoneyTransafer/MoneyTransafer.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="findSender" class="com.msmart.dmr.MoneyTransferAction"
+			method="findSender">
+			<result name="home">/pages/MoneyTransafer/MoneyTransafer.jsp</result>
+			<result name="register">/pages/MoneyTransafer/registerSender.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="regSenderpage" class="com.msmart.dmr.MoneyTransferAction"
+			method="registerSenderpage">
+			<result name="home">/pages/MoneyTransafer/registerSender.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="regSender" class="com.msmart.dmr.MoneyTransferAction"
+			method="registerSender">
+			<result name="home">/pages/MoneyTransafer/registerSender.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="regSenderResendOTP" class="com.msmart.dmr.MoneyTransferAction"
+			method="regSenderResendOTP">
+			
+		</action>
+		<action name="verifyregSender" class="com.msmart.dmr.MoneyTransferAction"
+			method="VerifySender">
+			<result name="home">/pages/MoneyTransafer/MoneyTransafer.jsp</result>
+			<result name="invalid">/pages/MoneyTransafer/registerSender.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="deleteBeneficiary" class="com.msmart.dmr.BeneficiaryAction"
+			method="deleteBeneficiary">
+			<result name="home">/pages/MoneyTransafer/MoneyTransafer.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="addbeneficiarypage" class="com.msmart.dmr.BeneficiaryAction"
+			method="addbeneficiarypage">
+			<result name="home">/pages/MoneyTransafer/addBene.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="AddBeneAfterVerify" class="com.msmart.dmr.BeneficiaryAction"
+			method="AddBeneAfterVerify">
+			<result name="home">/pages/MoneyTransafer/addBene.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="InitiateTransactionpage" class="com.msmart.dmr.TransactionAction"
+			method="InitiateTransactionPage">
+			<result name="home">/pages/MoneyTransafer/InitiateTranspage.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="InitiateTransaction" class="com.msmart.dmr.TransactionAction"
+			method="InitiateTransaction">
+			<result name="home">/pages/MoneyTransafer/InitiateTranspage.jsp
+			</result>
+			<result name="success">/pages/MoneyTransafer/successTranspage.jsp
+			</result>
+			<result name="dmrHome">/pages/MoneyTransafer/MoneyTransafer.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="dmrTranStatus" class="com.msmart.dmr.TransactionAction"
+			method="dmrTranStatus">
+			<result name="home">/pages/MoneyTransafer/DmrTranStatus.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="dmrTranStatusPage" class="com.msmart.dmr.TransactionAction"
+			method="dmrTranStatusPage">
+			<result name="home">/pages/MoneyTransafer/DmrTranStatus.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="resendRefundOTP" class="com.msmart.dmr.TransactionAction"
+			method="resendRefundOTP">
+		</action>
+		<action name="verifyRefundTransaction" class="com.msmart.dmr.TransactionAction"
+			method="verifyRefundTransaction">
+			<result name="home">/pages/MoneyTransafer/DmrTranStatus.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="confirmRefundTransaction" class="com.msmart.dmr.TransactionAction"
+			method="confirmRefundTransaction">
+			<result name="home">/pages/MoneyTransafer/DmrTranStatus.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="senderreport" class="com.msmart.dmr.MoneyTransferAction">
+			<result name="home">/pages/report/moneyTraReport.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+
+		<action name="senderreportlist" class="com.msmart.dmr.MoneyTransferAction"
+			method="SenderHistory">
+			<result name="home">/pages/report/moneyTraReport.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+
+		<action name="moneytransfer" class="com.msmart.dmr.MoneyTransferAction">
+			<result name="home">/pages/MoneyTransafer/MoneyTransafer.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		
+		<action name="verifyAccountpage" class="com.msmart.dmr.TransactionAction" method="verifyAccountpage">
+			<result name="home">/pages/MoneyTransafer/VerifyAccount.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="ajaxverifyAccount" class="com.msmart.dmr.TransactionAction" method="ajaxverifyAccount">
+		</action>
+		<action name="verifyAccount" class="com.msmart.dmr.TransactionAction" method="verifyAccount">
+			<result name="home">/pages/MoneyTransafer/VerifyAccount.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		
+		<action name="bankVerificationStatus" class="com.msmart.dmr.MoneyTransferAction" method="getVerificationAvailabilityStatus">
+		</action>
+		
+		<action name="bankIfscStatus" class="com.msmart.dmr.MoneyTransferAction" method="getVerificationIFSCStatus">
+		</action>
+		
+		<!--DMR  SSZ -->
+		
+		<!--DMR EKO -->
+		<action name="dmreko" class="com.msmart.eko.MoneyTransferAction"
+			>
+			<result name="home">/pages/MoneyTransaferEKO/MoneyTransafer.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="findSendereko" class="com.msmart.eko.MoneyTransferAction"
+			method="findSender">
+			<result name="home">/pages/MoneyTransaferEKO/MoneyTransafer.jsp</result>
+			<result name="Activate">/pages/EKOAEPS/EKOAepsActivate.jsp</result>
+			<result name="register">/pages/MoneyTransaferEKO/registerSender.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="regSenderpageeko" class="com.msmart.eko.MoneyTransferAction"
+			method="registerSenderpage">
+			<result name="home">/pages/MoneyTransaferEKO/registerSender.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="regSendereko" class="com.msmart.eko.MoneyTransferAction"
+			method="registerSender">
+			<result name="home">/pages/MoneyTransaferEKO/registerSender.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="regSenderResendOTPeko" class="com.msmart.eko.MoneyTransferAction"
+			method="regSenderResendOTP">
+			
+		</action>
+		<action name="verifyregSendereko" class="com.msmart.eko.MoneyTransferAction"
+			method="VerifySender">
+			<result name="home">/pages/MoneyTransaferEKO/MoneyTransafer.jsp</result>
+			<result name="invalid">/pages/MoneyTransaferEKO/registerSender.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="deleteBeneficiaryeko" class="com.msmart.eko.BeneficiaryAction"
+			method="deleteBeneficiary">
+			<result name="home">/pages/MoneyTransaferEKO/MoneyTransafer.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="addbeneficiarypageeko" class="com.msmart.eko.BeneficiaryAction"
+			method="addbeneficiarypage">
+			<result name="home">/pages/MoneyTransaferEKO/addBene.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="AddBeneAfterVerifyeko" class="com.msmart.eko.BeneficiaryAction"
+			method="AddBeneAfterVerify">
+			<result name="home">/pages/MoneyTransaferEKO/addBene.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="InitiateTransactionpageeko" class="com.msmart.eko.TransactionAction"
+			method="InitiateTransactionPage">
+			<result name="home">/pages/MoneyTransaferEKO/InitiateTranspage.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="InitiateTransactioneko" class="com.msmart.eko.TransactionAction"
+			method="InitiateTransaction">
+			<result name="home">/pages/MoneyTransaferEKO/InitiateTranspage.jsp
+			</result>
+			<result name="success">/pages/MoneyTransaferEKO/successTranspage.jsp
+			</result>
+			<result name="dmrHome">/pages/MoneyTransaferEKO/MoneyTransafer.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="dmrTranStatuseko" class="com.msmart.eko.TransactionAction"
+			method="dmrTranStatus">
+			<result name="home">/pages/MoneyTransaferEKO/DmrTranStatus.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="dmrTranStatusPageeko" class="com.msmart.eko.TransactionAction"
+			method="dmrTranStatusPage">
+			<result name="home">/pages/MoneyTransaferEKO/DmrTranStatus.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="resendRefundOTPeko" class="com.msmart.eko.TransactionAction"
+			method="resendRefundOTP">
+		</action>
+		<action name="verifyRefundTransactioneko" class="com.msmart.eko.TransactionAction"
+			method="verifyRefundTransaction">
+			<result name="home">/pages/MoneyTransaferEKO/DmrTranStatus.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="confirmRefundTransactioneko" class="com.msmart.eko.TransactionAction"
+			method="confirmRefundTransaction">
+			<result name="home">/pages/MoneyTransaferEKO/DmrTranStatus.jsp
+			</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<!-- <action name="senderreport" class="com.msmart.eko.MoneyTransferAction">
+			<result name="home">/pages/report/moneyTraReport.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action> -->
+
+		<action name="senderreportlist" class="com.msmart.eko.MoneyTransferAction"
+			method="SenderHistory">
+			<result name="home">/pages/report/moneyTraReport.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+
+		<action name="moneytransfereko" class="com.msmart.eko.MoneyTransferAction">
+			<result name="home">/pages/MoneyTransaferEKO/MoneyTransafer.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		
+		<action name="refundekopage" class="com.msmart.eko.TransactionAction" method="refundTransaction">
+			<result name="home">/pages/MoneyTransaferEKO/MoneyTransaferRefund.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		
+		<action name="refundeko" class="com.msmart.eko.TransactionAction" method="verifyRefundTransaction">
+			<result name="home">/pages/MoneyTransaferEKO/MoneyTransaferRefund.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		
+		<action name="confirmrefundeko" class="com.msmart.eko.TransactionAction" method="confirmRefundTransaction">
+			<result name="home">/pages/MoneyTransaferEKO/MoneyTransaferRefund.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		
+		<action name="verifyAccountpageeko" class="com.msmart.eko.TransactionAction" method="verifyAccountpage">
+			<result name="home">/pages/MoneyTransaferEKO/VerifyAccount.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		<action name="ajaxverifyAccounteko" class="com.msmart.eko.TransactionAction" method="ajaxverifyAccount">
+		</action>
+		<action name="verifyAccounteko" class="com.msmart.eko.TransactionAction" method="verifyAccount">
+			<result name="home">/pages/MoneyTransaferEKO/VerifyAccount.jsp</result>
+			<result name="ERROR">/login.jsp</result>
+		</action>
+		
+		<action name="bankVerificationStatuseko" class="com.msmart.eko.MoneyTransferAction" method="getVerificationAvailabilityStatus">
+		</action>
+		
+		<action name="bankIfscStatuseko" class="com.msmart.eko.MoneyTransferAction" method="getVerificationIFSCStatus">
+		</action>
+		
+		<action name="instantEkoCustomerKyc" class="com.msmart.eko.MoneyTransferKyc" method="instantEkoCustomerKyc">
+			<result name="Success">/pages/MoneyTransaferEKO/InstantEkoEkyc.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="submitEkoCustomerKyc" class="com.msmart.eko.MoneyTransferKyc" method="submitEkoCustomerKyc">
+			<result name="Success">/pages/MoneyTransaferEKO/InstantEkoEkyc.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		
+		<action name="aepsAtivation" class="com.msmart.eko.AEPSAction" method="aeps">
+			<result name="Activate">/pages/EKOAEPS/EKOAepsActivate.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="reuestOTP" class="com.msmart.eko.AEPSAction">
+			<result name="input">/login.jsp</result>
+		</action>
+		
+		<action name="activateAeps" class="com.msmart.eko.AEPSAction" method="activateAeps">
+			<result name="Activate">/pages/EKOAEPS/EKOAepsActivate.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		
+		<action name="getSecretKey" class="com.msmart.eko.AEPSAction" method="getSecretKey">
+			<result name="Activate">/pages/EKOAEPS/EKOAepsActivate.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		
+		<action name="validateAepsTransaction" class="com.msmart.eko.AEPSAction" method="validateAepsTransaction">
+			<result name="input">/login.jsp</result>
+		</action>
+		
+		<action name="updateAepsTransaction" class="com.msmart.eko.AEPSAction" method="updateAepsTransaction">
+			<result name="input">/login.jsp</result>
+		</action>
+		
+		<!--DMR EKO END -->
+		
+		<action name="authdetails" >
+			<result>/pages/authdetails/authdetails.jsp</result>
+		</action>
+		
+		<action name="api_business" >
+			<result>/pages/authdetails/api_business_details.jsp</result>
+		</action>
+		
+		<action name="chart" class="com.common.ChartJSAction">
+		</action>
+		
+	</package>
+</struts>

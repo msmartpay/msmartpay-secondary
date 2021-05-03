@@ -1,0 +1,118 @@
+spring:
+  profiles:
+    active: prod
+    
+#####################################################
+#Development PROFILE STARTS
+#####################################################
+---
+
+spring:
+  profiles: local
+  application: 
+    name: sszpl-aeps
+
+db:
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  url: jdbc:sqlserver://103.25.128.64:2499;databasename=b2b_softsolution;sendStringParametersAsUnicode=false
+  username: sszpl
+  password: Ssz@123lancer
+hibernate:
+  default_schema: dbo
+  dialect: org.hibernate.dialect.SQLServerDialect
+  show_sql: true
+  hbm2ddl:
+    auto: none
+  jdbc:
+    lob:
+      non_contextual_creation: true
+
+entitymanager:
+  packagesToScan: in.softsolutionzone
+    
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+server:
+  port: 8082
+  
+instant:
+  token:  e4906831f2f2adfaf6aaadf4a203d5ab  
+
+#####################################################
+#Development PROFILE STARTS
+#####################################################
+---
+
+spring:
+  profiles: development
+  application: 
+    name: sszpl-aeps
+    
+db:
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  url: jdbc:sqlserver://103.25.128.64:2499;databasename=b2b_softsolution;sendStringParametersAsUnicode=false
+  username: sszpl
+  password: Ssz@123lancer
+hibernate:
+  default_schema: dbo
+  dialect: org.hibernate.dialect.SQLServerDialect
+  show_sql: true
+  hbm2ddl:
+    auto: none
+  jdbc:
+    lob:
+      non_contextual_creation: true
+      
+entitymanager:
+  packagesToScan: in.softsolutionzone
+  
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+      
+server:
+  port: 8082
+
+instant:
+  token:  e4906831f2f2adfaf6aaadf4a203d5ab  
+
+#####################################################
+#Production PROFILE STARTS
+#####################################################
+---
+
+spring:
+  profiles: prod
+  application: 
+    name: sszpl-aeps
+
+db:
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  url: jdbc:sqlserver://10.10.33.238:1433;databasename=b2b_softsolution;sendStringParametersAsUnicode=false
+  username: sszpl
+  password: Ssz@123lancer
+hibernate:
+  default_schema: dbo
+  dialect: org.hibernate.dialect.SQLServerDialect
+  show_sql: true
+  hbm2ddl:
+    auto: none
+  jdbc:
+    lob:
+      non_contextual_creation: true
+      
+entitymanager:
+  packagesToScan: in.softsolutionzone
+    
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+server:
+  port: 8082
+
+instant:
+  token:  af96a3c9511b25fff07ff5c1032e4948  

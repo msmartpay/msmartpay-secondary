@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app>
+
+	<welcome-file-list>
+		<welcome-file>frame.jsp</welcome-file>
+	</welcome-file-list>
+
+	<display-name>Struts Blank Application</display-name>
+	<!-- Standard Action Servlet Configuration (with debugging) -->
+
+
+	<filter>
+		<filter-name>webwork</filter-name>
+		<filter-class>
+			org.apache.struts2.dispatcher.FilterDispatcher
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>webwork</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- Struts Tag Library Descriptors -->
+	<listener>
+		<listener-class>com.listener.MyListener</listener-class>
+	</listener>
+</web-app>

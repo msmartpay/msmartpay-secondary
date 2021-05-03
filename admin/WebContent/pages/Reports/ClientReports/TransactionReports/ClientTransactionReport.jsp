@@ -1,0 +1,276 @@
+<%@ page import = "java.util.Vector "%> 
+<%@ page import = "java.util.HashMap "%>
+<%@ page import = "java.util.* "%> 
+<%@ page import = "java.text.DecimalFormat "%> 
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.*" %>
+<%Date todate = new Date();
+SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+String currDate = formatter.format(todate);
+String checkloginType=(String)session.getAttribute("loginType");
+String message="";
+message=(String)request.getAttribute("message");
+if(message==null){
+message="";
+}
+/*String fileStatus=(String) request.getAttribute("fileStatus");
+System.out.println(fileStatus);
+if(fileStatus==null){
+fileStatus="";
+}*/
+//String apiList=(String) request.getAttribute("apiList");
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%=session.getAttribute("headerName")%></title>
+
+<link href="css/mastercss.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="images/t.png" />
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+ <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+  $(document).ready(function(){
+	 
+	 $( "#datepicker, #datepickers" ).datepicker({
+        changeMonth: true,
+			changeYear: true,
+			dateFormat: 'yy-mm-dd',
+			yearRange:'1950:2013',
+            numberOfMonths: 1,
+		
+        onSelect: function( selectedDate ) {
+			
+			var a = document.getElementById('select_option').value;
+			
+            if(a  == 'select'){
+             
+			 if(this.id == 'datepicker'){
+              var dateMin = $('#datepicker').datepicker("getDate");
+			  
+              var rMin = new Date(dateMin.getFullYear(), dateMin.getMonth(),dateMin.getDate()); // Min Date = Selected + 1d
+              var rMax = new Date(dateMin.getFullYear(), dateMin.getMonth(),dateMin.getDate()); // Max Date = Selected + 31d
+              $('#datepickers').datepicker("option","minDate",rMin);
+              $('#datepickers').datepicker("option","maxDate",rMax);                    
+            } 
+		           
+            }
+			
+			 if(a == "select"){
+             
+			 if(this.id == 'datepicker'){
+              var dateMin = $('#datepicker').datepicker("getDate");
+			  
+              var rMin = new Date(dateMin.getFullYear(), dateMin.getMonth(),dateMin.getDate() + 1); // Min Date = Selected + 1d
+              var rMax = new Date(dateMin.getFullYear(), dateMin.getMonth(),dateMin.getDate() + 31); // Max Date = Selected + 31d
+              $('#datepickers').datepicker("option","minDate",rMin);
+              $('#datepickers').datepicker("option","maxDate",rMax);                    
+            }
+		           
+            }
+			
+
+        }
+		
+    });
+	
+
+	 
+  });
+  </script>
+
+</head>
+<script language="javascript">
+function validateform()
+{
+var service=document.reportform.reportOf.value;
+if(service=="select"){
+	alert("Select the value Report Of");
+	document.reportform.reportOf.focus();
+	return false;
+}
+else{
+document.reportform.action="ClientTranReport.action?param=downloadReport";
+document.reportform.submit();
+}
+}
+</script>
+<body>
+<form name ="reportform" method="post" >
+<table cellpadding="0" cellspacing="0" width="100%" align="center" border="0">
+  <tr>
+    <td width="100%" valign="top" align="center"><%@ include file="/header.jsp" %></td>
+  </tr>
+  <tr>
+    <td  align="center" width="100%" valign="top"><table cellpadding="0" cellspacing="0" width="90%" align="center" border="0">
+        <tr>
+          <td valign="top" align="center"><table cellpadding="0" cellspacing="0" width="100%" align="center" border="0" >
+              <tr>
+                <td valign="top" align="center" class="rounded-corners box_heights" >
+                <table cellpadding="0" cellspacing="0" width="100%" align="center" border="0">
+                    <tr>
+                      <td  width="100%" valign="middle" height="40" align="left" class="heading_mgs" >Transaction Report > Channel</td>
+                    </tr>
+                    <tr>
+                      <td align="center" class="dyn_mgs"><%=message%></td>
+                    </tr>
+                    <tr>
+                      <td class="dyn_mgs"></td>
+                    </tr>
+					
+                    <tr>
+                      <td colspan="4"><table width="86%"  cellspacing="0" cellpadding="0" align="center" id="border">
+                          <tr>
+                            <td align="center" style="padding:20px 0px 20px 0px">
+							<div>
+				<table cellpadding="0" cellspacing="0" width="750" style="margin-bottom:15px;" align="center">  
+				<tr><td colspan="4">
+
+					<table cellpadding="0" cellspacing="0" width="750" align="center" class="mydata_tabl">
+
+
+				<tr>
+                <td width="15%"></td>
+          <td width="30%"><strong>Report Type</strong></td>
+    <td width="5%" align="left">:</td>
+    <td width="40%">
+	
+	<select name="reportOf" class="searchtext">
+			  <option value="select">Select</option>
+
+			  <option value="billpayReport">Bill Payment</option>
+			  <option value="busTranBook">Bus Booking</option>	
+			  <option value="busTranCan">Bus Cancellation</option>	
+			  <option value="licPremiumReport">Insurance Premium</option>
+			  <option value="liveRechargeTransactionReport">Live Recharge Transaction</option>
+			  <!--<option value="mobileRechargeReport">Mobile Recharge</option>
+			  <option value="dthRechargeReport">Mobile Dth</option>-->
+			  <option value="panCardReport">PAN Card</option>
+			  <option value="suspectReport">Suspect Transaction Report</option>
+			 <!-- <option value="powercard">Power Card</option>-->			  
+			 <!-- <option value="railTicketTransactionReport">Rail Ticket Transaction</option>-->
+			  <option value="airDomesticReport">Flight Booking - Domestic</option>
+              <option value="airDomesticCanReport">Flight Cancellation - Domestic</option>
+	
+            </select></td>
+					
+			</tr>
+            
+                        <tr>
+                        <td></td>
+                      <td><strong>From Date</strong></td>
+                <td  align="left">:</td>
+                <td ><input type="text"   id="datepicker"  name="fromDate" /></td>
+                
+                        </tr>
+                        
+                        <tr>
+                        <td></td>
+                      <td ><strong>To Date</strong></td>
+                <td  align="left">:</td>
+                <td ><input type="text"  id="datepickers"  name="toDate" /></td>
+               
+                        </tr>
+                        
+                        <tr>
+                        <td></td>
+                      <td ></td>
+                <td  align="left"></td>
+                <td ><input name="Input" type="button" value="Submit" class="cls_btn" onclick="validateform()" /></td>
+                
+                        </tr>
+                        
+            </table>
+			
+			</td>
+  </tr>
+
+  </table></div>
+							
+							</td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" height="30"></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+   <tr>
+    <td width="100%" valign="top" align="center" height="118"></td>
+  </tr>
+  <tr>
+    <td width="100%" valign="top" align="center"><%@ include file="/footer.jsp" %></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+function abcd(){
+document.getElementById("view_edit").style.display='block';
+}
+function abcd1(){
+document.getElementById("view_edit").style.display='none';
+}
+</script>
+<script type="text/javascript">
+// code for risk dropdown
+function toggleSubmit(obj){
+
+        count=0
+        while(document.getElementById("d"+count)){
+        document.getElementById("d"+count).style.display="none"
+        count++
+        }
+        document.getElementById("d"+obj.selectedIndex).style.display="block"
+
+}
+function reportforOption()
+{
+var report=document.reportform.reportfor.value;
+
+if(report=="adminreport")
+{
+
+document.getElementById("r1").style.display="table-row";
+document.getElementById("r2").style.display="none";
+}
+if(report=="egenreport")
+{
+
+ document.getElementById("r1").style.display="none";
+ document.getElementById("r2").style.display="table-row";
+ getAPIClient();
+ }
+ }
+  function getAPIClient()
+  {
+  var xmlhttp;
+if (window.XMLHttpRequest)
+{// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp=new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function()
+{
+if (xmlhttp.readyState==4 && xmlhttp.status==200)
+{
+document.getElementById("clientID").innerHTML=xmlhttp.responseText;
+
+}
+}
+xmlhttp.open("post",'egenReportDownload.action?param=getApi',true);
+xmlhttp.send();
+}
+</script>

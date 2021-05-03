@@ -1,0 +1,129 @@
+package in.softsolutionzone.services.impl;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import in.softsolutionzone.payout.model.ICICIClientRegistrationResponseModel;
+import in.softsolutionzone.payout.model.ICICIClientRegistrationStatusResponseModel;
+import in.softsolutionzone.payout.model.ICICIPayoutResponseModel;
+import in.softsolutionzone.payout.model.PayoutRequestModel;
+import in.softsolutionzone.provider.services.ICICIProviderServices;
+import in.softsolutionzone.services.PayoutServices;
+import in.softsolutionzone.util.CustomResponse;
+import in.softsolutionzone.util.Util;
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
+@Service
+public class PayoutServicesImpl implements PayoutServices {
+	
+	@Autowired
+	ICICIProviderServices iCICIProviderServices;
+
+	@Autowired
+	Util util;
+	
+	@Autowired
+	ModelMapper mapper;
+	
+	@Override
+	public ResponseEntity<?> payouts(PayoutRequestModel payoutRequestModel) {
+		// TODO Auto-generated method stub
+
+		ICICIPayoutResponseModel iciciPauoutResponseModel=null;
+		
+		String transactionStatus="",UTRNUMBER="",URN="",message="";;
+		
+		String UNIQUEID=util.generate26DigitUniqueTransactionId("SS","2001");
+		
+		try {
+			JSONObject transaction=iCICIProviderServices.payouts(payoutRequestModel,UNIQUEID);
+			log.info("ICICI response : "+transaction);
+			if(transaction!=null) {
+				
+				transactionStatus=transaction.getString("STATUS");
+				URN=transaction.optString("URN");
+				
+				if("SUCCESS".equalsIgnoreCase(transactionStatus)) {
+					
+					message="Txn Successful";
+					
+					UTRNUMBER=transaction.optString("UTRNUMBER");
+					transactionStatus="SUCCESS";
+				}else if("PENDING".equalsIgnoreCase(transactionStatus)) {
+					
+					message="Txn posted successfully. Bank response awaited";
+					UTRNUMBER=transaction.optString("UTRNUMBER");
+					transactionStatus="INITIATED";
+				}else if("Pending For Processing".equalsIgnoreCase(transactionStatus)) {
+					
+					message="Txn posted successfully";
+					
+					UTRNUMBER=transaction.optString("UTRNUMBER");
+					transactionStatus="INITIATED";
+				}else if("DUPLICATE".equalsIgnoreCase(transactionStatus) || "FAILURE".equalsIgnoreCase(transactionStatus)) {
+					
+					message=transaction.optString("MESSAGE");
+					transactionStatus="FAILURE";
+				}
+				
+			}else {
+				message="Transaction Under Process";
+				transactionStatus="PENDING";
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			message="Transaction Under Process";
+			transactionStatus="PENDING";
+		}
+		
+		iciciPauoutResponseModel=new ICICIPayoutResponseModel(UNIQUEID, payoutRequestModel.getExternal_ref(), UTRNUMBER, transactionStatus, message);
+		
+		return new ResponseEntity<>(new CustomResponse.CustomResponseBuilder<>()
+				.setStatus(0)
+				.setPayload(iciciPauoutResponseModel)
+				.build(),HttpStatus.OK);	
+		
+	}
+
+	@Override
+	public ResponseEntity<?> registration() {
+		// TODO Auto-generated method stub
+		
+		String UNIQUEID=util.generate26DigitUniqueTransactionId("SS","2001");
+		ICICIClientRegistrationResponseModel clientRegistrationResponseModel=iCICIProviderServices.registration(UNIQUEID);
+		
+		return new ResponseEntity<>(new CustomResponse.CustomResponseBuilder<>()
+				.setStatus(0)
+				.setPayload(clientRegistrationResponseModel)
+				.build(),HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> registrationStatus(String UNIQUEID) {
+		// TODO Auto-generated method stub
+		ICICIClientRegistrationStatusResponseModel clientRegistrationResponseModel=iCICIProviderServices.registrationStatus(UNIQUEID);
+		
+		return new ResponseEntity<>(new CustomResponse.CustomResponseBuilder<>()
+				.setStatus(0)
+				.setPayload(clientRegistrationResponseModel)
+				.build(),HttpStatus.OK);
+	}
+	
+	@Override
+	public ResponseEntity<?> transactionStatus(String UNIQUEID) {
+		// TODO Auto-generated method stub
+		JSONObject transactionStatus=iCICIProviderServices.transactionStatus(UNIQUEID);
+		
+		return new ResponseEntity<>(new CustomResponse.CustomResponseBuilder<>()
+				.setStatus(0)
+				.build(),HttpStatus.OK);
+	}
+
+}

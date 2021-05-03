@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+
+<struts-config>
+
+	<!-- ======================================== Form Bean Definitions -->
+
+
+
+	<form-beans>
+
+		<form-bean name="FileUploadAndSave"
+			type="com.distributorregistration.DistributorRegistrationBean" />
+
+		<form-bean name="FileAttachAndSave" type="com.mdamountrequest.MdAmountRequestBean" />
+
+	</form-beans>
+
+
+
+
+
+	<!-- ================================= Global Exception Definitions -->
+
+
+
+	<global-exceptions>
+
+		<!-- sample exception handler <exception key="expired.password" type="app.ExpiredPasswordException" 
+			path="/changePassword.jsp"/> end sample -->
+
+	</global-exceptions>
+
+
+
+
+
+	<!-- =================================== Global Forward Definitions -->
+
+
+
+	<global-forwards>
+
+		<forward name="sessionexp" path="/secure.jsp" />
+		<forward name="NotActivateMD" path="/secure.jsp" />
+		<forward name="completeProfile" path="/pages/masterdistributor/updatemd_profile.jsp" />
+
+	</global-forwards>
+
+
+
+
+
+	<!-- =================================== Action Mapping Definitions -->
+
+	<action-mappings>
+		<action path="/doLoginAction" type="com.login.LoginAction">
+			<forward name="NotActivateMD" path="/login.jsp" />
+			<forward name="refresh" path="/pages/extra/refresh.jsp" />
+			<forward name="home" path="/index.jsp" />
+			<forward name="mdHome" path="/pages/extra/checkLoginStatus.jsp" />
+			<forward name="sessionexp" path="/secure.jsp" />
+		</action>
+
+		<action path="/checkloginInfo" type="com.login.LoginInfoAction">
+			<forward name="mdHome" path="/index.jsp" />
+			<forward name="logout" path="/secure.jsp" />
+			<forward name="changePass" path="/pages/extra/changePass.jsp" />
+			<forward name="loginpage" path="/pages/extra/loginpage.jsp" />
+			<forward name="varifyCode" path="/pages/extra/varifyCode.jsp" />
+			<forward name="varifyCodeSuccess" path="/checkloginInfo.do?param=checkloginInfo" />
+			<!-- <forward name ="varifyCodeSuccess" path ="/pages/extra/loginActionpage.jsp"/> -->
+			<forward name="enterMailId" path="/pages/extra/entermailid.jsp" />
+			<forward name="changePwd" path="/pages/extra/change_password.jsp" />
+			<forward name="verifyMobileNo" path="/pages/extra/verifymobileno.jsp" />
+			<forward name="mdProfileCompleted" path="/checkloginInfo.do?param=checkloginInfo" />
+			<forward name="sessionexp" path="/secure.jsp" />
+		</action>
+
+
+		<action path="/forgetPassword" type="com.forgetpassword.ForgetPwdAction">
+			<forward name="forgetpassword" path="/pages/forgetpwd/forgetpassword.jsp" />
+		</action>
+
+		<action path="/distributorRegistration"
+			type="com.distributorregistration.DistributorRegistrationAction"
+			name="FileUploadAndSave" input="/pages/DSRegistration/DSRegistration.jsp">
+			<forward name="register" path="/pages/DSRegistration/DSRegistration.jsp" />
+			<forward name="success" path="/pages/DSRegistration/thanks.jsp"></forward>
+			<forward name="home" path="/index.jsp" />
+		</action>
+
+		<action path="/viewDistributor" type="com.distributor.DistributorDetailsAction">
+			<forward name="distributorlist" path="/pages/distributor/view_distributor.jsp"></forward>
+			<forward name="distributorInfo" path="/pages/distributor/profile_management.jsp"></forward>
+			<forward name="updateProfile"
+				path="/pages/distributor/profile_management_update.jsp"></forward>
+		</action>
+
+		<action path="/mdProfile" type="com.masterdistributor.MasterDistributorAction">
+			<forward name="myProfile" path="/pages/MDProfile/EditProfile.jsp"></forward>
+			<forward name="editProfile" path="/pages/MDProfile/EditProfile.jsp"></forward>
+		</action>
+
+		<action path="/depositRequest"
+			type="com.depositrequest.DistributorDepositRequestAction">
+			<forward name="depositRequest" path="/pages/depositrequest/distributorrequest.jsp"></forward>
+			<forward name="distribotorDetails" path="/pages/depositrequest/user_detail.jsp"></forward>
+			<forward name="invalidrequest" path="/pages/depositrequest/invalidrequest.jsp"></forward>
+		</action>
+
+
+		<action path="/mdDepositRequest" type="com.mdamountrequest.MdAmountRequestAction"
+			name="FileAttachAndSave" input="/pages/mddeposit/md_deposit.jsp">
+			<forward name="amountRequest" path="/pages/mddeposit/md_deposit.jsp"></forward>
+			<forward name="acknowledgement" path="/pages/mddeposit/acknowledgement.jsp"></forward>
+		</action>
+
+
+		<action path="/transferReport" type="com.transferreport.TransferReportAction">
+			<forward name="mdToDistributor" path="/pages/transferreport/MDS_DS_Transfer.jsp"></forward>
+			<forward name="successdownload" path="/pages/transferreport/downloadTranRepXL.jsp"></forward>
+			<forward name="distToAgent" path="/pages/transferreport/DS_Agent_Transfer.jsp"></forward>
+			<forward name="distributorDetails" path="/pages/transferreport/user_detail.jsp"></forward>
+		</action>
+
+
+		<action path="/accountStatement" type="com.accountstatement.AccountStatementAction">
+			<forward name="MyAccountStatement" path="/pages/accountstatement/account_statement.jsp"></forward>
+			<forward name="successdownload" path="/pages/accountstatement/downloadTranRepXL.jsp"></forward>
+			<forward name="tradebal" path="/pages/accountstatement/tradebal.jsp"></forward>
+			<forward name="disttradebal" path="/pages/accountstatement/disttradebal.jsp"></forward>
+			<forward name="accountadjustment" path="/pages/accountstatement/accountadjustment.jsp"></forward>
+		</action>
+
+		<!-- <action path="/downloadRequest" forward="/HdfcPayingSlip/Downloadable 
+			HDFC - Paying Slip.pdf"> </action> <action path="/agentTranReport" type="com.agenttranreport.AgentTransactionReportAction"> 
+			<forward name="report" path="/pages/agenttransactionreport/agent_transaction.jsp"></forward> 
+			<forward name="distributor" path="/pages/agenttransactionreport/distributortransactions.jsp"></forward> 
+			<forward name="agent" path="/pages/agenttransactionreport/agent_transaction_report.jsp"></forward> 
+			<forward name="successdownload" path="/pages/agenttransactionreport/downloadTranRepXL.jsp"></forward> 
+			</action> -->
+
+
+		<action path="/pushBalance" type="com.pushbalance.TransferAmountToDistributor">
+			<forward name="pushBalance" path="/pages/pushbalance/balancetransfer.jsp"></forward>
+			<forward name="balanceTransfer" path="/pages/pushbalance/pushbalance.jsp"></forward>
+		</action>
+
+
+		<action path="/viewAgent" type="com.agent.AgentDetailsAction">
+			<forward name="distributorlist" path="/pages/agent/search_agentDetails.jsp"></forward>
+			<forward name="agentDetailsList" path="/pages/agent/view_agentDetails.jsp"></forward>
+
+		</action>
+
+		<!-- <action path="/resendMPIN" type="com.resendmpin.ResendMPINAction"> 
+			<forward name="requestResendMpin" path="/pages/resendmpin/resendmpin.jsp"></forward> 
+			</action> <action path="/commission" type="com.commission.MyCommissionAction"> 
+			<forward name="agentCommission" path="/pages/commission/allagentcommission.jsp"></forward> 
+			</action> -->
+
+		<action path="/reversalBalance" type="com.reversal.ReversalBalance">
+			<forward name="reversal" path="/pages/reversal/reversalbalance.jsp"></forward>
+		</action>
+
+
+		<action path="/accessDocuments" type="com.agentdocuments.AgentDocumentsAction">
+			<forward name="agentId" path="/pages/agentdocs/agentdocs.jsp"></forward>
+		</action>
+
+
+		<action path="/StateDistrictListAction" type="com.statedistrict.StateDistrictListAction">
+			<forward name="sessionexp" path="/secure.jsp" />
+		</action>
+
+		<!-- <action path="/searchSuspectReport" type="com.suspectRechargeTransaction.SuspectTransactionReport"> 
+			<forward name ="getPage" path="/pages/report/SuspectReportDetail.jsp" /> 
+			<forward name ="searchSuspectReport" path="/pages/report/SuspectReport.jsp" 
+			/> </action> -->
+
+		<action path="/SearchTran" type="com.TranSearch.TransactionSearchAction">
+			<forward name="SerachTranPage" path="/pages/SearchTran/SearchTran.jsp" />
+			<forward name="SearchTranData" path="/pages/SearchTran/SearchTran.jsp" />
+		</action>
+
+		<action path="/getAgentReport" type="com.report.RarAgentReportAction">
+			<forward name="getPage" path="/pages/agentReport/agentReport.jsp" />
+		</action>
+
+		<action path="/reportAction" type="com.report.ReportAction">
+			<forward name="reportPage" path="/pages/report/Report.jsp" />
+		</action>
+
+		<action path="/rechargeTxn" type="com.report.agentReport">
+			<forward name="reportPage" path="/pages/agentReport/agentReport.jsp" />
+		</action>
+
+		<action path="/AttReport" type="com.report.agentReport">
+			<forward name="reportPage" path="/pages/agentReport/agentReport.jsp" />
+		</action>
+
+		<action path="/DownloadReport" type="com.report.RarAgentReportAction">
+			<forward name="getDSPage" path="/pages/DSReport/DSReport.jsp" />
+			<forward name="DSreportPage" path="/pages/DSReport/DSReport.jsp" />
+			<forward name="reportPage" path="/pages/agentReport/agentReport.jsp" />
+			<forward name="LRTReport" path="/pages/agentReport/LRTReport.jsp" />
+			<forward name="ATTReport" path="/pages/agentReport/ATTReport.jsp" />
+			<forward name="DMRReport" path="/pages/agentReport/DMRReport.jsp" />
+		</action>
+
+		<action path="/userSearch" type="com.userSearch.UserSearchAction">
+			<forward name="serachBy" path="/pages/userSearch/SearchBy.jsp" />
+			<forward name="userDetailsAG" path="/pages/userSearch/AGUserDetails.jsp" />
+			<forward name="userDetailsDS" path="/pages/userSearch/DSUserDetails.jsp" />
+		</action>
+
+		<action path="/SMSResponse" type="com.smsResponse.SMSResponseAction">
+			<forward name="SMSResponse" path="/pages/SMSResponse/SMSResSearch.jsp" />
+			<forward name="SMSData" path="/pages/SMSResponse/SMSDetails.jsp" />
+		</action>
+
+
+		<action path="/MarketingUser" type="com.login.MarketingUserLoginAction">
+			<forward name="NotActivateMD" path="/login.jsp" />
+			<forward name="refresh" path="/pages/extra/refresh.jsp" />
+			<forward name="home" path="/index.jsp" />
+			<forward name="mdHome" path="/pages/extra/checkLoginStatus.jsp" />
+		</action>
+
+		<action path="/profileChange" type="com.smsResponse.SMSResponseAction">
+			<forward name="SMSResponse" path="/pages/SMSResponse/SMSResSearch.jsp" />
+			<forward name="SMSData" path="/pages/SMSResponse/SMSDetails.jsp" />
+		</action>
+
+	</action-mappings>
+
+
+
+
+
+</struts-config>
+

@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<constant name="struts.multipart.maxSize" value="8000000" />
+
+	<package name="default" extends="struts-default" namespace="/">
+	
+	<global-results>
+    	<result name="sessionExpire">/login.jsp</result>	
+		<result name="input">/login.jsp</result>
+		<result name="err">/err.jsp</result>
+	</global-results>
+	
+	<action name="distDetails" class="com.listener.StateDistrictListAction"/>    
+    
+	<action name="superAdminLogin" class="com.login.superadmin.SuperAdminLoginAction">
+		<result name="login">/pages/Basic/login/checkAdminLoginStatus.jsp</result>
+	 	<result name="adminHome">/index/index.jsp</result>
+ 		<result name="loginFailed">/login.jsp</result>
+	</action>
+	
+	<action name="login" class="com.login.LoginAction">
+	    <result name="login">/pages/Basic/login/checkLoginStatus.jsp</result>
+	    <result name="loginFailed">/login.jsp</result>
+	    <result name="changePassword">/pages/Basic/login/changePasswordOnLogin.jsp</result>
+	    <result name="loginFailed">/login.jsp</result>
+	    <result name="emailVerification">/pages/Basic/login/emailVerification.jsp</result>
+	    <result name="loginPage">/pages/Basic/login/loginPage.jsp</result>
+	    <result name="verificationCode">/pages/Basic/login/enterVerificationCode.jsp</result>
+		<result name="verifyMobileNo">/pages/Basic/login/verifyMobileNo.jsp</result>
+	    <result name="verificationCodeSuccess">/pages/Basic/login/loginActionPage.jsp</result>
+	    <result name="adminHome">/index/index.jsp</result>
+	</action>
+	
+	<action name="commonAction" class="com.common.CommonAction">
+    	<result name="logout">/login.jsp</result>
+    	<result name="adminHome">/index/index.jsp</result>
+    	<result name="LiveStatus">/pages/Reports/CCModule/TransactionStatus/LiveStatus.jsp</result>
+	</action>
+	
+	<action name="changePassword" class="com.changepassword.ChangePasswordAction">
+    	<result name="resetPassword">/pages/Basic/changepassword/changePassword.jsp</result>
+	</action>
+	
+	<action name="forgetpage" >
+		<result>/pages/Basic/forgetPassword/forgetpwd.jsp</result>
+	</action>
+	
+	<action name="forgetPass" class="com.forgotPassword.ForgotPasswordAction" method="sendForgetPassword">
+		<result name="forgetPass">/pages/Basic/forgetPassword/forgetpwd.jsp</result>
+	</action>
+	
+	<!-- User Registration Control Start-->
+ 	<action name="UserRegistartionActivity" class="com.activity.userRegistration.UserRegistrationAction">
+ 		<result name="InternalUserReg">/pages/activity/userRegistration/InternalUserReg/InternalUserReg.jsp</result>
+ 		<result name="CorporateUserReg">/pages/activity/userRegistration/CorporateUserReg/CorporateUserReg.jsp</result>
+		<result name="RetailUserReg">/pages/activity/userRegistration/RetailUserReg/RetailUserReg.jsp</result>
+ 	</action>
+ 	
+ 	<action name="adminUserRegistration" class="com.activity.userRegistration.internalUser.adminUser.AdminUserRegistrationAction">
+    	<result name="registrationPage">/pages/activity/userRegistration/InternalUserReg/AdminUserRegistration.jsp</result>
+    	<result name="registrationCompleted">/pages/activity/userRegistration/InternalUserReg/AdminUserRegistrationComplete.jsp</result>
+	</action>
+
+	<action name="mdsRegistration" class="com.activity.userRegistration.retailUser.mds.MdsRegistrationAction">
+   		<result name="registrationPage">/pages/activity/userRegistration/RetailUserReg/MdsRegistration.jsp</result>
+    	<result name="registrationCompleted">/pages/activity/userRegistration/RetailUserReg/MdsRegistrationComplete.jsp</result>
+	</action>
+
+	<action name="distributorRegistration" class="com.activity.userRegistration.retailUser.distributor.DistributorRegistrationAction">
+    	<result name="registrationPage">/pages/activity/userRegistration/RetailUserReg/DistributorRegistration.jsp</result>
+    	<result name="registrationCompleted">/pages/activity/userRegistration/RetailUserReg/DistributorRegistrationComplete.jsp</result>
+	</action>
+
+	<action name="agentRegistration" class="com.activity.userRegistration.retailUser.agent.AgentRegistrationAction">
+    	<result name="registrationPage">/pages/activity/userRegistration/RetailUserReg/AgentRegistration.jsp</result>
+    	<result name="registrationCompleted">/pages/activity/userRegistration/RetailUserReg/AgentRegistrationComplete.jsp</result>
+	</action>
+
+	<action name="whiteLabelRegistration" class="com.activity.userRegistration.corporateUser.whitelableClient.WhiteLabelRegistrationAction">
+    	<result name="registrationPage">/pages/activity/userRegistration/CorporateUserReg/WhiteLabelRegistration.jsp</result>
+		<result name="registrationNextPage">/pages/activity/userRegistration/CorporateUserReg/PortalAdminUserRegistration.jsp</result>	
+    	<result name="registrationCompleted">/pages/activity/userRegistration/CorporateUserReg/WhiteLabelRegistrationComplete.jsp</result>
+	</action>
+	
+	<action name="apiClientRegistration" class="com.activity.userRegistration.internalUser.EGEN.APIClientRegistrationAction">
+    	<result name="registrationPage">/pages/activity/userRegistration/InternalUserReg/egenRegistration.jsp</result>
+		<result name="registrationCompleted">/pages/activity/userRegistration/InternalUserReg/egenRegistrationComplete.jsp</result>
+	</action>
+	<!-- User Registration Control END-->
+	
+	<!-- User Activation Control Start -->
+	<action name="UserActivationActivity" class="com.controlPanel.userActivation.UserActivationAction">
+ 		<result name="InternalUserAct">/pages/controlPanel/profileManagement/Activation/InternalUserAct/InternalUserAct.jsp</result>
+ 		<result name="CorporateUserAct">/pages/controlPanel/profileManagement/Activation/CorporateUserAct/CorporateUserAct.jsp</result>
+ 		<result name="RetailUserAct">/pages/controlPanel/profileManagement/Activation/RetailUserAct/RetailUserAct.jsp</result>
+ 	</action>
+
+	<action name="agentActivation" class="com.controlPanel.userActivation.retailsUser.agent.AgentActivationAction">
+    	<result name="searchUser">/pages/controlPanel/profileManagement/Activation/RetailUserAct/RetailUserAct.jsp</result>
+		<result name="agentList">/pages/controlPanel/profileManagement/Activation/RetailUserAct/AgentDetails.jsp</result>
+	</action>
+
+	<action name="distributorActivation" class="com.controlPanel.userActivation.retailsUser.distributor.DistributorActivationAction">
+    	<result name="searchUser">/pages/controlPanel/profileManagement/Activation/RetailUserAct/RetailUserAct.jsp</result>
+		<result name="distributorList">/pages/controlPanel/profileManagement/Activation/RetailUserAct/DistributorDetails.jsp</result>
+	</action>
+
+	<action name="mdsActivation" class="com.controlPanel.userActivation.retailsUser.mds.MdsActivationAction">
+    	<result name="searchUser">/pages/controlPanel/profileManagement/Activation/RetailUserAct/RetailUserAct.jsp</result>
+		<result name="mdsList">/pages/controlPanel/profileManagement/Activation/RetailUserAct/MDSDetails.jsp</result>
+	</action>
+	
+	<action name="whiteLabelClientActivation" class="com.controlPanel.userActivation.corporateUser.whitelabelClient.WhiteLabelClientActivationAction">
+    	<result name="searchUser">/pages/controlPanel/profileManagement/Activation/CorporateUserAct/CorporateUserAct.jsp</result>
+		<result name="whiteLabelClientList">/pages/controlPanel/profileManagement/Activation/CorporateUserAct/whiteLabelClientDetails.jsp</result>
+	</action>
+	
+	<action name="adminUserActivation" class="com.controlPanel.userActivation.internalUser.adminUser.AdminUserActivationAction">
+    	<result name="searchUser">/pages/controlPanel/profileManagement/Activation/InternalUserAct/InternalUserAct.jsp</result>
+		<result name="adminUserList">/pages/controlPanel/profileManagement/Activation/InternalUserAct/adminUserDetails.jsp</result>
+	</action>
+	
+	<action name="apiClientActivation" class="com.controlPanel.userActivation.internalUser.EGEN.ApiClientActivationAction">
+    	<result name="searchUser">/pages/controlPanel/profileManagement/Activation/InternalUserAct/InternalUserAct.jsp</result>
+		<result name="apiClientList">/pages/controlPanel/profileManagement/Activation/InternalUserAct/apiClientDetails.jsp</result>
+		<result name="editApiIPPage">/pages/controlPanel/profileManagement/Activation/InternalUserAct/editApiIPpage.jsp</result>
+	</action>
+	<!-- User Activation Control END -->
+	
+	<!-- Administrator Task  Start-->
+	<action name="activityAssignment" class="com.activity.adminTask.activityAssignment.ActivityAssignmentAction">    
+		<result name="searchPortalUser">/pages/activity/AdminTask/ActivityAssignment/activitySearch.jsp</result>
+		<result name="activityAssignmentPage">/pages/activity/AdminTask/ActivityAssignment/activityassignment.jsp</result>
+	</action>
+	
+	<action name="categoryCreationSearch" class="com.activity.adminTask.categoryCreation.CategoryCreationAction" method="categoryCreationSearch">
+		<result name="categoryCreation">/pages/activity/CategoryCreation/category_creation.jsp</result>
+	</action>
+
+	<action name="checkCategoryAvailability" class="com.activity.adminTask.categoryCreation.CategoryCreationAction" method="checkCategoryAvailability">
+	</action>
+
+	<action name="createCategory" class="com.activity.adminTask.categoryCreation.CategoryCreationAction" method="createCategory">
+		<result name="categoryCreation">/pages/activity/CategoryCreation/category_creation.jsp</result>
+	</action>
+
+	<action name="getExistDetails" class="com.activity.adminTask.categoryCreation.CategoryCreationAction" method="getExistDetails">
+		<result name="categoryCreation">/pages/activity/CategoryCreation/category_creation.jsp</result>
+	</action>
+
+	<action name="getServiceCategoryCommDetail" class="com.activity.adminTask.categoryCreation.CategoryCreationAction" method="getServiceCategoryCommDetail">
+		<result name="categoryCreation">/pages/activity/CategoryCreation/category_creation.jsp</result>
+	</action>
+
+	<action name="updateServiceCategoryCommDetail" class="com.activity.adminTask.categoryCreation.CategoryCreationAction" method="updateServiceCategoryCommDetail">
+		<result name="categoryCreation">/pages/activity/CategoryCreation/category_creation.jsp</result>
+	</action>
+
+	<action name="categoryAssignment" class="com.activity.adminTask.categoryCreation.CategoryCreationAction" method="categoryAssignment">
+		<result name="categoryAssign">/pages/activity/CategoryCreation/categoryAssignment.jsp</result>
+	</action>
+	
+	<action name="TBLimitSetup" class="com.activity.adminTask.tradeBalanceLimitSetup.TradeBalanceLimitSetupAction" method="limitSetUp">
+    	<result name="success">/pages/tradeBalanceLimitSetup/limitsetup.jsp</result>   
+    </action>
+    
+    <action name="updateLimit" class="com.activity.adminTask.tradeBalanceLimitSetup.TradeBalanceLimitSetupAction" method="updateLimitSetup">
+    	<result name="success">/pages/tradeBalanceLimitSetup/limitsetup.jsp</result>   
+    </action>
+	
+	<action name="bankCharges">
+    	<result>/pages/activity/AdminTask/BankChargeSetup/bank_charges.jsp</result>
+    </action>
+    
+    <action name="bankChargesList" class="com.activity.adminTask.bankChargesSetup.BankChargeSetUpAction" method="listOfBankCharges">
+    	<result name="success">/pages/activity/AdminTask/BankChargeSetup/bank_charges_Two.jsp</result>
+    </action>
+    	
+    <action name="updateCharge" class="com.activity.adminTask.bankChargesSetup.BankChargeSetUpAction" method="updateBankCharges">
+    	<result name="success">/pages/activity/AdminTask/BankChargeSetup/bank_charges.jsp</result>
+    </action>
+	
+ 	<action name="runSchedular" class="com.activity.adminTask.schedulerRun.SchedulerAction">
+ 		<result name="SchedularPage">/pages/activity/AdminTask/scheduler/SchedularPage.jsp</result>
+ 	</action>
+
+	<action name="dbTask" class="com.activity.adminTask.DBTask.DBTaskAction">
+ 		<result name="DbPage">/pages/activity/AdminTask/DbTask/DBTaskPage.jsp</result>
+ 		<result name="bulksmsandmail">/pages/activity/AdminTask/DbTask/SMSAndMail.jsp</result>
+ 		<result name="balanceSheet">/pages/activity/AdminTask/DbTask/BalanceSheet.jsp</result>
+ 		<result name="pendingTran">/pages/activity/AdminTask/DbTask/PendingTranSheet.jsp</result>
+ 		<result name="remark">/pages/activity/AdminTask/DbTask/RemarkSearch.jsp</result>
+ 		<result name="creditPage">/pages/activity/AdminTask/DbTask/CreaditQuery.jsp</result>
+ 		<result name="DebitPage">/pages/activity/AdminTask/DbTask/DebitQuery.jsp</result>
+ 		<result name="loginIDChange">/pages/activity/AdminTask/DbTask/LoginIDChange.jsp</result>
+ 		<result name="viewTicket">/pages/activity/AdminTask/DbTask/ticket_details.jsp</result>
+ 		<result name="PayOutSetup">/pages/activity/AdminTask/DbTask/PayOutSetup.jsp</result>
+ 		<result name="PayOutSchedular">/pages/activity/AdminTask/DbTask/PayOutSchedular.jsp</result>
+ 	</action>
+ 	
+ 	<action name="cwpActivity" class="com.activity.cwu.ClientWalletUpdationAction">
+ 		<result name="walletPage">/pages/Activity/CWP/ClientWalletUpdate.jsp</result>
+ 		<result name="createClient">/pages/Activity/CWP/createClient.jsp</result>
+ 	</action>
+ 	
+ 	<!-- Administrator Task  END-->
+ 	
+ 	<!-- Trade Balance Activity Start -->
+ 	
+	<action name="TradeBalActivity" class="com.activity.tradeBalanceActivity.TBActivityAction">
+ 		<result name="TBsuperAdmin">/pages/activity/TradeBalanceActivity/SuperAdmin/TBSuperAdmin.jsp</result>
+ 		<result name="TBactivityAdmin">/pages/activity/TradeBalanceActivity/FinanceAdmin/TBActivityAdmin.jsp</result>
+ 		<result name="TBclientAdmin">/pages/activity/TradeBalanceActivity/ClientAdmin/TBClientAdmin.jsp</result>
+ 	</action>
+ 	
+ 	<!-- Action take from old panel Start -->
+ 	
+ 	<action name="TBRequest">
+    	<result>/pages/tbrequest/Activity.jsp</result>
+	</action>
+	
+	<action name="TBRequestSelf" class="com.tradebalanceactivity.self.TradeBalanceSelfActivity">
+    	<result name="success">/pages/tbrequest/Activity.jsp</result>       
+	</action>
+	
+	<action name="MyDeposit" class="com.tradebalanceactivity.self.TradeBalanceSelfActivity" method="MyAccountInfo">
+    	<result name="success">/pages/tbrequest/my_deposite.jsp</result>
+    	<result name="err">/pages/tbrequest/my_deposite.jsp</result>
+	</action>
+	
+	<action name="depositInfo" class="com.tradebalanceactivity.self.MyDepositAction" method="MyDepositInfo">
+    	<result name="success">/pages/tbrequest/my_deposit_confirm.jsp</result>
+    </action>
+    
+    <action name="myDepositRequest" class="com.tradebalanceactivity.self.MyDepositAction" method="myDepositSaveOrEdit">
+    	<result name="success">/pages/tbrequest/my_deposite.jsp</result>
+    	<result name="err">/pages/tbrequest/my_deposite.jsp</result>
+    </action>
+    
+    <action name="TBPendingList" >
+    	<result>/pages/tbrequest/TB_Request_Type.jsp</result>   
+    </action>
+    
+    <action name="TBPending" class="com.tradebalanceactivity.self.TBPendingListAction" method="showPendingList">
+    	<result name="success">/pages/tbrequest/TB_Request.jsp</result>
+    	<result name="err">/pages/tbrequest/my_deposite.jsp</result>
+    </action>
+    
+    <action name="updateTBRequest" class="com.tradebalanceactivity.self.TBPendingListAction" method="updatePendingRequest">
+    	<result name="TBPending">/pages/tbrequest/TB_Request.jsp</result>
+    	<result name="err">/pages/tbrequest/TB_Request.jsp</result>
+    </action>
+    
+    <action name="TBTransfer">
+    	<result>/pages/tbrequest/TB_Transfer.jsp</result>    
+    </action>
+    
+    <action name="viewUser" class="com.tradebalanceactivity.self.TradeBalanceSelfActivity" method="viewRequestingUser">
+    	<result name="success">/pages/tbrequest/ajex_TB_Transfer.jsp</result>
+    </action>
+    
+    <action name="TBTransferPush" class="com.tradebalanceactivity.self.TradeBalanceSelfActivity" method="tbTransferPush">
+    	<result name="success">/pages/tbrequest/TB_Transfer.jsp</result>
+    	<result name="viewUserSuccess">/pages/tbrequest/ajex_TB_Transfer.jsp</result>
+    </action>
+    
+    <action name="FundTransfer" class="com.fundtransfer.FundTransferAction" >
+ 		<result name="FundTransferRequest">/pages/fundTransfer/FundTransferPage.jsp</result>
+ 	</action>
+ 	
+    <!-- Action take from old Admin ENd -->
+	<!-- Trade Balance Activity END -->
+	
+	<!-- Control Panel Start -->
+	
+	<!-- User Profile Management Control Start-->
+	
+	<action name="agentProfile" class="com.controlPanel.profileMgt.retailUser.agent.AgentProfileAction">
+    	<result name="viewAgentProfile">/pages/controlPanel/profileManagement/EditProfile/RetailUserProfile/AgentProfile.jsp</result>
+	</action>
+
+	<action name="distributorProfile" class="com.controlPanel.profileMgt.retailUser.distributor.DistributorProfileAction">
+    	<result name="viewDistributorProfile">/pages/controlPanel/profileManagement/EditProfile/RetailUserProfile/DistributorProfile.jsp</result>
+	</action>
+
+	<action name="mdsProfile" class="com.controlPanel.profileMgt.retailUser.mds.MdsProfileAction">
+    	<result name="viewMdsProfile">/pages/controlPanel/profileManagement/EditProfile/RetailUserProfile/MDSProfile.jsp</result>
+	</action>
+	
+	<action name="selfUserProfile" class="com.controlPanel.profileMgt.selfUser.SelfUserProfileAction">
+    	<result name="viewSelfProfile">/pages/controlPanel/profileManagement/EditProfile/SelfUserProfile/SelfUserProfile.jsp</result>
+	</action>
+	
+	<action name="wlProfile" class="com.controlPanel.profileMgt.corporateUser.whitelabelClient.WhiteLabelClientProfileAction">
+    	<result name="viewWlProfile">/pages/controlPanel/profileManagement/EditProfile/CorporateUserProfile/wlClientProfile.jsp</result>
+	</action>
+	
+	<action name="adminUserProfile" class="com.controlPanel.profileMgt.internalUser.adminUser.AdminUserProfileAction">
+    	<result name="viewAdminUserProfile">/pages/controlPanel/profileManagement/EditProfile/InternalUserProfile/PortalUserProfile.jsp</result>
+	</action>
+ 	
+ 	<action name="apiClientProfile" class="com.controlPanel.profileMgt.internalUser.EGEN.ApiClientProfileAction">
+    	<result name="viewApiClientProfile">/pages/controlPanel/profileManagement/EditProfile/InternalUserProfile/apiClientProfile.jsp</result>
+	</action>
+	
+	<!-- User Profile Management Control END-->
+	
+	<!-- Management start-->
+	
+	<action name="ServiceManagement" class="com.controlPanel.management.ServiceManagement.ServiceManagementAction">
+ 		<result name="SMPage">/pages/controlPanel/Management/ServiceManagement/SMServiceOperatorControl.jsp</result>
+ 		<result name="vendorIP">/pages/controlPanel/Management/ServiceManagement/VendorIPManagement.jsp</result>
+ 		<result name="DMR">/pages/controlPanel/Management/ServiceManagement/DMRServices.jsp</result>
+ 		<result name="SMS">/pages/controlPanel/Management/ServiceManagement/SMSServices.jsp</result>
+ 	</action>
+ 	
+ 	<action name="OpsServiceManagement" class="com.controlPanel.management.ServiceManagement.ServiceManagementAction">
+		<result name="success">/pages/controlPanel/Management/ServiceManagement/SMServiceOperatorControl.jsp</result>
+		<result name="failure">/pages/controlPanel/Management/ServiceManagement/SMServiceOperatorControl.jsp</result>
+		<result name="vendorIP">/pages/controlPanel/Management/ServiceManagement/VendorIPManagement.jsp</result>
+	</action>
+	
+	<!--Management End-->
+	
+ 	<!-- View Hierarchy Of chain -->
+ 	
+ 	<action name="viewHierarchy" class="com.controlPanel.profileMgt.viewHierarchy.ViewHierarchyAction" >
+   		<result name="adminHierarchy">/pages/controlPanel/profileManagement/ViewHierarchy/adminUserHierarchy.jsp</result>
+   		<result name="mdsHierarchy">/pages/controlPanel/profileManagement/ViewHierarchy/MDSHierarchy.jsp</result>
+    	<result name="dsHierarchy">/pages/controlPanel/profileManagement/ViewHierarchy/DistributorHierarchy.jsp</result>
+    	<result name="agentHierarchy">/pages/controlPanel/profileManagement/ViewHierarchy/AgentHierarchy.jsp</result>
+    	<result name="err">/pages/controlPanel/profileManagement/Activation/RetailUserAct/RetailUserAct.jsp</result>
+    </action>
+    
+    <!-- Edit Service of Agent DS MDS -->
+    
+ 	<action name="editServiceMgt" class="com.controlPanel.profileMgt.editService.EditServiceAction" >
+   		<result name="mds">/pages/controlPanel/profileManagement/Activation/EditService/EditService_Admin_MDS.jsp</result>
+   		<result name="agent">/pages/controlPanel/profileManagement/Activation/EditService/EditService_Agent_DS.jsp</result>
+   		<result name="DS">/pages/controlPanel/profileManagement/Activation/EditService/EditServiceDS.jsp</result>
+   		
+    </action>
+    
+    <!-- Egen Management Start -->
+    
+ 	   <action name="EgenCommsion" class="com.controlPanel.manageEGEN.egenCom.EgenCommissionAction" >
+ 			<result name="EgenCommPage">/pages/controlPanel/ManageEGEN/EditEgenCommision.jsp</result>
+ 			<result name="editOptrAgentWise">/pages/controlPanel/ManageEGEN/EditEgenCommision.jsp</result>
+ 			<result name="editservice">/pages/controlPanel/ManageEGEN/EditOperator.jsp</result>
+ 			<result name="editServAgentWise">/pages/controlPanel/ManageEGEN/EditService.jsp</result>
+ 		</action>
+ 	
+ 	<action name="OperatorControlAction" class="com.controlPanel.manageEGEN.egenOperatorMgt.OperatorControlAction" method="OperatorControl">
+		<result name="OperatorControl">/pages/controlPanel/ManageEGEN/OperatorControl/OperatorControl.jsp</result>
+	</action>
+	
+	<action name="getOperatorControlDetail" class="com.controlPanel.manageEGEN.egenOperatorMgt.OperatorControlAction" method="getOperatorControlDetail">
+		<result name="OperatorControl">/pages/controlPanel/ManageEGEN/OperatorControl/OperatorControl.jsp</result>
+	</action>
+	
+	<action name="getOperator" class="com.controlPanel.manageEGEN.egenOperatorMgt.OperatorControlAction" method="getOperator">
+		<result name="OperatorControl">/pages/controlPanel/ManageEGEN/OperatorControl/OperatorControl.jsp</result>
+	</action>
+	
+	<action name="updateOperatorControl" class="com.controlPanel.manageEGEN.egenOperatorMgt.OperatorControlAction" method="updateOperatorControl">
+		<result name="OperatorControl">/pages/controlPanel/ManageEGEN/OperatorControl/OperatorControl.jsp</result>
+	</action>
+	
+	<action name="getUpdateEgenServiceDetails" class="com.controlPanel.manageEGEN.egenService.EgenServiceControlAction" method="getUpdateEgenServiceDetails">
+		<result name="EgenServiceControl">/pages/controlPanel/ManageEGEN/EgenServiceControl/EgenServiceControl.jsp</result>
+		<result name="UpdateEgenServiceControl">/pages/controlPanel/ManageEGEN/EgenServiceControl/UpdateServiceControl.jsp</result>
+	</action>
+	
+	<action name="updateEgenService" class="com.controlPanel.manageEGEN.egenService.EgenServiceControlAction" method="updateEgenService">
+		<result name="EgenServiceControl">/pages/controlPanel/ManageEGEN/EgenServiceControl/EgenServiceControl.jsp</result>
+		<result name="UpdateWLServiceControl">/pages/controlPanel/ManageEGEN/EgenServiceControl/UpdateServiceControl.jsp</result>
+	</action>
+	
+	<action name="EgenServiceControl" class="com.controlPanel.manageEGEN.egenService.EgenServiceControlAction" method="EgenServiceControl">
+		<result name="EgenServiceControl">/pages/controlPanel/ManageEGEN/EgenServiceControl/EgenServiceControl.jsp</result>
+	</action>
+	
+	<action name="EgenRefund" class="com.controlPanel.manageEGEN.egenRefund.EgenRefundAction" >
+ 		<result name="getPage">/pages/controlPanel/ManageEGEN/Refund/EgenRefund.jsp</result>
+ 		<result name="getTranPage">/pages/controlPanel/ManageEGEN/Refund/EgenRefund.jsp</result>
+ 	</action>
+ 	
+ 	<action name="SearchTranEgen" class="com.controlPanel.manageEGEN.tranSearch.TransactionSearchEgenAction">
+		<result name="SerachTranPage">/pages/controlPanel/ManageEGEN/SearchTran/SearchTranEgen.jsp</result>
+ 		<result name="SerachTranData">/pages/controlPanel/ManageEGEN/SearchTran/SearchTranEgen.jsp</result>
+ 	</action>
+ 	
+    <!-- Egen Management End -->
+    
+    <!-- Margin SetUp  Start-->
+    
+ 	<action name="WLMergin" class="com.controlPanel.margin.wlMdShare.WLMDShareAction">
+ 		<result name="wlMdsPage">/pages/controlPanel/Margin/wlMds/Wl_Margin_SetUp.jsp</result>
+	</action>
+		
+	<action name="AgentMergin" class="com.controlPanel.margin.agentShare.AgentShareAction">
+ 		<result name="AgMargin">/pages/controlPanel/Margin/Agent/Ag_Margin.jsp</result>
+ 		</action>
+ 	
+ 	<!-- Margin SetUp END -->
+ 	
+ 	<!-- Charge set  Start-->
+ 	 
+ 	 <action name="AgentCharge">
+ 		<result>/pages/controlPanel/charge set/Agent/charges_set_agent.jsp</result>
+ 	 </action>
+ 	
+ 	<action name="AgentChargeSearch" class="com.controlPanel.chargeset.agent.AgentChargesetAction">
+ 		<result name="Recharge">/pages/controlPanel/charge set/Agent/charges_set_agent.jsp</result>
+ 	</action>
+ 	 
+ 	 <!-- Charge set  Stop-->
+ 	
+ 	<!-- SKU Management Start -->
+ 	
+ 	<action name="SKUaction" class="com.controlPanel.SKUmgt.SKUManagementAction">
+ 		<result name="skuPage">/pages/controlPanel/SKUManagement/EditSKU/edit_sku.jsp</result>
+ 		<result name="addSKU">/pages/controlPanel/SKUManagement/AddSKU/add_sku.jsp</result>
+ 	</action>
+ 	
+ 	<!-- SKU Management END -->
+ 	
+    <!-- Cutoff Management Start -->
+    
+    <action name="cutoffAmount" class="com.controlPanel.cutoffMgt.cutoffSetup.CutOffAmountAction">
+	    <result name="cutoffAmountSearch">/pages/controlPanel/cutoffSetUp/SetCutoff/cutoffAmountSearch.jsp</result>
+		<result name="agentCutff">/pages/controlPanel/cutoffSetUp/SetCutoff/agent_cutoff.jsp</result>
+		<result name="distributorCutff">/pages/controlPanel/cutoffSetUp/SetCutoff/distributor_cutoff.jsp</result>
+		<result name="MdCutff">/pages/controlPanel/cutoffSetUp/SetCutoff/mds_cutoff.jsp</result>
+		<result name="APICutOff">/pages/controlPanel/cutoffSetUp/SetCutoff/API_client_cuttoff.jsp</result>
+		<result name="PortalCutOff">/pages/controlPanel/cutoffSetUp/SetCutoff/PortalAdminCutoff.jsp</result>
+	</action>
+    
+    <action name="viewCutoffAmount" class="com.controlPanel.cutoffMgt.cutoffSetup.CutOffAmountAction">
+	    <result name="cutoffAmountSearch">/pages/controlPanel/cutoffSetUp/viewCutoff/view_cutoff.jsp</result>
+		<result name="agentCutff">/pages/controlPanel/cutoffSetUp/viewCutoff/viewAgent_cutoff.jsp</result>
+		<result name="distributorCutff">/pages/controlPanel/cutoffSetUp/viewCutoff/viewDistributor_cutoff.jsp</result>
+		<result name="MdCutff">/pages/controlPanel/cutoffSetUp/viewCutoff/viewMds_cutoff.jsp</result>
+		<result name="APICutOff">/pages/controlPanel/cutoffSetUp/viewCutoff/viewAPI_client_cuttoff.jsp</result>
+		<result name="PortalCutOff">/pages/controlPanel/cutoffSetUp/viewCutoff/viewPortalAdminCutoff.jsp</result>
+	</action>
+	
+    <!-- Cutoff Management End  -->
+    
+    <!-- Account Management Start -->
+    
+    <action name="AccountAdjustment" class="com.controlPanel.accountMgt.accountManagement.AccountAdjustmentAction">
+   		<result name="AccountAdjustment">/pages/controlPanel/AccountManagement/AccountMgt/account_mngment.jsp</result>
+	</action>
+	
+	<action name="CommTDSAdjustment" class="com.controlPanel.accountMgt.commissionTDS.CommTDSAdjustAction">
+		<result name="CommTdsAdjustment">/pages/controlPanel/AccountManagement/CommisionTDS/CommisionTDSMgt.jsp</result>
+	</action>
+	
+	<action name="Refund" class="com.controlPanel.accountMgt.refund.RefundAction" >
+ 		<result name="getPage">/pages/controlPanel/AccountManagement/Refund/RefundPage.jsp</result>
+ 		<result name="getTranPage">/pages/controlPanel/AccountManagement/Refund/RefundPage.jsp</result>
+ 	</action>
+ 	
+    <!-- Account Management END -->
+    
+    
+    <!-- Control Panel END -->
+    
+    <!-- Report Tab Section -->
+    
+    <!-- TEP REPORT -->
+    
+    <action name="reportDownload" class="com.reports.TEP.ReportAction">
+		<result name="TranChannelReport">/pages/Reports/TransactionReports/channel/TransactionChannelReport.jsp</result>
+		<result name="MgtChannelReport">/pages/Reports/ManagementReports/channel/MgtChannelReport.jsp</result>
+		<result name="FinanceChannelReport">/pages/Reports/FinanceReports/channel/FinanceChannelReport.jsp</result>
+    	<result name="reportDownload">/pages/Reports/downloadReport.jsp</result>
+    </action>
+    
+    <!-- EGEN REPORT -->
+    
+    <action name="egenReportDownload" class="com.reports.EGEN.EgenReportAction">
+    	<result name="TranEGENReport">/pages/Reports/TransactionReports/EGEN/TransactionEgenReport.jsp</result>
+    	<result name="MgtEGENReport">/pages/Reports/ManagementReports/EGEN/MgtEgenReport.jsp</result>
+    	<result name="FinanceEGENReport">/pages/Reports/FinanceReports/EGEN/FinanceEgenReport.jsp</result>
+    	<result name="reportDownload">/pages/Reports/downloadReport.jsp</result>
+     	<!--<result name="IODetailPage">/pages/reports/IODetailsPage.jsp</result>
+     	<result name="APICutoffDetails">/pages/reports/APICutOffDetails.jsp</result>-->
+     </action>
+    
+    <!-- Statement TEP and EGEN  -->
+    
+    <action name="searchAccountStatement" class="com.reports.statement.AccountStatementAction" method="getAccountStatementPage">
+    	<result name="getChanelACPage">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+    </action>
+    
+    <action name="iciciAccountStatement" class="com.reports.statement.AccountStatementAction" method="getAccountStatementICICIPage">
+    	<result name="ICICIStatement">/pages/Reports/Statements/channel/icici_statement.jsp</result>
+    </action>
+    
+    <action name="searchPendingAccountStatement" class="com.reports.statement.AccountStatementAction" method="getPendingAccountStatementPage">
+    	<result name="getPendingChanelACPage">/pages/Reports/Statements/channel/all_pending_ac_statement.jsp</result>
+    </action>
+    
+    <action name="searchAccountStatementEGENPage" class="com.reports.statement.AccountStatementAction" method="getAccountStatementEGENPage">
+    	<result name="getEGENACPage">/pages/Reports/Statements/EGEN/EgenAccountStmt.jsp</result>    
+    </action>
+    
+    <action name="searchAccountStatementEGEN" class="com.reports.statement.AccountStatementAction" method="getAccountStatementEGEN">
+    	<result name="getPageEGEN">/pages/Reports/Statements/EGEN/EgenAccountStmt.jsp</result>    
+    </action>
+    
+    <action name="AccountStatement" class="com.reports.statement.AccountStatementAction" method="getAccountStatement">
+    	<result name="getPage">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>    
+    </action>
+    
+    <action name="PendingAccountStatement" class="com.reports.statement.AccountStatementAction" method="getPendingAccountStatement">
+    	<result name="getPage">/pages/Reports/Statements/channel/all_pending_ac_statement.jsp</result>    
+    </action>
+    
+    <action name="DownloadAccountStatement" class="com.reports.statement.AccountStatementAction" method="AccountStatement">
+    	<result name="getPage" >/pages/Reports/Statements/channel/all_ac_statement.jsp</result> 
+    	<result name="invalid">/pages/Reports/Statements/EGEN/EgenAccountStmt.jsp</result> 
+    	<result name="agent">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+		<result name="ds">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+		<result name="mds">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+		<result name="adminUser">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+		<result name="EgenAS">/pages/Reports/Statements/EGEN/EgenAccountStmt.jsp</result>
+		<result name="EgenASDetails">/pages/Reports/Statements/EGEN/EgenAccountStmt.jsp</result>
+		<result name="adminUserdetail">/pages/Reports/Statements/channel/adminAccountStatement.jsp</result>  
+		<result name="mdsdetail">/pages/Reports/Statements/channel/adminAccountStatement.jsp</result>  
+		<result name="dsdetail">/pages/Reports/Statements/channel/adminAccountStatement.jsp</result>  
+		<result name="agentDetail">/pages/Reports/Statements/channel/adminAccountStatement.jsp</result>       
+    </action>
+    
+     <action name="AccountStatementEGEN">
+    	<result>/pages/Reports/Statements/EGEN/EgenAccountStmt.jsp</result>    
+    </action>
+    
+    <action name="accountStatementofAll" class="com.reports.statement.AccountStatementAction" method="AccountStatement">
+		<result name="agent">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+		<result name="ds">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+		<result name="mds">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+		<result name="adminUser">/pages/Reports/Statements/channel/all_ac_statement.jsp</result>
+		<result name="EgenAS">/pages/Reports/Statements/EGEN/EgenAccountStmt.jsp</result>
+		<result name="EgenASDetails">/pages/Reports/Statements/EGEN/EgenAccountStmt.jsp</result>
+		<result name="adminUserdetail">/pages/Reports/Statements/channel/adminAccountStatement.jsp</result>  
+		<result name="mdsdetail">/pages/Reports/Statements/channel/adminAccountStatement.jsp</result>  
+		<result name="dsdetail">/pages/Reports/Statements/channel/adminAccountStatement.jsp</result>  
+		<result name="agentDetail">/pages/Reports/Statements/channel/adminAccountStatement.jsp</result>  
+	</action>
+    
+    <!-- Client Report -->
+    
+    <action name="ClientTranReport" class="com.reports.client.ClientReportAction">
+ 		<result name="TranChannelReport">/pages/Reports/ClientReports/TransactionReports/ClientTransactionReport.jsp</result>
+ 		<result name="clientReportRes">/pages/Reports/ClientReports/TransactionReports/ClientTransactionReport.jsp</result>
+ 	</action>
+ 
+    <!-- CC Module Start-->
+    
+ 	<action name="SearchTran" class="com.reports.ccModule.transactionStatus.TransactionSearchAction">
+ 		<result name="SerachTranPage">/pages/Reports/CCModule/TransactionStatus/SearchTran.jsp</result>
+ 	</action>
+ 	
+ 	<action name="NoticeAlert" class="com.reports.ccModule.noticeAlert.NoticeAlertAction" method="noticeAlert">
+		<result name="NoticeAlert">/pages/Reports/CCModule/NoticeAlert/noticeAlert.jsp</result>
+	</action>
+	
+	<action name="getTickerMessage" class="com.reports.ccModule.noticeAlert.NoticeAlertAction" method="getTickerMessage">
+		<result name="NoticeAlert">/pages/Reports/CCModule/NoticeAlert/noticeAlert.jsp</result>
+	</action>
+
+	<action name="updateMessage" class="com.reports.ccModule.noticeAlert.NoticeAlertAction" method="updateMessage">
+		<result name="NoticeAlert">/pages/Reports/CCModule/NoticeAlert/noticeAlert.jsp</result>
+	</action>
+    
+    <action name="ccInfoAction" class="com.reports.ccModule.ccInfo.CcInfoAction">
+ 		<result name="ccinfopage">/pages/Reports/CCModule/CCInfoPage/UserInformation.jsp</result>
+ 		<result name="Egenccinfopage">/pages/Reports/CCModule/CCInfoPage/EgenUserInformation.jsp</result>
+ 		<result name="editSlabpage">/pages/Reports/CCModule/CCInfoPage/editSlab.jsp</result>
+ 		<result name="editEgenSlabpage">/pages/Reports/CCModule/CCInfoPage/EgenEditSlab.jsp</result>
+ 	</action>
+ 	
+ 	<action name="CCSearchUser" class="com.reports.ccModule.userSearch.SearchUserAction">
+ 		<result name="UserSearchPage">/pages/Reports/CCModule/UserSearch/SearchUserPage.jsp</result>
+ 		<result name="AdminUserData">/pages/Reports/CCModule/UserSearch/AdminUserData.jsp</result>
+ 		<result name="MDSUserData">/pages/Reports/CCModule/UserSearch/MdsUserData.jsp</result>
+ 		<result name="DSUserData">/pages/Reports/CCModule/UserSearch/DsUserData.jsp</result>
+ 		<result name="AgentUserData">/pages/Reports/CCModule/UserSearch/AgentUserData.jsp</result>
+ 		<result name="EgenUserData">/pages/Reports/CCModule/UserSearch/EgenUserData.jsp</result>
+ 	</action>
+ 	
+ 	<!-- CC Module END-->
+ 	
+ 	<!-- Inventory Management Start -->
+	
+	<action name="InventoryMgt" class="com.controlPanel.inventoryMgt.carbooking.CarBookingAction">
+ 		<interceptor-ref name="fileUpload">
+	        <param name="maximumSize">2097152</param>
+	        <param name="allowedTypes">
+	            image/png,image/gif,image/jpeg,image/pjpeg
+	        </param>
+	    </interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+		<result name="getCarBookingPage">/pages/controlPanel/Inventory/CarBooking/CarBookingNew.jsp</result>
+ 		<result name="success">/pages/controlPanel/Inventory/CarBooking/CarBookingNew.jsp</result>
+ 		
+ 	</action>
+ 	
+ 	<action name="HolidayPage" class="com.controlPanel.inventoryMgt.holidayPackg.HolidayPackageAction">
+		<interceptor-ref name="fileUpload">
+	        <param name="maximumSize">2097152</param>
+	        <param name="allowedTypes">
+	            image/png,image/gif,image/jpeg,image/pjpeg
+	        </param>
+	    </interceptor-ref>
+	    <interceptor-ref name="defaultStack"></interceptor-ref>
+ 		<result name="HolidayPage">/pages/controlPanel/Inventory/HolidayPackages/HolidayPackageNew.jsp</result>
+ 		<result name="success">/pages/controlPanel/Inventory/HolidayPackages/HolidayPackageNew.jsp</result>
+ 	</action>
+	
+	<action name="InventoryController" class="com.controlPanel.inventoryMgt.Controller.ControllerAction">
+		<result name="ControlPage">/pages/controlPanel/Inventory/Controller/InventoryController.jsp</result>
+		<result name="editControlPage">/pages/controlPanel/Inventory/Controller/InventoryEdit.jsp</result>
+	</action>
+	<!-- Inventory Management Stop -->
+    
+    <!-- Set Markup Module START -->
+    
+    <action name="SetMarkup" class="com.controlPanel.setmarkup.SetMarkupAction">
+ 		<result name="SetMarkupPage">/pages/controlPanel/SetMarkup/setmarkup.jsp</result>
+ 		<result name="failure">/pages/controlPanel/SetMarkup/setmarkup.jsp</result>
+ 		<result name="success">/pages/controlPanel/SetMarkup/setmarkup.jsp</result>
+ 	</action>
+ 	
+ 	<action name="sessionExpire">
+ 		<result>/login.jsp</result>
+ 	</action>
+    
+    <!-- Set Markup Module END -->	
+    
+    
+    <!-- API TASK START -->
+    
+    <action name="apiTask" class="com.activity.apiTask.APITaskAction">
+ 		<result name="addClientPage">/pages/activity/APITask/addClient.jsp</result>
+ 		<result name="assignAPIPage">/pages/activity/APITask/assignAPI.jsp</result>
+ 		<result name="fail">/err.jsp</result>
+ 	</action>
+    
+     <!-- API TASK END -->
+    
+    <action name="RegistrationEdit" class="com.controlPanel.userRegistrationLimit.UserRegLimitAction">
+		<result name="regLimitPage">/pages/controlPanel/UserRegistration/UserRegistrationEdit.jsp</result>
+		<result name="error">/pages/controlPanel/UserRegistration/UserRegistrationEdit.jsp</result>
+	</action>
+	
+	<!-- Deduction module start -->
+	<action name="deductionPage" class="com.controlPanel.deductionQuery.BalanceDeductionQueryAction">
+		<result name="getDeductionPage">/pages/controlPanel/Deduction/deductionQuery.jsp</result>
+		<result name="getCreditPage">/pages/controlPanel/Credit/deductionQuery.jsp</result>
+	</action>
+	<!-- Deduction module end -->
+	
+	<!-- Service Control start -->
+	<action name="blockServicesPage" class="com.controlPanel.editServices.EditServiceAction">
+		<result name="getServicesPage">/pages/controlPanel/EditServices/EditServices.jsp</result>
+	</action>
+	<!-- Service Control end -->
+    
+    <action name="PGTBRequest" class="com.activity.pgtbrequest.PGTBRequestController">
+   	<result name="forward">pages/activity/PBTBRequestSearch/PGTransactionSearch.jsp</result>
+   	
+   	</action>
+   	
+   	<!-- Moveenty -->
+ 	<action name="Moveentity" class="com.activity.admin.moveEntity.MoveEntityAction">
+		<result name="moveentityjsp">/pages/activity/MoveEntity/moveEntity.jsp</result>
+	 	<result name="moveentityjspds">/pages/activity/MoveEntity/moveEntityDs.jsp</result>
+	</action>
+	
+	<!-- Bank Details -->
+ 	<action name="addbankpage" class="com.activity.adminTask.addBank.CollectionBankAction" method="addbankpage">
+		<result name="addBankPage">/pages/activity/AdminTask/addbank/AddBank.jsp</result>
+	</action>
+	
+	<action name="addBank" class="com.activity.adminTask.addBank.CollectionBankAction" method="addBank">
+		<result name="addBank">/pages/activity/AdminTask/addbank/AddBank.jsp</result>
+	</action>
+	
+	<action name="updateBankStatus" class="com.activity.adminTask.addBank.CollectionBankAction" method="updateBankStatus">
+		<result name="updateBank">/pages/activity/AdminTask/addbank/AddBank.jsp</result>
+	</action>
+	
+	<action name="usertracking" class="com.activity.usertracking.UserTrackingAction" >
+		<result name="page">/pages/activity/usertracking/user_tracking.jsp</result>
+	</action>
+    
+	</package>
+</struts>

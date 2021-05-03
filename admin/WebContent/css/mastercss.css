@@ -1,0 +1,251 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{ margin:auto;background-color:#FFF;}
+
+/*user registration pages css start support+1235@commsoft.in 123456
+*/
+a{color:#795548;}
+input{ margin:2px;}
+.heading_mgs{font-size:13px; font-family:"Trebuchet MS";color:#795548; font-weight:bold; padding-left:40px;}
+.login_mgs{font-size:15px; font-family:"Trebuchet MS";color:#795548;padding-left:70px; font-weight:bold;}
+.heading_mgs1{font-size:13px; font-family:"Trebuchet MS";color:#795548; font-weight:bold;}
+.cls_btn{ width:90px;font-family:"Trebuchet MS";color:#795548;}
+.dyn_mgs{font-size:15px; font-weight:bold; color:#FF0000; font-family:'Trebuchet MS'; text-align:center;}
+.box_heights{ height:300px; max-height:100%;}
+.com_clr{ color:#FFF;font-family:'Trebuchet MS';font-size:13px;}
+.bg_color{color:#FFF;font-family:'Trebuchet MS';font-size:13px; text-align:center;font-weight:bold; background:#795548;}
+
+.mydata_tabl tr td{border:0px solid #795548; font-size:13px; font-family:"Trebuchet MS";color:#795548;}
+
+.mydata_tabl tr td strong{font-size:13px; font-family:"Trebuchet MS";color:#795548;}
+
+
+/*user registration pages css stop*/
+
+#myInput {
+	  background-image: url('/css/searchicon.png');
+	  background-position: 10px 10px;
+	  background-repeat: no-repeat;
+	  width: 100% !important;
+	  font-size: 16px;
+	  padding: 10px 10px 10px 10px;
+	  border: 1px solid #ddd;
+	  margin-bottom: 12px;
+	}
+
+/*header pages css start*/
+.header
+	{
+		width:100%;
+		height:107px;
+		float:left;
+		margin:0px;
+		padding:0px;
+	}
+	
+	.headertext tr td
+	{
+		 font-family:"Trebuchet MS"; font-size:12px; color:#000;font-weight:bold; text-decoration:none;
+	}
+	.headertext tr td a
+	{
+		 font-family:"Trebuchet MS"; font-size:12px; color:#000;font-weight:bold; text-decoration:none;
+	}
+	
+	.footerbg
+	{
+		width:100%;
+		height:82px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image: url(../images/footerbg.jpg);
+		background-repeat:repeat-x;
+	}
+	
+/*header pages css stop*/
+
+/*rounded corner css start*/
+.rounded-corners {
+     -moz-border-radius: 10px; border:#00FFFF solid 2px;
+    -webkit-border-radius: 10px; border:#00FFFF solid 2px;
+    -khtml-border-radius: 10px; border:#00FFFF solid 2px;
+    border-radius: 10px; border:#00FFFF solid 2px;
+}
+.rounded-corners {
+    behavior: url(css/border-radius.htc);
+    border-radius: 10px; border:#00FFFF solid 2px;
+}
+
+.big1 td{font-family:"Trebuchet MS"; font-size:15px; color:#795548; font-weight:bold;}
+
+.cls{ color:#795548;}
+#border{ border:#795548 1px solid}
+.border{ border:#795548 1px solid; padding:10px 10px 10px 10px;}
+.accordion {
+	width: 90%;
+}
+.accordion h3 {
+	
+	padding: 10px 15px 0px 15px;
+	font-size:14px; font-weight:bold; font-family:"Trebuchet MS"; color:#fff;
+	
+}
+h3{ font-family:"Trebuchet MS";}
+/*rounded corner css stop*/
+
+/*profile management pages css start*/
+.tbls {border-bottom: 1px solid #930;border-left: 1px solid #930;}
+.tbls tbody tr td{ border:1px solid	#795548;border-left:none; border-bottom:none;color:#795548;  height:25px; font-family:"Trebuchet MS"; font-size:13px;}
+.tbls tbody tr td a{ font-family:"Trebuchet MS"; font-size:13px; color:#795548; text-decoration:underline;} 
+.tbls tbody tr td strong{ color:#FFF;font-family:"Trebuchet MS"; font-size:13px; }
+.tbls tr td{ border:1px solid #795548;border-left:none; border-bottom:none;color:#FFF;  height:25px; font-family:"Trebuchet MS"; font-size:13px;}
+.tbls tr td strong{ color:#FFF;}
+
+.tbls tr td a{font-family:"Trebuchet MS"; font-size:13px; color:#FFF;} 
+
+.tbl tr td{ border:0px solid #06F;font-size:13px; font-family:"Trebuchet MS"; height:30px;}
+.bords td{border-bottom:1px solid #795548;}
+
+.tbl_val{ font-family:"Trebuchet MS"; font-size:13px; color:#795548;}
+.tbl_val a{ font-family:"Trebuchet MS"; font-size:13px; color:#795548;}
+/*profile management pages css stop*/
+
+
+/*datepicker css start*/
+
+
+.ui-datepicker .ui-datepicker-title select{ padding:3px; font-size:13px;font-family:"Trebuchet MS"; }
+.ui-datepicker-week-end span{ color:#795548;text-align:center; font-size:13px;font-family:"Trebuchet MS";}
+ span{ color:#795548;text-align:center; font-size:13px;font-family:"Trebuchet MS";}
+ 
+ 
+ 
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	border: 1px solid #d3d3d3;
+	font-family:"Trebuchet MS";
+	font-weight: normal;
+	color: #795548;text-align:center; font-size:13px;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+	color: #795548;text-align:center; font-size:13px;font-family:"Trebuchet MS";
+	text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	border: 1px solid #795548;
+	font-family:"Trebuchet MS";
+	font-weight: normal;text-align:center; font-size:13px;
+	color: #795548;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited {
+	color: #795548;text-align:center; font-size:13px;
+	text-decoration: none;font-family:"Trebuchet MS";
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	border: 1px solid #aaaaaa; text-align:center; font-size:13px;
+	 text-align:center; font-size:13px;
+	font-weight: normal;
+	color: #795548;font-family:"Trebuchet MS";
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: #795548;font-family:"Trebuchet MS";
+	text-decoration: none;text-align:center; font-size:13px;
+}
+
+/*datepicker css stop*/
+
+
+
+.stickytooltip{
+box-shadow: 5px 5px 8px #818181; /*shadow for CSS3 capable browsers.*/
+-webkit-box-shadow: 5px 5px 8px #818181;
+-moz-box-shadow: 5px 5px 8px #818181;
+display:none;
+position:absolute;
+display:none;
+border:3px solid black; /*Border around tooltip*/
+background:white;
+z-index:3000;
+}
+
+
+.stickytooltip .stickystatus{ /*Style for footer bar within tooltip*/
+background:black;
+color:white;
+padding-top:5px;
+text-align:center;
+font:bold 12px Arial; font-weight:bold;
+}
+
+.poptab tr td{ color:#795548;}
+.poptab tr td strong{ color:#795548;}
+
+.tabs tr td{border:0px solid #039;font-size:13px; font-family:"Trebuchet MS";}
+.cls{ margin:0; padding:0;font-size:13px; font-family:"Trebuchet MS";}
+.newbg{}
+.tabulardata{background:#ff3200;height:30px;color:#FFF;}
+
+
+
+
+form input[type=text],input[type=password],input[type=email]{
+	width:199px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px 10px;
+    margin: 5px 0px;
+    border: 1px solid #795548;
+    font-family:"Trebuchet MS"; 
+    font-size:12px; 
+    color:#795548;
+     font-weight:normal; 
+     text-decoration:none;     
+}
+
+form select, textarea{
+	width:199px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px 10px;
+    margin: 5px 0px;
+    border: 1px solid #795548;
+    font-family:"Trebuchet MS"; 
+    font-size:12px; 
+    color:#795548;
+     font-weight:normal; 
+     text-decoration:none;     
+}
+form input[type=button],input[type=submit],input[type=reset]{
+	width:100px;
+    border-radius: 4px;
+    background: #ff3200 ;
+    padding: 8px 10px;
+    margin: 5px 0px;
+    border: 1px solid #ccc;
+    font-family:"Trebuchet MS"; 
+    font-size:12px; 
+    color:#fff; 
+    font-weight:normal; 
+    text-decoration:none;}
+ 
+
+/*popup css start*/
+
+

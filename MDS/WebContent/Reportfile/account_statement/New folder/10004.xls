@@ -1,0 +1,2 @@
+S.No.;Date  & Time;Transaction Id;Particulars;Channel Id;Transaction Amount;Charges;Net Amount;OpeningBalance;Type;Current Balance;Transcation Status;Remark
+1;Dec 02, 201114:48:47;11120214484703004946;MD TB-Taken;MDUP10004;1000000.0000;0.0000;1000000.0000;587959.0000;credit;1587959.0000;success;Ajay

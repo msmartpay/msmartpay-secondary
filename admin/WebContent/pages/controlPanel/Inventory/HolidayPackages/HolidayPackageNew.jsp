@@ -1,0 +1,837 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%=session.getAttribute("headerName")%></title>
+<link href="css/mastercss.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="images/t.png" />
+<%@ page import = "java.util.* "%> 
+
+		<script type="text/javascript">
+            function updatePackagePriceTextInput(val) {
+              document.getElementById('textInput').value=val; 
+            }
+        </script>
+        <script type="text/javascript">
+            function updateHotelBudgetFromTextInput(val) {
+              document.getElementById('hotelBudgetFrom').value=val; 
+            }
+        </script>
+        <script type="text/javascript">
+            function updateHotelBudgetToTextInput(val) {
+              document.getElementById('hotelBudgetTo').value=val; 
+            }
+        </script>
+        <script src='js/jquery.js' type="text/javascript"></script>
+		<script src='js/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
+        <script src='js/jquery.rating.js' type="text/javascript" language="javascript"></script>
+        <link href='js/jquery.rating.css' type="text/css" rel="stylesheet"/>
+        
+        <style type="text/css">
+            div
+            {
+                    padding:8px;
+            }
+        </style>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+         <script type="text/javascript">
+ 
+            $(document).ready(function(){
+
+                var counter = 2;
+
+                $("#addButton").click(function () {
+
+                    if(counter>10){
+                        alert("Only 10 textboxes allow");
+                        return false;
+                    }   
+
+                    var newTextBoxDiv = $(document.createElement('tr'))
+                         .attr("id", 'TextBoxDiv' + counter);
+						
+
+                    newTextBoxDiv.after().html('<td width="36%" align="right"><strong>Package Itinerary - '+ counter + ' </strong></td>' +
+                          '<td align="center" valign="middle">:</tdt><td align="left"><textarea name="packageInitierary" style="margin-left:9%;" rows="5" cols="16" id="textbox' + counter + '" value="" ></textarea></td><td align="left" valign="bottom"></td>');
+					  
+                    newTextBoxDiv.appendTo("#TextBoxesGroup");
+
+
+                    counter++;
+                 });
+
+                 $("#removeButton").click(function () {
+                    if(counter == 1){
+                        $("#removeButton").hide();
+                      alert("No more textarea to remove");
+                      return false;
+                   }   
+
+                    counter--;
+
+                    $("#TextBoxDiv" + counter).remove();
+
+                 });
+
+                 $("#getButtonValue").click(function () {
+
+                    var msg = '';
+                    for(i=1; i<counter; i++){
+                      msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+                    }
+                      alert(msg);
+                 });
+              });
+        </script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
+	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+			<style>
+            .ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
+            </style>
+            <style>
+            #my-loder{ display:none;}
+            </style>
+            <script>
+            $(function() {
+				function log( message ) {
+					$( "<div/>" ).text( message ).prependTo( "#log" );
+					$( "#log" ).attr( "scrollTop", 0 );
+				}
+				var output="";
+				$.ajax({
+					url: "App-Data/Cities.xml",
+					dataType: "xml",
+					success: function( xmlResponse ) {
+						var data = $( "City", xmlResponse ).map(function() {
+						return {
+						value: $( "cityname", this ).text() + "",
+						id: $( "cityname", this ).text()
+						};
+						}).get();
+
+						$( "#sourceCity,#destinationCity" ).autocomplete({
+							source: data,
+							minLength: 0,
+							select: function(event, ui ) {
+							log( ui.item ?
+							"From: " + ui.item.value + ", City Code: " + ui.item.id :
+							"Nothing selected, input was " + this.value );
+						}
+					});
+				}
+				});
+            });
+            </script>
+
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" width="100%" align="center" border="0">
+		  <!--header-->
+		  <tr>
+			<td width="100%" valign="top" align="center"><%@ include file="/header.jsp" %></td>
+		  </tr>
+		  <!--header-->
+			<%
+			String loginType=(String)session.getAttribute("loginType");
+			
+			String message=(String)request.getAttribute("message");
+			if(message==null)
+			{
+				message="";
+			}
+			%>
+				<tr>
+					<td valign="top" align="center" height="378">
+					<table cellpadding="0" cellspacing="0" width="90%" align="center" border="0"  >
+							<tr>
+							  <td valign="top" align="center" class="rounded-corners box_heights" >
+							  <table cellpadding="0" cellspacing="0" width="100%" align="center" border="0" >
+								  <tr>
+										<td colspan="4" height="10"></td>
+								  </tr>
+								  <tr>
+									<td  width="100%" valign="top" height="20" align="left" class="heading_mgs">
+									<strong>Control Panel>Inventory Management>Holidays Packages</strong>
+									</td>
+								  </tr>
+								  <tr>
+					                <td height="35" colspan="4" align="center" class="dyn_mgs"><%=message%></td>
+					              </tr>
+								  <tr>
+									<td height="20" colspan="4" align="center" class="dyn_mgs">&nbsp;</td>
+								  </tr>
+								  
+								  <tr>
+									<td valign="top" align="center">
+										
+										<form name="userRegistrationForm" method="post" action="HolidayPage.action" enctype="multipart/form-data">
+										<input type="hidden" name="param" value="saveHolidayDetails"/>
+										  <table cellpadding="0" cellspacing="0" width="74%" align="center" border="0" id="border" class="mydata_tabl">
+												<tr align="center">
+							                        <td height="21"></td> 
+							                        <td align="center" valign="middle"></td>
+							                        <td height="21"></td> 
+							                        <td height="21"></td>
+							                    </tr> 
+												<tr align="center">	
+							                      
+													<td width="33%" align="right"><strong>Holiday Package Type</strong></td>
+													
+													<td width="3%" align="center" valign="middle" style="margin-top:20px;">:</td>
+													<td width="29%" align="right" style="margin-top:20px;">
+														<select name="packageType" required>
+															<option value="Domestic">Domestic</option>
+															<option value="International">International</option>
+												  </select>												  </td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr> 
+												<tr align="center">
+													<td width="33%" align="right"><strong>Depart From</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<input type="text" id="sourceCity" name="DepartCity" placeholder="Enter city name here" required/>
+												    </td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Arrival To</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<input type="text" id="destinationCity" name="ArrivalCity" placeholder="Enter city name here" required/>
+													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Travel By</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<select name="travelBy" required>
+															<option value="Flight">Flight</option>
+															<option value="Bus">Bus</option>
+															<option value="Train">Train</option>
+														</select>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Package Price</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<input type="range" name="rangeInput" min="1000" max="250000" onchange="updatePackagePriceTextInput(this.value);" required/>                                                       
+													<input type="text" id="textInput" name="packagePrice" value="5000" style="width:50px;" required/>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Package Price Includes</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<select name="packagePriceIncludes" required>
+															<option value="AirPortTaxes">AirPort Taxes</option>
+															<option value="AirPortTransfer">AirPort Transfer</option>
+															<option value="Both">Both</option>
+															<option value="None">None</option>
+														</select>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Travel Type</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<select name="travelType" required>
+															<option value="Depart">Depart Only</option>
+															<option value="Depart & Arrival">Depart & Arrival</option>
+														</select>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Hotel Budget</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From</td>
+													<td align="left" width="27%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To</td>
+												
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td></td>
+													<td align="center" valign="middle">&nbsp;</td>
+													<td align="right">
+														<input type="range" required name="rangeInput" min="1000" max="250000" onchange="updateHotelBudgetFromTextInput(this.value);"/>                                                       
+														<input type="text"  id="hotelBudgetFrom" name="hotelBudgetFrom" value="1000" style="width:50px;"/>													</td>
+													<td align="left">
+														<input type="range" required name="rangeInput" min="1000" max="250000" onchange="updateHotelBudgetToTextInput(this.value);"/>                                                       
+													<input type="text" id="hotelBudgetTo" name="hotelBudgetTo" value="1000" style="width:50px;"/>													</td>
+													
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Hotel Stay Duration</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="center">&nbsp;&nbsp;Days
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														&nbsp;&nbsp;&nbsp;&nbsp;
+													Nights													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td></td>
+													<td align="center" valign="middle">&nbsp;</td>
+													<td align="right">
+														<input type="number" required name="days" min="1" value="1" style="width:102px;"/>
+													<input type="number" required name="nights" min="1" value="1" style="width:102px;"/>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Hotel Name</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+													<input type="text" required name="HotelName"/>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Hotel Rating</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<input name="star2" type="radio" value="1" class="star"/> 
+														<input name="star2" type="radio" value="2" class="star"/> 
+														<input name="star2" type="radio" value="3" class="star" checked="checked"/> 
+														<input name="star2" type="radio" value="4" class="star"/> 
+													<input name="star2" type="radio" value="5" class="star"/>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Meal Preferences</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<select name="mealPref" required>
+															<option value="Y">Yes</option>
+															<option value="N">No</option>
+													</select>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Sight Seeing</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<select name="sightSeen" required>
+															<option value="Y">Yes</option>
+															<option value="N">No</option>
+													</select>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Meal Included</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<textarea name="mealDishes" id="tick_mes12" rows="5" cols="16" maxlength="400" onKeyDown="textCounter12(this.form.tick_mes12,this.form.remLen11,400);"
+																  onKeyUp="textCounter12(this.form.tick_mes12,this.form.remLen,400);">
+															
+														</textarea>													</td>
+													
+													<td align="left" valign="bottom"><input  style="width: 50px;" readonly type="text" name="remLen11" size=3 maxlength=3 value="400"/>characters&nbsp;left</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Upload Image</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+													<input type="file" name="userImage" required style="margin-left:40px;"/>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Place to View</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+													<input type="text" value="N/A" name="placeToView" required/>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right"><strong>Place Description</strong></td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<textarea name="placeDescription" id="tick_mes" rows="5" cols="16" maxlength="1000" onKeyDown="textCounter(this.form.tick_mes,this.form.remLen2,1000);"
+																  onKeyUp="textCounter(this.form.tick_mes,this.form.remLen,1000);">
+															
+														</textarea>													</td>
+													
+													<td align="left" valign="bottom"><input  style="width: 50px;" readonly type="text" name="remLen2" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right">
+														<strong>Package Title</strong>													</td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+													<input type="text" name="packageTitle" required/>													</td>
+													<td width="27%" align="left" valign="middle"></td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right">
+														<strong>Inclusion - Hotel</strong>													</td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+														<textarea name="inclusionHotel" rows="5" cols="16" maxlength="1000" id="tick_mes1" onKeyDown="textCounter1(this.form.tick_mes1,this.form.remLen3,1000);"
+																  onKeyUp="textCounter1(this.form.tick_mes1,this.form.remLen,1000);">
+									
+														</textarea>													</td>
+													<td align="left" valign="bottom"><input  style="width: 50px;" readonly="readonly" type="text" name="remLen3" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													 <td width="33%" align="right">
+														 <strong>Inclusion - Transport</strong>													 </td>
+													 <td align="center" valign="middle">:</td>
+													 <td align="right">
+													  <textarea name="inclusionTransport" rows="5" cols="16" maxlength="1000" id="tick_mes2" onKeyDown="textCounter2(this.form.tick_mes2,this.form.remLen4,1000);"
+																  onKeyUp="textCounter2(this.form.tick_mes2,this.form.remLen,1000);">
+									
+														</textarea>												  </td>
+													  <td align="left" valign="bottom"><input  style="width: 50px;" readonly="readonly" type="text" name="remLen4" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													 <td width="33%" align="right">
+														 <strong>Inclusion - Others</strong>													 </td>
+													 <td align="center" valign="middle">:</td>
+													 <td align="right">
+													 <textarea name="inclusionOthers" rows="5" cols="16" maxlength="1000" id="tick_mes3" onKeyDown="textCounter3(this.form.tick_mes3,this.form.remLen5,1000);"
+																  onKeyUp="textCounter3(this.form.tick_mes3,this.form.remLen,1000);">
+									
+														</textarea>													 </td>
+													 <td align="left" valign="bottom"><input  style="width: 50px;" readonly="readonly" type="text" name="remLen5" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+							                        <td width="33%" align="right"><strong>Package Itinerary - 1 </strong></td>
+							                        <td align="center" valign="middle">:</td>
+							                        <td align="right">
+							                        	<textarea name="packageInitierary" style="margin-left:11%;" rows="5" cols="16" id="tick_mes4" onKeyDown="textCounter4(this.form.tick_mes4,this.form.remLen6,1000);"
+																  onKeyUp="textCounter4(this.form.tick_mes4,this.form.remLen,1000);">
+														</textarea>
+														<td align="left" valign="bottom"><input  style="width: 50px;" readonly="readonly" type="text" name="remLen6" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+							                        </td> 
+													<td height="5"><input type="button" id="addButton" value="+"/><input id="removeButton" type="button" value="-"/></td>
+							                    </tr>
+												<tr align="left">
+												<td colspan="4" align="center">			
+												<table width="97%" border="0" align="center" id="TextBoxesGroup">
+												  
+												</table>
+	  
+												</td>	
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												
+												<tr align="center">
+													<td width="33%" align="right"> 
+														<strong>Special Requirement</strong>													</td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+													<textarea name="specialReqt" rows="5" cols="16" id="tick_mes5" onKeyDown="textCounter5(this.form.tick_mes5,this.form.remLen7,1000);"
+																  onKeyUp="textCounter5(this.form.tick_mes5,this.form.remLen,1000);">
+														</textarea>													</td>
+													<td align="left" valign="bottom"><input  style="width: 50px;" readonly="readonly" type="text" name="remLen7" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right">
+														<strong>Other Instructions</strong>													</td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+													<textarea name="otherInst" rows="5" cols="16" id="tick_mes6" onKeyDown="textCounter6(this.form.tick_mes6,this.form.remLen8,1000);"
+																  onKeyUp="textCounter6(this.form.tick_mes6,this.form.remLen,1000);">
+														</textarea>													</td>
+													<td align="left" valign="bottom"><input  style="width: 50px;" readonly="readonly" type="text" name="remLen8" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right">
+														<strong>Term & Conditions</strong>													</td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+													<textarea name="termCond" rows="5" cols="16" required id="tick_mes7" onKeyDown="textCounter7(this.form.tick_mes7,this.form.remLen9,1000);"
+																  onKeyUp="textCounter7(this.form.tick_mes7,this.form.remLen,1000);">
+														</textarea>													</td>
+													<td align="left" valign="bottom"><input  style="width: 50px;" readonly="readonly" type="text" name="remLen9" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+													<td width="33%" align="right">
+														<strong>Cancellation Policy</strong>													</td>
+													<td align="center" valign="middle">:</td>
+													<td align="right">
+													<textarea name="cancelPolicy" rows="5" cols="16" required id="tick_mes8" onKeyDown="textCounter8(this.form.tick_mes8,this.form.remLen10,1000);"
+																  onKeyUp="textCounter8(this.form.tick_mes8,this.form.remLen,1000);">
+														</textarea>													</td>
+													<td align="left" valign="bottom"><input  style="width: 50px;" readonly="readonly" type="text" name="remLen10" size=3 maxlength=3 value="1000"/>characters&nbsp;left</td>
+												</tr>
+												<tr>
+							                        <td height="5"></td>
+							                        <td align="center" valign="middle"></td>
+							                        <td height="5"></td> <td height="5"></td>
+							                    </tr>
+												<tr align="center">
+								                      <td width="33%" align="right"></td>
+								                        
+								                        <td align="center" valign="middle">&nbsp;</td>
+								                        <td align="left" height="40">
+															<input name="Submit" type="submit" value="Submit" class="cls_btn"/>														</td>
+								                </tr>
+								                <tr>
+								                    <td height="20"></td>
+								                    <td align="center" valign="middle"></td>
+								                    <td align="left" height="40"></td><td></td>
+								                </tr>
+										  </table>
+										</form>
+									</td>
+								  </tr>
+								  <tr>
+									<td height="30"></td>
+								  </tr>
+							 </table>
+						   </td>
+						 </tr>
+					</table>
+				</td>
+				</tr>
+ 			 <!--footer-->
+
+			    <tr>
+				 	<td width="100%" valign="top" align="center"><%@ include file="/footer.jsp" %></td>
+			    </tr>
+ 			 <!--footer-->
+	</table>
+</body>
+</html>
+<!--  <script language="JavaScript">
+
+var message="No right-click allowed";
+///////////////////////////////////
+function clickIE() {if (document.all) {alert(message);return false;}}
+function clickNS(e) {if 
+(document.layers||(document.getElementById&&!document.all)) {
+if (e.which==2||e.which==3) {alert(message);return false;}}}
+if (document.layers) 
+{document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
+else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
+
+document.oncontextmenu=new Function("return false");
+
+</script>
+-->
+<script>
+
+function populatedestination()
+{
+	var xmlhttp;
+	var param = "destination";
+	
+	var url = "HolidayPage.action?param="+param;
+	if(window.XMLHttpRequest)
+		{
+			xmlhttp = new XMLHttpRequest();
+		}
+	else
+		{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+			xmlhttp.onreadystatechange = function ()
+			{
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+					{
+						document.getElementById("destinationCity").innerHTML = xmlhttp.responseText;
+						//document.getElementById("name").innerHTML = xmlhttp.responseText;
+					}
+			}
+		xmlhttp.open("post", url, true);
+		xmlhttp.send();
+	
+}
+
+</script>
+<script>
+
+function populatesources()
+{
+	var xmlhttp;
+	var param = "source";
+	
+	var url = "HolidayPage.action?param="+param;
+	if(window.XMLHttpRequest)
+		{
+			xmlhttp = new XMLHttpRequest();
+		}
+	else
+		{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+			xmlhttp.onreadystatechange = function ()
+			{
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+					{
+						document.getElementById("sourceCity").innerHTML = xmlhttp.responseText;
+						//document.getElementById("name").innerHTML = xmlhttp.responseText;
+					}
+			}
+		xmlhttp.open("post", url, true);
+		xmlhttp.send();
+	
+}
+
+</script>
+<script>
+function textCounter(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter1(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter2(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter3(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter4(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter5(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter6(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter7(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter8(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter9(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter10(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter11(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>
+<script>
+function textCounter12(field, countfield, maxlimit)
+{
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+countfield.value = maxlimit - field.value.length;
+}
+</script>

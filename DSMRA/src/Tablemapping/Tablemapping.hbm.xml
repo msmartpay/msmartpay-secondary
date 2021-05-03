@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+  <class name="com.login.LoginForm" table="distributor_login_details"  schema="dbo" catalog="b2b_msmart">
+
+	   <id name="userId" column="user_id" ><generator class="assigned"/> </id>
+	    <property name="password" ><column name="password" /></property>		
+		<property name="loginId" ><column name="user_name"/></property>
+		<property name="status" ><column name="login_status"/></property>
+		<property name="type" ><column name="user_type"/> </property>
+		<property name="oldPass" ><column name="old_pass"/> </property>					
+		<property name="emailVerified" ><column name="email_verified"/> </property>
+		<property name="mobileVerified" ><column name="mobile_verified"/> </property>		
+		<property name="profileCompleted" ><column name="profile_completed"/> </property>		
+		<property name="emailVerifiedCode" ><column name="email_verified_code"/> </property>		
+		<property name="mobileVerifiedCode" ><column name="mobile_verified_code"/> </property>
+		<property name="clientType" ><column name="client_type"/> </property>
+		<property name="blockStatus" ><column name="Block_status"/> </property>		  
+	 </class>
+
+	 <class name="com.disttributordetails.DistributorDetailForm" table="distributor_details" schema="dbo" catalog="b2b_msmart">		  
+		<id name="distributorId" column="distributor_id" ><generator class="assigned"/></id>		
+	    <property name="mdId"><column name="md_id"/> </property>	    
+		<property name="distributorInitial"><column name="distributor_initial" /></property>
+		<property name="companyName"><column name="company_name"/></property>
+		<property name="liverechargeMobile"><column name="live_recharge"/> </property>
+		<property name="airtelMobOffline"><column name="AirtelMobOffline"/> </property>					
+		<property name="airtelDthOffline"><column name="AirtelDthOffline"/> </property>
+		<property name="air"><column name="air"/> </property>
+		<property name="rail"><column name="rail"/> </property>
+		<property name="rechargeMobile"><column name="re_mobile" /></property>
+		<property name="rechargeDth"><column name="re_dth"/></property>
+		<property name="billMobile"><column name="bl_mobile"/> </property>
+		<property name="billLic"><column name="bl_lic"/> </property>					
+		<property name="busTicketBooking"><column name="bk_bus"/> </property>
+		<property name="panCardRequest"><column name="request_pancard"/> </property>		
+		<property name="airtelJkMob"><column name="AirtelJkMob"/> </property>		
+		<property name="airtelJKDth"><column name="AirtelJkDth"/> </property>		
+		<property name="AuthorizedMobile" ><column name="Authorized_Mobile_No"/> </property>
+		<property name="emailId" ><column name="email_id"/> </property>
+		<property name="DistributorName" ><column name="distributor_name"/> </property>
+		<property name="Designation" ><column name="Designation"/> </property>
+		<property name="MobileNo" ><column name="mobile_no"/> </property>
+		<property name="Address" ><column name="address1"/> </property>
+		<property name="State" ><column name="state"/> </property>
+		<property name="City" ><column name="city"/> </property>
+		<property name="PinCode" ><column name="pin_code"/> </property>
+		<property name="District" ><column name="office_district"/> </property>
+	    <property name="DistribuotrSmsMobileNo" ><column name="Dis_MobileNo"/> </property>
+		<property name="Address2" ><column name="address2"/> </property>
+		<property name="FaxNO" ><column name="fax_no"/> </property>
+		<property name="OfficePhoneNumber" ><column name="office_phone1"/> </property>
+		<property name="landmark" ><column name="landmark"/> </property>
+		<property name="country" ><column name="country"/> </property>
+		<property name="agentCreationCharge" ><column name="agent_creation_charge"/> </property>	  
+	 </class>
+	
+    <class name="com.paneldetails.PanelDetailForm" table="white_label_details" schema="dbo" catalog="b2b_msmart">
+		<id name="clientId" column="Client_Id" ><generator class="assigned"/></id>
+		<property name="loginUrl"><column name="Distributor_login_url" /></property>
+		<property name="innerHeaderImage"><column name="Logo_Image"/></property>
+		<property name="helpEmailId"><column name="Distributor_help_email_id1"/> </property>
+		<property name="helpMobileNo"><column name="Distributor_help_mobile_no1"/> </property>					
+		<property name="titlePage"><column name="Distributor_page_title"/> </property>
+		<property name="copyRight"><column name="Distributor_footer_copyright"/> </property>		
+		<property name="poweredBy"><column name="Powered_By"/> </property>		
+		<property name="panelType"><column name="flag"/> </property>
+		<property name="domainName"><column name="Domain_name"/> </property>
+		<property name="BalanceDesk"><column name="Help_balance_desk"/> </property>
+		<property name="WhitelableCompanyName"><column name="Company_name"/> </property>
+		<property name="agentLoginUrl"><column name="Agent_login_url"/> </property>
+		<property name="agentCellEmailId"><column name="Agent_cell_email_id"/> </property>		
+			<property name="Help_Desk_MobileNo" ><column name="Help_Desk_MobileNo"/> </property>
+		  	<property name="Help_Desk_EmailID" ><column name="Help_Desk_EmailID"/> </property>
+		  	<property name="distributor_Ticker" ><column name="distributor_Ticker"/> </property>		  
+	 </class>
+
+	
+	<class name="com.dsamount.DistributorAmountForm" table="distributor_amount" schema="dbo" catalog="b2b_msmart">
+		 <id name="distributorId" column="distributor_Id" ><generator class="assigned"/></id>
+         <property name="totalCash"><column name="TotCash"/></property>
+		<property name="usedCash"><column name="usedcash"/> </property>
+		<property name="cutoffAamount"><column name="cutoff_amount"/></property>					
+		<property name="lastAmount"><column name="last_amount"/></property>
+	</class> 
+
+	 <class name="com.mdsdetail.MdsDetailsForm" table="md_details" schema="dbo" catalog="b2b_msmart">
+		 <id name="mdId" column="MD_id" ><generator class="assigned"/></id>
+         <property name="mdInitial"><column name="MD_initial"/></property>
+             <property name="clientId"><column name="Client_Id"/> </property>
+               <property name="Email_id"><column name="Email_id"/> </property>
+  </class> 
+  
+   <class name="com.agentDetails.AgentDetailForm" table="agent_details" schema="dbo" catalog="b2b_msmart">
+	    <id name="agentId" column="agent_id" ><generator class="assigned"/></id>
+        <property name="agentInitial"><column name="agent_initial"/></property>
+        <property name="agencyName"><column name="agency_name"/> </property>
+		<property name="agentName"><column name="agent_name"/> </property>		
+		<property name="agentEmailId"><column name="email_id"/> </property>
+		<property name="distributorId"><column name="distributor_id"/> </property>
+		<property name="city"><column name="city"/> </property>
+		<property name="state"><column name="state"/> </property>
+		<property name="Designation"><column name="Designation"/> </property>		
+		<property name="District"><column name="district"/> </property>
+		<property name="officePinCode"><column name="pin_code"/> </property><!--
+		<property name="RegisterMobileNumber"><column name="Res_Mobile_No"/> </property>
+		--><property name="air"><column name="air"/> </property>
+		<property name="bus"><column name="bk_bus"/> </property>
+		<property name="LiveRecharge"><column name="live_recharge"/> </property>
+		<property name="BillPayment"><column name="bl_mobile"/> </property>
+		<property name="PanCard"><column name="request_pancard"/> </property>
+		<property name="MobileTransactionStatus"><column name="MOB_TXN_STATUS"/> </property>
+		<property name="Lic"><column name="bl_lic"/> </property>
+		<property name="DateOfBirth"><column name="DateOfBirth"/> </property>
+		<property name="Gender"><column name="Gender"/> </property>
+		<property name="maritalStatus"><column name="Marital_Status"/> </property>		
+		 <property name="fathername"><column name="Fathers_name"/></property>
+        <property name="mothername"><column name="Mother_Maiden_Name"/> </property>
+		<property name="occupation"><column name="Occupation"/> </property>
+		<property name="CompanyType"><column name="Company_Type"/> </property>
+		<property name="Address1"><column name="address1"/> </property>
+		<property name="Address2"><column name="address2"/> </property>
+		<property name="officeCountry"><column name="country"/> </property>
+		<property name="officelandmark"><column name="landmark"/> </property>
+		<property name="mobileNo"><column name="mobile_no"/> </property>
+		<property name="officeAlternateNo"><column name="mobile_no1"/> </property>
+		<property name="OfficePhone"><column name="office_phone1"/> </property>
+		<property name="OfficeFax"><column name="fax_no"/> </property>
+		<property name="OfficeWebsite"><column name="Website"/> </property>
+		<property name="ResAddress1"><column name="Res_Address1"/> </property>
+		<property name="ResAddress2"><column name="Res_Address2"/> </property>
+		<property name="resCity"><column name="Res_City"/> </property>
+		<property name="PanNo"><column name="Pan_no"/> </property>	
+		<property name="AthoMobile"><column name="Authorized_Mobile_No"/> </property>
+		<property name="Rmobile"><column name="Res_Mobile_No"/> </property>
+		<property name="Ralternatemobile"><column name="Res_Alternate_Mobile_No"/> </property>	
+		<property name="Rphone"><column name="Res_Phone_No"/> </property>
+		<property name="Rfax"><column name="Res_Fax_No"/> </property>
+		<property name="resDistrict"><column name="Res_District"/> </property>
+		<property name="resState"><column name="Res_State"/> </property>
+		<property name="resCountry"><column name="Res_Country"/> </property>
+		<property name="idproof"><column name="Id_Proof"/> </property>
+		<property name="addressproof"><column name="Address_Proof"/> </property>
+		<property name="bussinessProof"><column name="Business_Firm_Proof"/> </property>
+		<property name="CorrespondenceAddressValue"><column name="Correspondence_Address_Value"/> </property>
+		<property name="resPincode"><column name="Res_Pincode"/> </property>
+			<property name="rail"><column name="rail"/> </property>	
+  </class> 
+  
+   <class name="com.agentamount.AgentAmountForm" table="agent_amount" schema="dbo" catalog="b2b_msmart">
+		 <id name="agentId" column="agent_id" ><generator class="assigned"/></id>
+		<property name="totalcash"><column name="TotCash"/></property>
+		<property name="usedcash"><column name="usedcash"/> </property>		
+		<property name="cutoffAmt"><column name="cutoff_amount"/> </property>		
+		<property name="lastUpdAmt"><column name="last_amount"/> </property>
+  </class> 
+  
+  
+ <class name="com.agentDetails.AgentLoginForm" table="login_details" schema="dbo" catalog="b2b_msmart">
+		 <id name="AgentUserId" column="user_id" ><generator class="assigned"/></id>
+        <property name="AgentLoginStatus"><column name="login_status"/></property>
+         <property name="userName"><column name="user_name"/></property>
+          <property name="password"><column name="password"/></property>       
+ </class> 
+ 
+ <!--<class name="com.agentDetails.REPAgentLoginForm" table="recharge_e_point_login_info" schema="dbo" catalog="b2b_msmart">
+		 <id name="REPAgentUserId" column="user_id" ><generator class="assigned"/></id>
+          <property name="REPAgentLoginStatus"><column name="login_status"/></property>
+          <property name="RepuserName"><column name="user_name"/></property>
+          <property name="Reppassword"><column name="password"/></property>
+ </class> 
+  
+  
+  
+   --><class name="com.cityName.CityNameForm" table="city_details" schema="dbo" catalog="b2b_msmart">
+		 <id name="CityCode" column="CITY_CODE" ><generator class="assigned"/></id>
+          <property name="CityName"><column name="CITY_NAME"/></property>
+ </class> 
+  
+  
+   <class name="com.agentamount.AgentJournalForm" table="agent_journal" schema="dbo" catalog="b2b_msmart">
+		 <id name="JournalId" column="journal_id" ><generator class="assigned"/></id>
+          <property name="agentId"><column name="agent_id"/></property>
+          <property name="RequestDate"><column name="request_date"/></property>
+          <property name="RequestTime"><column name="request_time"/></property>
+          <property name="ModeOfPayment"><column name="mode_of_payment"/></property>
+          <property name="AmounToCredit"><column name="ammount_to_credit"/></property>
+          <property name="ChequeNumber"><column name="checque_no"/></property>
+          <property name="Status"><column name="status"/></property>
+          <property name="distributorId"><column name="distributor_id"/></property>
+           <property name="remarks"><column name="remarks"/></property>
+            <property name="ApprovalDate"><column name="approval_date"/></property>
+           <property name="AcceptedAmount" not-null="false"><column name="Accepted_amount"/></property>
+           <property name="BankName" ><column name="bank_name"/></property>
+            <property name="Bank_Charges" ><column name="Bank_Charges"/></property>
+            <property name="DepositerName" ><column name="Depositor_Name"/></property>
+             <property name="DepositorBankName" ><column name="Depositor_Bank_Name"/></property>
+               <property name="DepositDate" ><column name="deposit_date"/></property>
+               <property name="account_no" ><column name="account_no"/></property>
+                 <property name="Transaction_id" ><column name="transaction_id"/></property>
+                 <property name="journalDate" ><column name="journal_date"/></property>          
+ </class> 
+  
+  
+   <class name="com.disttributordetails.DistributorTransactionDetailForm" table="distributor_Transaction_details" schema="dbo" catalog="b2b_msmart">
+		 <id name="TransactionNo" column="Transaction_No" ><generator class="assigned"/></id>
+          <property name="distributorId"><column name="Distributor_id"/></property>
+          <property name="ReferenceId"><column name="Refrence_id"/></property>
+          <property name="MdID"><column name="Md_id"/></property>
+          <property name="UserType"><column name="User_Type"/></property>
+          <property name="DateOfTransaction"><column name="Date_of_Transaction"/></property>
+          <property name="TimeOfTransaction"><column name="Time_of_Transaction"/></property>
+          <property name="Service"><column name="Service"/></property>
+          <property name="TransactionAmount"><column name="Tran_amount"/></property>
+          <property name="BankCharge"><column name="Bank_charge"/></property>
+          <property name="NetTransactionAmount"><column name="Net_Tran_amount"/></property>
+          <property name="ActionOnBalanceAmount"><column name="Action_on_Bal_amount"/></property>
+          <property name="PreviousBalanceAmount"><column name="Previous_Bal_amount"/></property>
+          <property name="UpdatedBalanceAmount"><column name="Updated_Bal_amount"/></property>
+          <property name="FinalBalanceAmount"><column name="Final_Bal_amount"/></property>
+          <property name="IpAddress"><column name="Tran_ip_address"/></property>
+          <property name="UpdatedDate"><column name="Updated_Date"/></property>
+          <property name="UpdatedTime"><column name="Updated_time"/></property>
+          <property name="UpdatedUser"><column name="Updated_User"/></property>
+          <property name="updatedIpAddress"><column name="Updated_ip_adddress"/></property>
+          <property name="Remarks"><column name="Remarks"/></property>
+          <property name="TransactionStatus"><column name="Tran_status"/></property>
+           <property name="Commission"><column name="Commission"/></property>
+           <property name="Servicecharge"><column name="Service_charge"/></property>
+           <property name="IDNO"  insert="false" update="false"><column name="ID_NO"/></property>         
+ </class> 
+  
+     <class name="com.agentamount.AgentTransactionDetailsForm" table="agent_transaction_details" schema="dbo" catalog="b2b_msmart">
+		 <id name="TransactionID" column="Transaction_Id" ><generator class="assigned"/></id>
+		   <property name="Agentid"><column name="Agent_id"/></property>
+          <property name="TransactionNo"><column name="Transaction_No"/></property>
+          <property name="UserType"><column name="UserType"/></property>
+          <property name="distributorId"><column name="distributor_id"/></property>
+          <property name="DateOfTransaction"><column name="Date_of_Transaction"/></property>
+          <property name="TimeOfTransaction"><column name="Time_of_Transaction"/></property>
+          <property name="Service"><column name="Service"/></property>
+          <property name="AgentBalanceBeforeDeduction"><column name="Agent_balAmt_b_Ded"/></property>
+          <property name="AgentBalanceAfterDeduction"><column name="Agent_balAmt_A_Ded"/></property>
+          <property name="RequestedAmount"><column name="ReqAmount"/></property>
+          <property name="serviceCharge1"><column name="Service_charge1"/></property>
+          <property name="serviceCharge2"><column name="Service_charge2"/></property>
+          <property name="DeductedAmont"><column name="DeductedAmt"/></property>
+          <property name="ActionOnBalance"><column name="Action_on_bal_amt"/></property>
+          <property name="TransactionStatus"><column name="Tran_status"/></property>
+          <property name="UpdatedDate"><column name="Updated_date"/></property>
+          <property name="UpdatedTime"><column name="updated_time"/></property>
+          <property name="AgentFinalBalance"><column name="Agent_F_balAmt"/></property>
+          <property name="IpAddress"><column name="IpAddress"/></property>
+          <property name="UpdatedIpAddress"><column name="UpdIpAddress"/></property>
+          <property name="remarks"><column name="Remark"/></property>         
+ </class> 
+  
+   <class name="com.dsamount.DistributorModeOfPaymentForm" table="MD_mode_of_payment" schema="dbo" catalog="b2b_msmart">
+		 <id name="SNO" column="S_No" ><generator class="increment"/></id>
+          <property name="ModeOfPayment"><column name="mode_of_payment"/></property>
+          <property name="BankName"><column name="Bank_Name"/></property>
+          <property name="LimitAmount"><column name="Limit_Amount"/></property>
+          <property name="charges"><column name="charges"/></property>
+          <property name="chargeType"><column name="charges_Type"/></property>
+          <property name="AccountNumber"><column name="Account_No"/></property>
+          <property name="BranchName"><column name="BranchName"/></property>
+ </class>    
+    
+     <class name="com.dsamount.DistributorJournalForm" table="distributor_journal" schema="dbo" catalog="b2b_msmart">
+		
+		 <id name="TransactionJournalId" column="journalid"  ><generator class="assigned"/></id>		 
+          <property name="MdId" ><column name="Md_Id"/></property>
+          <property name="DistributorId"><column name="distributor_id"/></property>
+          <property name="Initial"><column name="initial"/></property>
+          <property name="RequestDate" insert="false"><column name="request_date"/></property>
+          <property name="RequestTime" insert="false"><column name="request_time"/></property>
+          <property name="ModeOfPayment"><column name="mode_of_payment"/></property>
+          <property name="AmountToCredit"><column name="ammount_to_credit"/></property>          
+           <property name="BankCharges"><column name="bank_charges"/></property>
+          <property name="AcceptedAmount"><column name="Accepted_Amount"/></property>
+          <property name="DepositorAccountNumber"><column name="Depositor_Account_Number"/></property>
+          <property name="DepositorBankName"><column name="Depositor_Bank_Name"/></property>
+          <property name="DepositorName"><column name="Depositor_Name"/></property>
+          <property name="ReceiptNumber"><column name="Reciept_No"/></property>
+          <property name="BankTransactionId"><column name="Bank_Tran_Id"/></property>
+          <property name="BankName"><column name="bank_name"/></property>
+          <property name="BranchName"><column name="branch_name"/></property>
+          <property name="DepositDate"><column name="deposit_date"/></property>
+          <property name="ChequeDDDate"><column name="cheque_dd_date"/></property>
+          <property name="Status"><column name="status"/></property>
+          <property name="remarks"><column name="remarks"/></property>
+          <property name="AccountNumber"><column name="Account_No"/></property>
+          <property name="DepositLocation"><column name="Deposit_Location"/></property>
+          <property name="ChequeNumber"><column name="checque_no"/></property>
+          <property name="ChequeBankName"><column name="Cheque_bank_name"/></property>
+          <property name="ReferenceNo"><column name="Referece_no"/></property>
+          <property name="ReceiverName"><column name="Receiver_Name"/></property>
+          <property name="ReceiverOfficeLocation"><column name="Receiver_Office_Location"/></property>
+          <property name="JournalId" insert="false" update="false"><column name="journal_id"/></property>
+          <property name="BranchCity" ><column name="branch_city"/></property>        
+ </class> 
+    
+   <class name="com.disttributordetails.REPDistributorLoginform" table="rep_distributor_login_details" schema="dbo" catalog="b2b_msmart">
+		 <id name="RepDisUserId" column="user_id" ><generator class="assigned"/></id>
+          <property name="RepDisPassword"><column name="password"/></property>
+          <property name="RepDisuserName"><column name="user_name"/></property>
+ </class>
+ 
+    <class name="com.commisionForm.LiveRechargeCommsionForm" table="live_recharge_comm" schema="dbo" catalog="b2b_msmart">
+		 <id name="agentId" column="agent_id" ><generator class="assigned"/></id>
+		   <property name="AIRCEL"><column name="AIRCEL"/></property>
+          <property name="AIRTEL"><column name="AIRTEL"/></property>
+          <property name="BSNLRECH"><column name="BSNLRECH"/></property>
+          <property name="BSNL"><column name="BSNL"/></property>
+          <property name="IDEA"><column name="IDEA"/></property>
+          <property name="RELIANCE"><column name="RELIANCE"/></property>
+          <property name="RGSM"><column name="RGSM"/></property>
+          <property name="TATA"><column name="TATA"/></property>
+          <property name="VIRGIN"><column name="VIRGIN"/></property>
+          <property name="VODAFONE"><column name="VODAFONE"/></property>
+          <property name="MTS"><column name="MTS"/></property>
+          <property name="TATADOCOMO"><column name="TATADOCOMO"/></property>
+          <property name="TATASKY"><column name="TATASKY"/></property>
+          <property name="DISH"><column name="DISH"/></property>
+          <property name="SUNDIRECT"><column name="SUNDIRECT"/></property>
+          <property name="VIDEOCONDTH"><column name="VIDEOCONDTH"/></property>
+          <property name="BPL"><column name="BPL"/></property>
+          <property name="BIGTV"><column name="BIGTV"/></property>
+          <property name="STEL"><column name="STEL"/></property>
+          <property name="VIDEOCONSP"><column name="VIDEOCONSP"/></property>
+          <property name="VIDEOCONT"><column name="VIDEOCONT"/></property>
+           <property name="TATADOCOMOSP"><column name="TATADOCOMOSP"/></property>
+          <property name="UNINOR"><column name="UNINOR"/></property>
+          <property name="UNINORS"><column name="UNINORS"/></property>
+          <property name="MTNLT"><column name="MTNLT"/></property>
+          <property name="MTNLV"><column name="MTNLV"/></property>
+          <property name="AIRTELDTH"><column name="AIRTELDTH"/></property>               
+ </class> 
+ 
+ 
+  <class name="com.commisionForm.AgentCommisionForm" table="agent_commission" schema="dbo" catalog="b2b_msmart">
+		 <id name="agentId" column="agent_id" ><generator class="assigned"/></id>
+		   <property name="railCommsion"><column name="rail"/></property>
+          <property name="railCommsionType"><column name="rail_mark"/></property>
+          <property name="BillMobileCommsion"><column name="bl_mobile"/></property>
+          <property name="BillMobileCommsionType"><column name="bl_mobile_mark"/></property>
+          <property name="BusCommsion"><column name="bk_bus"/></property>
+          <property name="BusCommsionType"><column name="bk_bus_mark"/></property>
+          <property name="PanCardCommsion"><column name="request_pancard"/></property>
+          <property name="PanCardCommsionType"><column name="request_pancard_mark"/></property>
+          <property name="LicCommsion"><column name="bl_lic"/></property>
+          <property name="LicCommsionType"><column name="bl_lic_mark"/></property>
+          <property name="LicServiceCharge"><column name="lic_sc_value"/></property>
+          <property name="LicServiceChargeType"><column name="lic_sc_mark"/></property>
+          <property name="PanCardServiceCharge"><column name="pan_sc_value"/></property>
+          <property name="PanCardServiceChargeType"><column name="pan_sc_mark"/></property>
+          <property name="BillMobileServiceCharge"><column name="bill_sc_value"/></property>
+          <property name="BillMobileServiceChargeType"><column name="bill_sc_mark"/></property>        
+ </class> 
+ 
+  <class name="com.mdsdetail.MdLoginDetailsForm" table="md_login_details" schema="dbo" catalog="b2b_msmart">
+		 <id name="UseriD" column="User_id" ><generator class="assigned"/></id>
+         <property name="UserName"><column name="User_name"/></property>             
+  </class> 
+  <class name="com.report.form.SendMessage" table="send_message" schema="dbo" catalog="b2b_msmart">
+
+		<id name="id" column="id" ><generator class="native"/></id>
+		<property name="type" ><column name="type"/></property>
+		<property name="destination"><column name="destination"/></property>
+		<property name="message"><column name="message"/></property>
+		<property name="status"><column name="status"/></property>
+	</class>
+  
+</hibernate-mapping>

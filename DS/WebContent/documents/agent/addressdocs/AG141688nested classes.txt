@@ -1,0 +1,48 @@
+Nested Classes:::
+
+Nested classes are divided into two categories: 
+static and non-static.
+Nested classes: that are declared static are simply called static nested classes. 
+Non-static nested classes are called inner classes.
+
+Static nested classes are accessed using the enclosing class name:
+
+OuterClass.StaticNestedClass
+
+ex:
+OuterClass.StaticNestedClass nestedObject = new OuterClass.StaticNestedClass();
+
+Objects that are instances of an inner class exist within an instance of the outer class. Consider the following classes:
+
+The Java programming language allows you to define a class within another class. Such a class is called a nested class and is illustrated here:
+
+class OuterClass {
+    ...
+    class NestedClass {
+        ...
+    }
+}
+//nested static class
+
+class OuterClass {
+    ...
+    static class StaticNestedClass {
+        ...
+    }
+    class InnerClass {
+        ...
+    }
+}
+
+A nested class is a member of its enclosing class. Non-static nested classes (inner classes) have access to other members of the enclosing class, even if they are declared private. Static nested classes do not have access to other members of the enclosing class. As a member of the OuterClass, a nested class can be declared private, public, protected, or package private.
+
+
+Why Use Nested Classes?
+
+There are several compelling reasons for using nested classes, among them:
+
+It is a way of logically grouping classes that are only used in one place.
+It increases encapsulation.
+Nested classes can lead to more readable and maintainable code.
+
+

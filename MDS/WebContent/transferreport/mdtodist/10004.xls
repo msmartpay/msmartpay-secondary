@@ -1,0 +1,15 @@
+S.No.;Date  & Time;Distributor Id;Transaction_id;Transaction Type;Bank;Mode Of Payment;Cheque/DD No/Tranx No;Amount(CR / DR);Charges;Net Amount;Md Id;Status;Bank Charges Remark
+1;Feb 01, 2012 10:28:25;DSAP06413;22863;debit;HDFC Bank;E-Transfer;-;25005;0.0000;25005.0000;MDUP10004;accepted;Ajay
+2;Feb 01, 2012 11:29:57;DSUP2863;22871;-;null;cash;-;250000.0000;0.0000;250000.0000;MDUP10004;success;null
+3;Feb 01, 2012 12:35:11;DSJH04514;22882;debit;pushbalance;pushtransfer;;32000.0000;0.0000;32000.0000;MDUP10004;accepted;null
+4;Feb 01, 2012 14:18:38;DSWB1011;22904;debit;State Bank of India;E-Transfer;-;25000;0.0000;25000.0000;MDUP10004;accepted;Ajay
+5;Feb 01, 2012 08:37:54;DSCG05621;22856;debit;State Bank of India;E-Transfer;-;50000;0.0000;50000.0000;MDUP10004;accepted;Ajay
+6;Feb 01, 2012 12:45:32;DSUP52611;22885;debit;ICICI Bank;E-Transfer;-;17500;0.0000;17500.0000;MDUP10004;accepted;Mayank
+7;Feb 01, 2012 13:56:42;DSJK1565;22899;debit;Punjab National Bank;cheque deposit;087584;30000;15.0000;29985.0000;MDUP10004;accepted;Ajay
+8;Feb 01, 2012 15:57:38;DSUP52611;22931;debit;ICICI Bank;E-Transfer;-;10000;0.0000;10000.0000;MDUP10004;accepted;Ajay
+9;Feb 01, 2012 12:52:50;DSMP15565;22888;debit;State Bank of India;E-Transfer;-;25000;0.0000;25000.0000;MDUP10004;accepted;Mayank
+10;Feb 01, 2012 10:56:54;DSMH24570;22864;debit;Punjab National Bank;NEFT ;-;26000;0.0000;26000.0000;MDUP10004;accepted;Mayank
+11;Feb 01, 2012 11:11:58;DSJH17535;22865;debit;State Bank of India;E-Transfer;-;17000;0.0000;17000.0000;MDUP10004;accepted;Ajay
+12;Feb 01, 2012 13:05:51;DSMP19455;22893;debit;State Bank of India;E-Transfer;-;30011;0.0000;30011.0000;MDUP10004;accepted;Mayank
+13;Feb 01, 2012 17:25:54;DSUK4597999;22948;debit;Punjab National Bank;Cash in Bank;-;13900;50.0000;13850.0000;MDUP10004;accepted;Ajay
+14;Feb 01, 2012 16:09:12;DSPB16602;22934;debit;ICICI Bank;E-Transfer;-;27500;0.0000;27500.0000;MDUP10004;accepted;Ajay

@@ -1,0 +1,18 @@
+function populateform()
+{				
+	var amountform;
+	var rechForm = document.RechargeForm;
+	var operator = rechForm.Operator1.value;
+	
+	if(operator=="AIRCEL"){
+     amountform="<table border='0' width='450' height='100'><tr><td width='400' height='8' align='right' valign='middle' class='Trebuchet_b'> Amoun for AIRCEL&nbsp;&nbsp;&nbsp;&nbsp;<font size='1' color='red' onmouseover='alertmessage()'>&nbsp;&nbsp;*</font>:&nbsp;&nbsp;<input type='text' name='amount' value='' class='Trebuchet_normal' size='10' onKeyPress='return digitonly(this,event)' onKeyDown='chk_keys();' maxlength='5' style='width:150px;' /></td></tr> <tr><td  width='300' height='8' align='right' valign='middle' class='Trebuchet_b'>Mobile&nbsp;Number&nbsp;Amoun for AIRCEL &nbsp;<font size='1' color='red' onmouseover='alertmessage()'>&nbsp;*</font>&nbsp;&nbsp;:&nbsp;&nbsp;<input type='text' name='mobileNo' id='mobileNo' class='Trebuchet_normal' size='20' onKeyPress='return digitonly(this,event)' onKeyDown='chk_keys();' maxlength='10' style='width:150px;' /> </td></tr></table>";
+ 	
+	  }
+	  else {
+	   amountform="<table border='0' width='400' height='100'><tr><td width='400' height='8' align='right' valign='middle' class='Trebuchet_b'> Amoun for elset&nbsp;&nbsp;&nbsp;&nbsp;<font size='1' color='red' onmouseover='alertmessage()'>&nbsp;&nbsp;*</font>:&nbsp;&nbsp;<input type='text' name='amount' value='' class='Trebuchet_normal' size='10'   onKeyPress='return digitonly(this,event)' onKeyDown='chk_keys();' maxlength='5' style='width:150px;' /></td></tr> <tr><td  width='300' height='8' align='right' valign='middle' class='Trebuchet_b'>Mobile&nbsp;Number&nbsp;&nbsp;<font size='1' color='red' onmouseover='alertmessage()'>&nbsp;*</font>&nbsp;&nbsp;:&nbsp;&nbsp;<input type='text' name='mobileNo' id='mobileNo' class='Trebuchet_normal' size='20' onKeyPress='return digitonly(this,event)' onKeyDown='chk_keys();' maxlength='10' style='width:150px;' /> </td></tr></table>";
+ 	
+	     }
+	
+	document.getElementById("amount").innerHTML=amountform;	
+	
+}

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<constant name="struts.multipart.maxSize" value="8000000" />
+	<package name="default" extends="struts-default" namespace="/">
+
+
+		<global-results>
+			<result name="sessionexpired">pages/login/secure.jsp</result>
+			<result name="error">pages/login/secure.jsp</result>
+		</global-results>
+
+		<action name="doReFreshSubmitRE">
+		  <result>pages/pushBalance/pushbalance.jsp</result>
+		 </action>
+		 
+ 		<action name="processingPage">
+  			<result>/processingPage.jsp</result>
+ 		</action>
+
+
+		<action name="doLogin" class="com.login.LoginAction">
+			<result name="login">pages/home/home.jsp</result>
+			<result name="invaliduser">Login.jsp</result>
+			<result name="Deactiveuser">Login.jsp</result>
+			<result name="profile">pages/common/completeprofile.jsp</result>
+			<result name="email">pages/common/loginconfirmation.jsp</result>
+			<result name="changepass">pages/common/afterchangepass.jsp</result>
+			<result name="verifyEmailCode">pages/common/verifyEmailCode.jsp</result>
+			<result name="verifyMobileCode">pages/common/verifyMobileCode.jsp</result>
+			<result name="Accountverified">pages/login/secure.jsp</result>
+			<result name="ForgetPassword">pages/Password/ForgetPassword.jsp</result>
+		</action>
+	
+		<action name="doCommonAction" class="com.common.CommonAction">
+
+			<result name="home">pages/home/home.jsp</result>
+			<result name="report">pages/report/report.jsp</result>
+			<result name="logout">/secure.jsp</result>
+			<result name="regAgent">pages/agentRegistration/agentRegistration.jsp</result>
+			<result name="pushBalance">pages/pushBalance/pushbalance.jsp</result>
+			<result name="report">pages/report/SearchReport.jsp</result>
+			<result name="ChangePassword">pages/Password/ChangePassword.jsp</result>
+			<result name="ViewBusiness">pages/home/ViewBusiness.jsp</result>
+		</action>		
+
+		<action name="doAgentDetails" class="com.agentDetails.AgentDetailAction">
+			<result name="existActiveAgent">pages/agentdetails/ActiveAgent.jsp</result>
+			<result name="existDeActiveAgent">pages/agentdetails/DeActiveAgent.jsp</result>
+			<result name="ActiveagentProfile">pages/agentdetails/ActiveAgentProfile.jsp
+			</result>
+			<result name="DeActiveagentProfile">pages/agentdetails/DeActiveAgentProfile.jsp
+			</result>
+			<result name="DeActiveagentProfile">pages/agentdetails/DeActiveAgentProfile.jsp
+			</result>
+			<result name="editservicepage">pages/service/EditService.jsp</result>
+			<result name="CommisionOption">pages/commision/searchCommision.jsp</result>
+			<result name="commision">pages/commision/commission.jsp</result>
+		</action>
+
+
+
+		<action name="doProfileAction" class="com.disttributordetails.DistributorProfileAction">
+			<result name="profile">pages/Distributorprofile/my_profile.jsp</result>
+			<result name="upadteprofile">pages/Distributorprofile/Dis_profile_update.jsp
+			</result>
+			<result name="finalUpdate" type="redirect">/doProfileAction.action?param=DisProfile
+			</result>
+		</action>
+
+
+		
+		<action name="AgentRegistration" class="com.agentregistration.AgentRegistrationAction">
+			<result name="regAgent">pages/agentRegistration/agentRegistration.jsp</result>
+			<result name="home">pages/agentRegistration/agentRegistration.jsp</result>
+		</action>
+
+		<action name="PushBalance" class="com.PushBalance.PushBalanceAction">
+			<result name="pushBalancefromAction">pages/pushBalance/pushbalance.jsp</result>
+			<result name="getAgentData">pages/pushBalance/pushbalanceDetails.jsp</result>				
+			<result name="refresPage">pages/pushBalance/pushbalanceDetails.jsp</result>
+			<result name="pushBalance">pages/pushBalance/pushbalance.jsp</result>
+			
+		</action>
+
+		<action name="AgentDepositRequest" class="com.agentDeposit.AgentDepositAction">
+			<result name="DepositRequest">pages/AgentDepositRequest/DepositRequestDetails.jsp
+			</result>
+			<result name="ErrorDepositRequest">pages/home/home.jsp</result>
+			<result name="AgentDepositPopUp">pages/AgentDepositRequest/AgentDepositPopUp.jsp
+			</result>
+		</action>
+
+		<action name="distributorDepositRequest"
+			class="com.DistributorDepositRequest.DistributorDepositRequestAction">
+			<result name="MyDeposit">pages/DistributorDeposit/my_deposit.jsp</result>
+			<result name="SlipDownload">documents/HDFC-Paying Slip.pdf</result>			
+		</action>
+		
+
+		<action name="distributorAccount"
+			class="com.report.DistributorAccountStatement.DistributorAccountStatementAction">
+			<result name="AccountStatement">pages/report/accountStatement/accountStatement.jsp
+			</result>
+		</action>
+
+		<action name="distributorDeposit"
+			class="com.report.distributorDepositReport.DistributorDepositReportAction">
+			<result name="distributorDepositReport">pages/report/distributorDeposit/distributordeposit.jsp
+			</result>
+			<result name="successdownload">pages/report/successdownload.jsp</result>
+		</action>
+
+		<action name="AgentDeposit"
+			class="com.report.agentDepositReport.AgentDepositReportAction">
+			<result name="AgentDepositReport">pages/report/agentDeposit/agentDepositReport.jsp
+			</result>
+			<result name="successdownload">pages/report/successdownload.jsp</result>
+		</action>
+
+		<action name="AgentTransaction"
+			class="com.report.agentAmountHistory.AgentTransactionHistoryAction">
+			<result name="AgentAmountHistorySearch">pages/report/agentTransactionHistory/agentTransactionSearch.jsp
+			</result>
+			<result name="AgentTransactionData">pages/report/agentTransactionHistory/transaction_history_report.jsp
+			</result>
+			<result name="successdownload">pages/report/successdownload.jsp</result>
+		</action>
+
+
+		<action name="changePass" class="com.Password.PasswordAction">
+			<result name="changePassword">pages/Password/ChangePassword.jsp</result>
+			<result name="mailsent">pages/Password/ForgetPassword.jsp</result>
+			<result name="reset" type="redirect">/doAgentDetails.action?param=AgentDetails
+			</result>
+		</action>
+
+
+		<action name="checkDetails" class="com.TransactionDetails.CheckDetailsAction">
+			<result name="transfertoagent">pages/checkDetails/transfertoagent.jsp</result>
+			<result name="transfertodistributor">pages/checkDetails/transfertodistributor.jsp</result>
+			<result name="accountadjustment">pages/checkDetails/accountadjustment.jsp</result>
+			<result name="AdmintoAgent">pages/checkDetails/AdmintoAgent.jsp</result>
+			<result name="cashback">pages/checkDetails/cashback.jsp</result>
+			<result name="DisttoAgent">pages/checkDetails/DisttoAgent.jsp</result>
+			<result name="liveDTHRechother">pages/checkDetails/dthdetailother.jsp</result>
+			<result name="liveDTHRechrefund">pages/checkDetails/dthrefund.jsp</result>
+			<result name="AgentCreationCharge">pages/checkDetails/AgentCreationCharge.jsp</result>
+			<result name="accountadjustmentds">pages/checkDetails/AccountAdjustmentDS.jsp</result>
+		</action>
+
+		<action name="dohome">
+			<result>pages/login/secure.jsp</result>
+		</action>
+		<action name="dosessionout">
+			<result>Login.jsp</result>
+		</action>
+
+		<action name="dologout">
+			<result>pages/login/secure.jsp</result>
+		</action>
+ 		
+		<action name="searchSuspectReport" class="com.suspectRechargeTransaction.SuspectTransactionReport">
+			<result name="getPage">pages/report/SuspectTransationAgent.jsp</result>
+			<result name="SuspectReportDetails">pages/report/SuspectTransactionDetail.jsp</result>
+			<result name="searchReport">pages/report/SuspectTransactionDetail.jsp</result>
+		</action>
+		
+		<action name="distDetails" class="com.listener.StateDistrictListAction">    
+    </action>
+		
+		<!-- Created By Arshad , For Transaction report -->
+	<action name="TransactionReport" class="com.report.tranReport.TransactionReportAction">
+			<result name="getReportPage">pages/report/TransactionReport.jsp</result>
+			<result name="downloadReport">pages/report/TransactionReport.jsp</result>
+		</action>
+		
+				<action name="MarketingUser" class="com.login.MarketingUserLogin"> 
+				<result name="login">pages/home/home.jsp</result>
+				<result name="invaliduser">Login.jsp</result>
+				<result name="Deactiveuser">Login.jsp</result>
+				<result name="profile">pages/common/completeprofile.jsp</result>
+				<result name="email">pages/common/loginconfirmation.jsp</result>
+				<result name="changepass">pages/common/afterchangepass.jsp</result>
+				<result name="verifyEmailCode">pages/common/verifyEmailCode.jsp</result>
+				<result name="verifyMobileCode">pages/common/verifyMobileCode.jsp</result>
+				<result name="Accountverified">pages/login/secure.jsp</result>
+				<result name="ForgetPassword">pages/Password/ForgetPassword.jsp</result>				   
+  			  </action>
+  			  
+		<action name="SearchTran" class="com.TranSearch.TransactionSearchAction">
+			<result name="SerachTranPage">pages/SearchTran/SearchTran.jsp</result>
+			<result name="SerachTranData">pages/SearchTran/SearchTran.jsp</result>
+		</action>
+		
+		<action name="AgentReport" class="com.AgentReport.RarAgentReport">
+			<result name="getReportPage">pages/AgentReport/agentReportNew.jsp</result>
+		</action>
+	
+		
+
+	</package>
+</struts>

@@ -1,0 +1,445 @@
+@charset "utf-8";
+/* CSS Document */
+html{overflow-y:scroll; }
+body,div,p,span,ul,li,a,table,tr,td,th,input{width:auto;height:auto;margin:0;padding:0;font:13px "Trebuchet MS";color:#00468e;}
+body{background:#eff2f7;}
+.hide{display:none;}
+.clear{clear:both;}
+.box_shadow{box-shadow:0 0 3px #333;-moz-box-shadow:0 0 3px #333;-webkit-box-shadow:0 0 3px #333;}
+.box_shadow1{box-shadow:0 0 3px #666;-moz-box-shadow:0 0 3px #666;-webkit-box-shadow:0 0 3px #666;}
+
+
+#page_wrap{ }
+#container_page{width:1000px;margin:auto;background:#FFF; height:auto;padding-bottom:20px; border:0px solid #03C;}
+
+.header{height:94px;}
+.wrap_logo{float:left;width:220px;margin:12px 0 0 7px; border:0px solid #069;}
+/*.wrap_logo p{background:url(../images/logo.png) no-repeat; width:220px;height:69px;}*/
+.right_hder_wrap{margin:12px 10px 0 0;float:right;width:600px;}
+.customer_cnt_lnk{text-align:right;margin:5px 20px 0 0;}
+.customer_cnt_lnk p{color:#00468e;}
+.customer_cnt_lnk p a{color:#00468e;text-decoration:none;}
+.customer_cnt_lnk p a:hover{text-decoration:underline;}
+
+.wrap_menu{height:32px;
+background:#e9e9e9;overflow:hidden;
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fafafa), color-stop(1, #eeeeee) );
+	background:-moz-linear-gradient( center top, #fafafa 5%, #eeeeee 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eeeeee');
+	background-color:#e9e9e9;
+}
+.wrap_menu ul{list-style-type:none;}
+.wrap_menu ul li{float:left;border-right:1px solid #c5c5c5;line-height:32px;padding:0px 10px 0px 10px; cursor:pointer; text-decoration:!important}
+.wrap_menu ul li a{color:#00468e;text-decoration:none;line-height:31px;text-shadow:1px 1px 0 #fff;}
+.wrap_menu ul li a:hover{color:#bc2b3a;}
+
+span.special_offer{position:absolute;margin:-20px 0 0 0;background:url(../images/new.gif) no-repeat;width:31px;height:26px;}
+
+.login_wrap_container{margin:10px;height:auto;overflow:hidden;}
+.login_wrp{width:575px;float:left;}
+.login_con{width:527px;margin:20px 0 0 27px;border:1px solid #aaa;background:#eff2f7;height:248px;}
+.login_heading{height:32px;background:#054e99;overflow:hidden;}
+.login_heading p{color:#FFFFFF;margin:6px 0 0 10px;font-weight:bold;}
+.login_form_wrp{width:500px;margin:auto;padding-bottom:10px;}
+table.login_tble{width:400px;margin-left:85px;}
+table.login_tble tr td{padding-top:10px;text-shadow:1px 1px 0 #FFF;}
+table.login_tble tr td input[type='password'],table.login_tble tr td input[type='text'],table.login_tble tr td select{
+border:1px solid #aaa;font-family:"Trebuchet MS";
+border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;		
+padding:2px;margin:0 !important;
+width:200px;color:#333;
+}
+
+
+
+
+table.login_tble tr td select{width:205px;}
+table.login_tble tr td input[type='password']:focus,table.login_tble tr td input[type='text']:focus,table.login_tble tr td select:focus{
+box-shadow:0 0 3px #CC6600;	-webkit-box-shadow:0 0 3px #CC6600;	-moz-box-shadow:0 0 3px #CC6600;font-family:"Trebuchet MS";	
+}
+.btn_sign{
+	cursor:pointer;background:#215a9e;border:1px solid #4e8f97;
+   -moz-box-shadow:inset 0px 1px 0px 0px #b0cbeb;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #b0cbeb;
+	box-shadow:inset 0px 1px 0px 0px #b0cbeb;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	font-family:"Trebuchet MS";
+	font-size:13px;
+	font-weight:bold;
+	color:#28737a;
+	color:#eee;
+	padding:4px 15px 4px 15px !important;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #111;
+	margin-right:10px;
+}
+.btn_sign:active {
+	position:relative;
+	top:1px;
+}
+
+
+.rgt_middle_wrp{width:390px;float:right;height:294px;background:url(../images/right_bg.jpg) repeat-x;border-left:1px solid #ccc;border-bottom:1px solid #ccc;}
+.rgt_inner_wrp{margin:auto;width:368px;margin-top:5px;overflow:hidden;}
+.frg_btn a{text-decoration:none;}
+.frg_btn p{background:url(../images/master_img.png) 0 -71px;width:368px;height:40px;margin-top:10px;clear:both;color:#444;
+text-align:center;font-size:21px;line-height:38px;}
+.get_mb_app p{background:url(../images/master_img.png) 0 -115px;width:368px;height:55px;margin-top:10px;}
+.wrap_lks{margin:10px 2px 3px 2px;overflow:hidden;background:rgb(242,242,242);}
+.wrap_lks ul{list-style-type:none;margin:10px}
+.wrap_lks ul li{background:url(../images/master_img.png) 2px -189px repeat-y;margin-bottom:5px;}
+.wrap_lks ul li a{padding-left:20px;font-size:15px;text-decoration:none;text-shadow:1px 1px 0 #fff;}
+.wrap_lks ul li:hover{background:url(../images/master_img.png) 2px -172px repeat-y;}
+.wrap_lks ul li:hover a{color:#333;text-decoration:none;}
+
+.marque_wrp_txt{background:#054e99;margin:2px 3px 2px 3px;overflow:hidden;padding:2px;}
+.marque_wrp_txt a{color:#FFF;font-style:italic;font-weight:bold;text-shadow:1px 1px 0 #333;}
+
+
+
+.footer_wrap{margin-top:10px; }
+.footer{background:url(../images/footer_bg.jpg) repeat-x;height:111px;border-bottom:1px solid #bbb;overflow:hidden;}
+
+
+
+.footer_wrap1{ width:994px; margin:10px auto auto auto;height:40px;}
+.footer1{background:url(../images/footer_bg.jpg) repeat-x;height:40px;border:1px solid #bbb;}
+
+.footer1 marquee ul{ list-style:none; margin:6px auto auto auto; padding:0;}
+.footer1 marquee ul li{ float:left; padding:0;}
+
+.ul_wrap{width:180px;margin:12px 0 0 55px;float:left;}
+.heading_ul_lnk p{font-weight:bold;text-shadow:1px 1px 0 #fff;}
+.ul_ft_lnk{list-style-type:none;margin:3px 0 0 4px;}
+.ul_ft_lnk li{margin-bottom:2px;color:#444;text-shadow:1px 1px 0 #fff;text-decoration:none;}
+.ul_ft_lnk li a{color:#444;text-shadow:1px 1px 0 #fff;text-decoration:none;}
+.ul_ft_lnk li a:hover{text-decoration:underline;}
+
+.bottom_footer{width:980px;margin:auto;margin-top:10px;}
+.copyrite_lft{float:left;width:350px;}
+.copyrite_lft p{text-align:left;color:#666;}
+.powerd_rgt{float:right;width:400px;}
+.powerd_rgt p{text-align:right;color:#666;}
+.powerd_rgt p a{text-decoration:none;color:#666;font-weight:bold;}
+
+
+/**start of customer support**/
+
+.heading_txt p{margin:15px;background:rgb(240,240,240);padding:5px;font-weight:bold;font-size:14px;}
+
+.customer_wrapSupport{margin:15px;border:1px solid #bbb;border-top:none;border-right:1px solid #bbb;}
+table.table_customer{width:100%; }
+table.table_customer tr th{font-weight:bold;background:#dde6f4;padding:10px; }
+table.table_customer tr th,table.table_customer tr td{border:1px solid #bbb;border-left:none;border-bottom:none;}
+table.table_customer tr td{color:#333;padding:7px;}
+.clr_tr{background:rgb(242,242,242);}
+
+
+.customer_aroundSupport{border:0px solid #bbb; width:100%;}
+table.detail_customer{width:50%; margin:auto;border:1px solid #bbb; }
+table.detail_customer tr th{font-weight:bold;background:#dde6f4;padding:10px;}
+table.detail_customer tr th,table.table_customer tr td{border:0px solid #bbb;border-left:1px solid #bbb;border-bottom:none;}
+table.detail_customer tr td{color:#333;padding:7px 7px 7px 20px;}
+table.detail_customer tr td strong{ padding-left:20px;color:#00468e;}
+/**bank details**/
+.instru_wrap{margin:5px 10px 10px 10px;}
+.instru_wrap p,.instru_wrap p strong{color:#222;}
+.instru_wrap ul{list-style-type:none;margin:5px 0 0 25px;}
+.instru_wrap ul li{color:#222;text-align:justify;margin-bottom:8px;list-style-image:url(../images/arrow.png);}
+
+
+/**Admin panel**/
+.wrap_userDetail{margin:4px;border:1px solid #ccc;width:500px;float:right;
+box-shadow:0 0 5px #bbb inset;background:#f8fdff;
+}
+.user_detl{width:450px;padding-bottom:5px;}
+table.user_detl tr td p{font-weight:bold;float:right;font-size:12px;margin-top:5px;}
+table.user_detl tr td p span{color:#333;font-weight:bold;margin-left:5px;font-size:12px;}
+p.wel_txt{color:#333;}
+p.wel_txt span{color:#aa2433 !important;}
+ul.menu_top_rgt{float:right;margin-right:10px;margin-top:4px;}
+ul.menu_top_rgt li{float:left;list-style-type:none;margin-right:30px;}
+ul.menu_top_rgt li p{cursor:pointer;}
+ul.menu_top_rgt li p a{text-decoration:none;}
+ul.menu_top_rgt li p a:hover{text-decoration:underline;}
+ul.menu_top_rgt li p span.arrow_img_span{background:url(../images/master_img.png) -169px -12px no-repeat;width:10px;height:7px;line-height:10px;padding:0 5px 0 5px;margin:6px 0 0 5px;position:absolute;}
+ul.menu_top_rgt div.subMenu_div{position:absolute;padding:5px;width:129px;background:rgb(245,245,245);overflow:hidden;box-shadow:0 0 3px #333;-moz-box-shadow:0 0 3px #333;-webkit-box-shadow:0 0 3px #333;}
+ul.menu_top_rgt ul.sub_menu_top{list-style-type:none;}
+ul.menu_top_rgt ul.sub_menu_top li{text-align:left;border-bottom:1px dotted #aaa;}
+ul.menu_top_rgt ul.sub_menu_top li p{width:300px;padding-bottom:2px;}
+ul.menu_top_rgt ul.sub_menu_top li p a{text-decoration:none;padding:2px 100px 0 0 !important;}
+ul.menu_top_rgt ul.sub_menu_top li p a:hover{text-decoration:underline;color:#b42636;}
+ul.menu_top_rgt li:hover p span.arrow_img_span{background:url(../images/master_img.png) -169px -2px no-repeat;}
+
+ul.menu_top_rgt li div.subMenu_div{display:none;}
+ul.menu_top_rgt li:hover div.subMenu_div{display:block;}
+
+.add_main p{background:url(../images/master_img.png) -1px -217px no-repeat;width:363px;height:157px;}
+
+
+/**start of tabs**/
+
+.heading_tabs{margin-top:10px;}
+.heading_tabs p{cursor:pointer;float:left;padding:7px 20px 7px 20px;font-size:13px;font-weight:bold;
+margin-left:85px;background:rgb(235,235,235);
+box-shadow:0 0 3px #bbb inset,0 0 3px #333;
+border-radius:5px;
+text-align:center;
+}
+.heading_buss{overflow:hidden;width:527px;margin:auto;margin-left:27px;margin-top:5px;border:1px solid #bbb;}
+.heading_buss p{padding:5px;font-size:13px;font-weight:bold;
+background:rgb(235,235,235);
+text-align:center;}
+.heading_tabs p.active_tab{background:#c02d3d;cursor:default;color:#fff;box-shadow:0 0 3px #333;}
+
+
+
+
+/**flights**/
+.flight_tbs_v{margin-top:10px;height:auto;background:rgb(250,250,250);margin-bottom:10px;}
+.flights_tbs p{margin-left:73px;}
+
+.flight_booking{width:450px;margin-top:8px;
+	margin-left: auto;
+	margin-bottom: auto;
+}
+table.flight_table{width:450px;}
+table.flight_table tr th{color:#0073b7;}
+.buss_bk tr td p,table.flight_table tr td p,.hotel_box tr td p,table.rech_tb tr td{color:#222 !important;}
+table.table_fgt tr td div{width:200px;}
+
+
+table.table_fgt,table.table_fgt1,table.international_fgt{width:440px;margin:auto;margin-top:5px;margin-left:10px;}
+.fild_wrap{border:1px solid #bbb;box-shadow:1px 1px 2px #bbb;-webkit-box-shadow:1px 1px 2px #bbb;-moz-box-shadow:1px 1px 2px #bbb;
+border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;
+padding:2px;}
+table.table_fgt1 tr td table tr td{padding-right:3px;}
+p.fild_wrap input[type="text"],p.fild_wrap select{border:none;background:#fff;width:170px;color:#222; font-family:"Trebuchet MS";}
+p.fild_wrap input[type="text"],p.fild_wrap select option{font-family:"Trebuchet MS";}
+table.table_fgt tr td div{width:200px;}
+
+
+/**start of travel**/
+.travel_tbs p{margin-left:94px;}
+
+
+/**start of utility**/
+.utility_tbs p{margin-left:72px;}
+
+
+/**start of prepaid category**/
+.prepaid_tbs p{margin-left:57px;}
+.info_prepaid{margin:10px;}
+.info_prepaid p{color:#222;}
+
+.pan_aplyInfo p{margin-top:7px;}
+
+/**registartion wrap**/
+
+.reg_wrapp{margin:10px;}
+.heading_regg p{color:#333;font-size:15px;font-weight:bold;border-bottom:1px dotted #999;padding-bottom:4px;}
+.personal_detail_t{  }
+.tb_heading{margin:10px;border:0px solid #ccc;}
+.tb_heading p{color:#00468e;background:#eee;font-weight:bold;font-size:14px;border:1px solid #ccc;padding:3px;}
+.tb_heading p span{ float:right; cursor:pointer;color:#00468e;background:#eee;font-weight:bold;font-size:13px; padding-right:20px;}
+.pesonl_detals_wrap{width:700px;margin:auto;}
+.pesonl_detals_wrap tr td{color:#222;padding-top:10px; border:0px solid #C30;padding-bottom:2px;}
+.pesonl_detals_wrap tr td select,.pesonl_detals_wrap tr td input[type='text'],.pesonl_detals_wrap tr td input[type='email'],.pesonl_detals_wrap tr td input[type='password']{
+border:1px solid #aaa;background:#fff;padding:2px;color:#333;
+box-shadow:0 1px 3px #aaa;-moz-box-shadow:0 1px 3px #aaa;-webkit-box-shadow:0 1px 3px #aaa;
+border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;
+}
+.pesonl_detals_wrap tr td select:focus,.pesonl_detals_wrap tr td input[type='text']:focus,.pesonl_detals_wrap tr td input[type='email']:focus,.pesonl_detals_wrap tr td input[type='password']:focus{box-shadow:0 0 3px #CC6600;-moz-box-shadow:0 0 3px #CC6600;-webkit-box-shadow:0 0 3px #CC6600;font-family:"Trebuchet MS";}
+
+
+
+
+.pesonl_detals_wrap tr td span select,.pesonl_detals_wrap tr td input[type='text'],.pesonl_detals_wrap tr td input[type='email'],.pesonl_detals_wrap tr td input[type='password']{
+border:1px solid #aaa;background:#fff;padding:2px;color:#333;
+box-shadow:0 1px 3px #aaa;-moz-box-shadow:0 1px 3px #aaa;-webkit-box-shadow:0 1px 3px #aaa;
+border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;
+}
+.pesonl_detals_wrap tr td span select:focus,.pesonl_detals_wrap tr td input[type='text']:focus,.pesonl_detals_wrap tr td input[type='email']:focus,.pesonl_detals_wrap tr td input[type='password']:focus{box-shadow:0 0 3px #CC6600;-moz-box-shadow:0 0 3px #CC6600;-webkit-box-shadow:0 0 3px #CC6600;font-family:"Trebuchet MS";}
+
+
+
+
+
+
+.inner_tb tr td{padding:0;}
+ 
+.chng_pass{margin:20px 0 0 210px;} 
+.chng_pass tr td input[type='text'],.chng_pass tr td input[type='email'],.chng_pass tr td input[type='password']{width:200px;font-family:"Trebuchet MS";}
+.chng_pass tr td font{font-size:11px;font-style:italic;}
+
+.vrification{margin:20px 0 0 150px;}
+
+
+
+/**for the bus panel**/
+.ticket_detailll_container{margin:10px 5px 10px 5px;}
+.ticket_detailll{width:980px;margin:5px;}
+.ticket_detailll .heading_buss{width:auto;margin:0;}
+.ticket_detailll .heading_buss .login_con{width:980px;}
+.ticket_detailll .flight_tbs_v{width:980px;margin:5px 0 10px 0;padding:10px 0 15px 0;}
+.tct_detail{margin:15px 5px 15px 5px;}
+.tct_detail table{width:970px;}
+.tct_detail table tr th,.tct_detail table td{font-size:12px;}
+.tct_detail tr td a{text-decoration:none;font-size:12px;}
+.tct_detail tr td a:hover{text-decoration:underline;}
+.show_count_rslt{margin:10px;}
+.show_count_rslt p{text-align:right;background:#eee;padding:3px;padding-right:10px;}
+.show_count_rslt p a{text-decoration:none;}
+.show_count_rslt p a.active_cnt{text-decoration:underline;font-weight:bold;}
+
+.reservation_tb{}
+.reservation_tb tr td{border:none !important;padding:2px 0 0 10px !important;}
+.reservation_tb tr td span{color:#00468e !important;}
+
+.cancel_txt{color:#FF0000;}
+/**end of bus panel**/
+
+
+/**for the flight panel**/
+.upload_logo{cursor:pointer;}
+.fgt_sech tr td input[type='text'],.fgt_sech tr td input[type='password']{
+width:200px;font-family:"Trebuchet MS";
+}
+.fgt_sech tr td select{
+width:206px;
+}
+.fgt_sech tr td select option{font-family:"Trebuchet MS";
+
+}
+
+.discount_tbs p{margin-left:11px;font-size:13px;}
+.table_disount_wrap{width:100%;margin-top:10px;}
+.table_disount_wrap .customer_wrapSupport{width:950px;}
+.table_disount_wrap .customer_wrapSupport table{width:950px;}
+
+.note_markup{margin:10px;border:1px solid #ccc;padding-bottom:10px;}
+.note_markup p{color:#222;margin:10px 10px 0 10px;font-style:italic;}
+
+.mark_up_Wrap{width:600px;margin:auto;}
+.mark_up_tb{width:600px;}
+.mark_up_tb tr td input[type='text'],.mark_up_tb tr td input[type='password']{
+color:#222;width:70px;border:1px solid #aaa;font-family:"Trebuchet MS";
+}
+.mark_up_tb tr td select{width:130px;color:#222;border:1px solid #aaa;}
+.mark_up_tb tr td select option{font-family:"Trebuchet MS";}
+/**end of flight panel**/
+
+
+/**admin panel**/
+.acc_info_wrap{float:left;width:310px;border:1px solid #ccc;margin:10px 0 10px 10px;}
+.acc_info_wrap table{width:270px;margin:auto;margin-top:3px; height:115px;}
+.acc_info_wrap table tr td{color:#222;}
+.acc_info_wrap table tr td span{color:#00468e;}
+
+.acc_deposit_wrap{float:right;width:650px;border:1px solid #ccc;margin:10px 10px 10px 0; }
+.acc_deposit_wrap table{width:450px;margin:auto;}
+.acc_deposit_wrap table tr td{color:#222;padding-bottom:6px;}
+.acc_deposit_wrap table tr td input[type='text'],.acc_deposit_wrap table tr td input[type='password'],.acc_deposit_wrap table tr td select,.acc_deposit_wrap table tr td textarea{border:1px solid #aaa;background:#fff;padding:2px;color:#333;width:180px;font-family:"Trebuchet MS";
+box-shadow:0 1px 3px #aaa;-moz-box-shadow:0 1px 3px #aaa;-webkit-box-shadow:0 1px 3px #aaa;
+border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;
+}
+.acc_deposit_wrap table tr td select{width:186px;}
+.acc_deposit_wrap table tr td select option{font-family:"Trebuchet MS";}
+.acc_deposit_wrap table tr td textarea{max-width:180px;height:70px; font-family:"Trebuchet MS";}
+.deposit_heading{color:#00468e;background:#eee;font-weight:bold;font-size:14px;border:1px solid #ccc;padding:3px;text-align:center;}
+
+
+
+.popup { 
+      background-color: #fff; 
+      height: auto; width: 385px;top:7%; 
+      border: 3px solid #527db0; 
+      position:fixed; visibility: hidden; 
+      font-family: Verdana, Geneva, sans-serif; 
+      font-size: small; text-align: justify; 
+      padding: 3px; overflow: auto; 
+      z-index: 2; 
+} 
+.popup_bg { 
+      position:fixed; 
+      visibility:hidden; 
+      height: 100%; width: 100%; 
+      left: 0px; top: 0px; 
+      filter: alpha(opacity=70); 
+      opacity: 0.7; 
+      background-color: #999; 
+      z-index: 1; 
+} 
+.close_button { 
+      font-family: Verdana, Geneva, sans-serif; 
+      font-size: small; font-weight: bold; 
+      float: right; color: #ba2b3d; 
+      display: block; text-decoration: none; 
+      border: 1px solid #666; 
+      padding: 0px 3px 0px 3px; 
+} 
+.tra {
+	color: #bc2b3a !important;
+	text-decoration: underline;
+}
+
+.tra_2 {
+	color: #014691 !important;
+}
+
+#popup1{overflow:hidden; width:385px; height:auto;}
+.acc_statement{margin:15px 5px 15px 5px;}
+.cancel_txt{color:#FF0000;}
+table.table_customerbn{width:100%; border:none !important;}
+table.table_customerbn tr th{font-weight:bold;background:#dde6f4;padding:1px; border:none !important;}
+table.table_customerbn tr th,table.table_customer_bn tr td{border:none !important; border-left:none;border-bottom:none;}
+table.table_customerbn tr td{color:#333;padding:2px; border:none !important;}
+
+table.table_customerbottom{width:100%;border:none !important;}
+table.table_customerbottom tr th{font-weight:bold;background:#fff;padding:10px;border:none !important;}
+table.table_customerbottom tr th,table.table_customerbottom tr td{border:none !important;}
+table.table_customerbottom tr td{color:#333;padding:7px;border:none !important;}
+
+/**end of admin panel**/
+
+
+.account_stmt{ width:100%; height:auto; margin:auto;}
+
+
+#search_img{ display:none;}
+
+#search_img1{ display:none;}
+
+#search_img2{ display:none;}
+
+#search_img3{ display:none;}
+
+
+
+/**CSS For Utility Page **/
+.icon_1{ width:180px; height:60px; background:url(../images/hover_icon.png) no-repeat;  position:absolute; top:205px; left:407px; display:none; }
+.icon_1 p{ width:160px; height:40px; color:#FFF; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:13px; position:relative; top:5px;left:20px;}
+
+
+.icon_2{ width:180px; height:60px; background:url(../images/hover_icon.png) no-repeat;  position:absolute; top:202px; left:358px; display:none; }
+.icon_2 p{ width:160px; height:40px; color:#FFF; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:13px; position:relative; top:13px;left:20px;}
+
+.icon_3{ width:180px; height:60px; background:url(../images/hover_icon.png) no-repeat;  position:absolute; top:235px; left:358px; display:none; overflow:hidden; z-index:1000px; }
+.icon_3 p{ width:160px; height:40px; color:#FFF; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:13px; position:relative; top:13px;left:15px;}
+
+.icon_4{ width:180px; height:60px; background:url(../images/hover_icon.png) no-repeat;  position:absolute; top:235px; left:358px; display:none; overflow:hidden; z-index:1000px; }
+.icon_4 p{ width:160px; height:40px; color:#FFF; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;text-align:left; font-weight:bold; font-size:13px; position:relative; top:4px;left:15px;}
+
+.icon_5{ width:180px; height:60px; background:url(../images/hover_icon.png) no-repeat;  position:absolute; top:265px; left:387px; display:none; overflow:hidden; z-index:1000px; }
+.icon_5 p{ width:160px; height:40px; color:#FFF; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;text-align:left; font-weight:bold; font-size:13px; position:relative; top:4px;left:15px;}
+
+.icon_6{ width:180px; height:60px; background:url(../images/hover_icon.png) no-repeat;  position:absolute; top:235px; left:335px; display:none; overflow:hidden; z-index:1000px; }
+.icon_6 p{ width:160px; height:40px; color:#FFF; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; text-align:left; font-weight:bold; font-size:13px; position:relative; top:4px;left:15px;}
+
+.icon_9{ width:180px; height:60px; background:url(../images/hover_icon.png) no-repeat;  position:absolute; top:270px; left:365px; display:none; overflow:hidden; z-index:1000px; }
+.icon_9 p{ width:160px; height:40px; color:#FFF; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; text-align:left; font-weight:bold; font-size:13px; position:relative; top:13px;left:15px;}
+
+
+

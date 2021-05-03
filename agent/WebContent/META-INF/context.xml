@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+      	 <Resource name="jdbc/TEP" 
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+              
+              url="jdbc:sqlserver://43.224.136.77:1433;databasename=b2b_softsolution"
+              
+              username="sa"
+              password="!@123lancer"
+              removeAbandoned="true"
+			  maxActive="60"
+			  maxIdle="10"
+			  removeAbandonedTimeout="60"
+			  logAbandoned="true"
+              maxWait="1000"/>
+              
+        	<!-- url="jdbc:sqlserver://43.224.136.77:1433;databasename=b2b_softsolution"
+        	url="jdbc:sqlserver://192.169.232.76:1433;databasename=b2b_softsolution_test" -->
+</Context>

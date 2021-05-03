@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+     <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+   
+     
+	
+		<!--  <property name="hibernate.connection.url">jdbc:sqlserver://103.25.128.64:2499;databasename=b2b_msmart</property> -->
+	      
+		<!-- <property name="hibernate.connection.url">jdbc:sqlserver://10.10.33.238:1433;databasename=b2b_msmart</property>
+		      
+		<property name="hibernate.connection.username">msmart</property>
+		     
+		<property name="hibernate.connection.password">!@123lancer</property> -->
+		<property name="hibernate.connection.url">jdbc:sqlserver://13.235.120.132:1433;databasename=b2b_msmart</property>
+		<property name="hibernate.connection.username">arpit</property>
+		<property name="hibernate.connection.password">!@123lancer</property>
+		
+      
+      <property name="hibernate.connection.pool_size">10</property>
+      <property name="show_sql">true</property>
+      <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+      <!-- Mapping files -->
+	    
+	<mapping resource="Tablemapping/Tablemapping.hbm.xml"/>
+	
+     
+</session-factory>
+</hibernate-configuration>

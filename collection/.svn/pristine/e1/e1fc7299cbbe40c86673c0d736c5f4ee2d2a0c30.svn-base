@@ -1,0 +1,33 @@
+package in.softsolutionzone.controllers;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import in.softsolutionzone.exception.BadRequestException;
+import in.softsolutionzone.util.CustomResponse;
+import io.swagger.annotations.Api;
+
+@RestController
+@Api(value="ICICI Collection Request Handler",description="ICICI Collection Request Handler")
+@RequestMapping("/icici")
+public class ICICICollectionRequestHandler {
+
+	@PostMapping("/collection")
+	public ResponseEntity<?> validateUser() throws BadRequestException{
+		
+		return new ResponseEntity<>(new CustomResponse.CustomResponseBuilder<>()
+				.setStatus(0)
+				.build(),HttpStatus.OK);	
+	}
+	
+	@PostMapping("/cibcallback")
+	public ResponseEntity<?> cibcallback() throws BadRequestException{
+		
+		return new ResponseEntity<>(new CustomResponse.CustomResponseBuilder<>()
+				.setStatus(0)
+				.build(),HttpStatus.OK);	
+	}
+}

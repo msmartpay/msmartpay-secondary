@@ -1,0 +1,26 @@
+.stickytooltip{
+box-shadow: 5px 5px 8px #818181; /*shadow for CSS3 capable browsers.*/
+-webkit-box-shadow: 5px 5px 8px #818181;
+-moz-box-shadow: 5px 5px 8px #818181;
+display:none;
+position:absolute;
+display:none;
+border:5px solid #a74312; /*Border around tooltip*/
+background:#eedb9e;
+z-index:3000;
+
+}
+
+
+.stickytooltip .stickystatus{ /*Style for footer bar within tooltip*/
+background:#eedb9e;
+color:white;
+padding-top:5px;
+text-align:center;
+font:bold 12px Arial; font-weight:bold;
+}
+
+#sticky1,#sticky12{width:280px; height:auto;}
+#sticky1 h3,#sticky2 h3{font-size:12px; margin:0; padding:0;  float:left}
+#sticky1 table,#sticky2 table{background:#eedb9e; padding:5px}
+#sticky1 td,#sticky2 td{font-size:12px; font-family:"Trebuchet MS"; text-align:left}

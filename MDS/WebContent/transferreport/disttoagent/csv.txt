@@ -1,0 +1,22 @@
+S.No.	Date  & Time	Agent ID	Transaction_id	Transaction Type	Bank	Mode Of Payment	Cheque/DD No/Tranx No	Amount(CR / DR)	Charges	Net Amount	Distributor Id	Status	Bank Charges Remark
+1	1/2/2012 8:26	AG101308	1.10131E+19	debit	State Bank of India	E-Transfer	IT33478051	6000	0	6000	DSUP2863	accepted	-
+2	1/2/2012 10:07	AG122678	1.12268E+19	debit	Punjab National Bank	E-Transfer	6184440	10000	0	10000	DSUP2863	accepted	-
+3	1/2/2012 10:33	AGUP593058	1.00306E+19	debit	HDFC Bank	Cash Deposit	-	5000	30	4970	DSUP2863	accepted	-
+4	1/2/2012 10:41	AG122188	1.12219E+19	debit	other	E-Transfer	646192	10000	0	10000	DSRJ2904853	accepted	-
+5	1/2/2012 10:54	AG129037	1.12904E+19	-	Punjab National Bank	Cash Deposit	-	1500	50	1450	DSJH04514	declined	-
+6	1/2/2012 9:15	AG122122	1.12212E+19	debit	Punjab National Bank	Cash Deposit	-	1800	2	1798	DSUP52611	accepted	-
+7	1/2/2012 11:20	AG122068	1.12207E+19	-		distributor	-	10000	0	10000	DSMP19455	success	-
+8	1/2/2012 11:30	AG122072	1.12207E+19	-		distributor	-	300	0	300	DSBR28524	success	-
+9	1/2/2012 11:32	AG119388	1.11939E+19	debit	ICICI Bank	Cheque Deposit	16328	5000	0	5000	DSUP2863	accepted	-
+10	1/2/2012 11:42	AGWB092555	1.00256E+19	debit	ICICI Bank	E-Transfer	0	8000	0	8000	DSWB1011	accepted	-
+11	1/2/2012 11:43	AG121318	1.12132E+19	debit	State Bank of India	E-Transfer	 IT33495964 	10000	0	10000	DSUP2863	accepted	-
+12	1/2/2012 11:54	AGJK051387	1.00139E+19	-	Punjab National Bank	E-Transfer	555	7000	0	7000	DSJK1565	declined	-
+13	1/2/2012 12:01	AG130667	1.13067E+19	debit	Punjab National Bank	Cash Deposit	-	1000	0	1000	DSJH04514	accepted	-
+14	1/2/2012 12:03	AG117806	1.11781E+19	-		distributor	-	500	0	500	DSMP19455	success	-
+15	1/2/2012 10:21	AGUP282744	1.00274E+19	debit	Punjab National Bank	E-Transfer	6184617	4002	0	4002	DSUP2863	accepted	-
+16	1/2/2012 11:22	AGUP073245	1.00325E+19	debit	State Bank of India	Cash Deposit	-	10000	100	9900	DSUP2863	accepted	-
+17	1/2/2012 10:40	AGUP322582	1.00258E+19	debit	Punjab National Bank	E-Transfer	S88609345	10000	0	10000	DSUP2863	accepted	-
+18	1/2/2012 11:38	AG119262	1.11926E+19	debit	State Bank of India	E-Transfer	IT33495417	10000	0	10000	DSUP2863	accepted	-
+19	1/2/2012 12:20	AGMP191478	1.00148E+19	debit	State Bank of India	E-Transfer	IT33499219 	5000	0	5000	DSUP2863	accepted	-
+20	1/2/2012 12:26	AG119740	1.11974E+19	debit	Punjab National Bank	Cash Deposit	-	15000	50	14950	DSUP2863	accepted	-
+21	1/2/2012 12:47	AG131558	1.13156E+19	-	State Bank of India	Cheque Deposit	123456	5000	50	4950	DSUK4597999	declined	-
