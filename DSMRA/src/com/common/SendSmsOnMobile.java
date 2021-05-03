@@ -10,7 +10,6 @@ import com.report.form.SendMessage;
 public class SendSmsOnMobile
 {
 	Logger logger = Logger.getLogger(SendSmsOnMobile.class);
-	LogWriter log=new LogWriter();
 
 	public static void sendMobileSmsSMSZONE(String mobileNo,String message)
 	{
