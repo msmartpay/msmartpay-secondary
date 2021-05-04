@@ -41,10 +41,10 @@ jobs:
       - name: Login to Github Registry
         uses: docker/login-action@v1
         with:
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           username: arpitjindal97
           password: ${{ secrets.GIT_PAT_TOKEN }}
       - name: Build Image
-        run: docker build -t docker.pkg.github.com/msmartpay/proxima-deploy/proxima:latest . -f Dockerfile
+        run: docker build -t ghcr.io/msmartpay/proxima:latest . -f Dockerfile
       - name: Push Image
-        run: docker push docker.pkg.github.com/msmartpay/proxima-deploy/proxima:latest
+        run: docker push ghcr.io/msmartpay/proxima:latest
