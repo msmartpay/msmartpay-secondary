@@ -2,3 +2,4 @@ WebContent
 .settings
 .classpath
 .project
+*.war
